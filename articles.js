@@ -31,6 +31,40 @@
 
 const articles = [
 
+  {
+    titre:      "Melyneda Civil Vilton : « écrire aujourd'hui, c'est résister à l'effacement »",
+    date:       "Mars 2026",
+    auteur:     "Par Mardochée Gay",
+    auteurRole: "Chroniqueuse — Flèche Rose Éditions",
+    auteurBio:  "Mardochée Gay est auteure et membre de l'équipe éditoriale de Flèche Rose Éditions. Elle signe des portraits d'auteures engagées dans la littérature haïtienne contemporaine.",
+    readTime:   "5 min",
+    categorie:  "Entretien",
+    tags:       ["Entretien", "Portrait", "Femme", "Poésie", "Haïti"],
+    gradient:   "linear-gradient(135deg, #1a0a12 0%, #5c1030 60%, #8a1535 100%)",
+    coverAccent:"#d4607a",
+    coverTitle: "Femme Mille Lieux",
+    coverAuthor:"Anthologie · 2026",
+    image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/143a2469-e946-49d4-9096-357f9521c00b.jpg",
+    lead:       "Sous les décombres d'un monde qui saigne, certaines voix cherchent leurs voies dans les ruelles de l'alphabet du quotidien. D'autres ont su frayer un chemin même dans les fractures de l'existence. Melyneda Civil Vilton, connue sous le nom de <em>Manman Simbi</em>, est de celles-là.",
+    corps:      `<p>Même au-delà des frontières, l'acte d'écrire demeure ce cordon ombilical qui nous rattache à la sainte patrie. En effet, Melyneda vit actuellement en France pour continuer ses études universitaires. À travers des textes poétiques, narratifs et des chansons, son écriture est traversée par des questions de mémoire, de filiation et de condition féminine, en lien étroit avec des réalités sociales haïtiennes.</p>
+
+<p>Manman Simbi rejoint le cercle de ceux et celles qui croient qu'il existe à présent une réelle urgence d'écrire, notamment pour les femmes. D'ailleurs, elle déclare :</p>
+
+<blockquote><p>Écrire aujourd'hui, c'est résister à l'effacement, refuser l'oubli, refuser que l'histoire se raconte sans nous. C'est aussi une manière de survivre, de reprendre souffle dans un monde qui vacille. Pour beaucoup de femmes, la plume est devenue un espace de réparation autant qu'un lieu de combat.</p></blockquote>
+
+<p>Interrogée sur son processus de création, Manman Simbi répond en ces termes : <em>« Mon processus de création s'appuie principalement sur l'expérience vécue, la mémoire individuelle et collective, ainsi que sur l'observation du monde social. Les images qui m'habitent viennent souvent de l'intime, soit d'une femme qui tient debout malgré tout, soit d'une voix qui tremble mais ne cède pas. »</em></p>
+
+<p>Quant à la source de son inspiration : « Je m'inspire de situations concrètes, notamment de récits familiaux, de blessures intimes, mais également de moments de joie, de solidarité et de spiritualité », poursuit-elle.</p>
+
+<p>Sans l'ombre d'un doute, la littérature offre cette opportunité de cueillir des roses de l'émancipation. Participante au projet <strong>« Femme-mille-lieux »</strong> — anthologie de nouvelles des éditions Flèche Rose — Manman Simbi fait de l'acte d'écrire un acte de transmission et de responsabilité.</p>
+
+<p>Néanmoins, que ce soit pour offrir sa musique au monde ou faire don de soi, l'écriture permet bien le recousage de nos dentelles et de celles des autres. Bien sûr, il y a toujours un élan vers la catharsis en écrivant. Manman Simbi comprend cela. Peut-être bien que si l'on arrive à prendre soin de soi en écrivant, l'autre pourra trouver refuge et confort dans le royaume de nos mots.</p>
+
+<p>Au fait, au-delà des déchirures et des fêlures d'un pays en crise, il faut créer. Il faut écrire. Il faut se permettre de rêver. D'espérer. De dire non. De peindre une vie bonne et heureuse. Il faut essayer de faire ce que Boris Cyrulnik appelle la métamorphose du chaos.</p>
+
+<blockquote><p>Car créer chez nous, c'est marcher sur une ligne fine entre douleur et espérance, et choisir malgré tout de laisser une trace.</p></blockquote>`
+  },
+
   // ➕  AJOUTER UN ARTICLE ICI
   //
   // Exemple :
@@ -94,12 +128,13 @@ function renderIndexArticles() {
       style="background:var(--white);border:1px solid var(--border);border-radius:2px;overflow:hidden;display:flex;flex-direction:column;height:100%;transition:box-shadow 0.2s,transform 0.2s;cursor:pointer;"
       onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.10)';this.style.transform='translateY(-3px)'"
       onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
-      <div style="background:${a.gradient};height:180px;display:flex;align-items:center;justify-content:center;padding:1.5rem;">
-        <div style="width:90px;aspect-ratio:5/8;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;flex-direction:column;justify-content:flex-end;padding:0.8rem;">
+      <div style="background:${a.gradient};height:180px;display:flex;align-items:center;justify-content:center;padding:1.5rem;position:relative;overflow:hidden;">
+        ${a.image ? `<img src="${a.image}" alt="${escapeHtml(a.titre)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0.85;">` : ''}
+        ${!a.image ? `<div style="width:90px;aspect-ratio:5/8;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;flex-direction:column;justify-content:flex-end;padding:0.8rem;">
           <div style="width:16px;height:2px;background:${a.coverAccent};margin-bottom:0.4rem;"></div>
           <div style="font-family:'DM Serif Display',serif;font-size:0.55rem;font-style:italic;color:#fff;line-height:1.3;">${escapeHtml(a.coverTitle)}</div>
           <div style="font-size:0.38rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">${escapeHtml(a.coverAuthor)}</div>
-        </div>
+        </div>` : ''}
       </div>
       <div style="padding:1.5rem;display:flex;flex-direction:column;flex:1;gap:0.75rem;">
         <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rose);font-family:'DM Sans',sans-serif;">${escapeHtml(a.date)}</div>
@@ -198,7 +233,27 @@ function renderPage() {
     featuredEl.dataset.category = vedette.categorie.toLowerCase();
 
     const afVisual = featuredEl.querySelector('.af-visual');
-    if (afVisual) afVisual.style.background = vedette.gradient;
+    if (afVisual) {
+      afVisual.style.background = vedette.gradient;
+      // Image de couverture si disponible
+      let afImg = afVisual.querySelector('.af-photo');
+      if (vedette.image) {
+        if (!afImg) {
+          afImg = document.createElement('img');
+          afImg.className = 'af-photo';
+          afImg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0.75;';
+          afVisual.prepend(afImg);
+        }
+        afImg.src = vedette.image;
+        afImg.alt = vedette.titre.replace(/<[^>]+>/g,'');
+        const afCover = afVisual.querySelector('.af-cover');
+        if (afCover) afCover.style.display = 'none';
+      } else {
+        if (afImg) afImg.remove();
+        const afCover = afVisual.querySelector('.af-cover');
+        if (afCover) afCover.style.display = '';
+      }
+    }
     const afLine   = featuredEl.querySelector('.af-cover-line');
     if (afLine) afLine.style.background = vedette.coverAccent;
     const afTitle  = featuredEl.querySelector('.af-cover-title');
@@ -355,7 +410,28 @@ function renderModal() {
 
   set('modalBadgeTop',     a.categorie);
   set('modalTopbarTitle',  a.titre.replace(/<[^>]+>/g, ''));
-  set('modalHeroBg',       a.gradient,    'bg');
+  // Hero : image si disponible, sinon gradient
+  const heroBgEl = document.getElementById('modalHeroBg');
+  if (heroBgEl) {
+    heroBgEl.style.background = a.gradient;
+    let heroImg = heroBgEl.querySelector('.modal-hero-photo');
+    if (a.image) {
+      if (!heroImg) {
+        heroImg = document.createElement('img');
+        heroImg.className = 'modal-hero-photo';
+        heroImg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0.65;';
+        heroBgEl.prepend(heroImg);
+      }
+      heroImg.src = a.image;
+      heroImg.alt = a.titre.replace(/<[^>]+>/g,'');
+      const heroBook = heroBgEl.querySelector('.modal-hero-book');
+      if (heroBook) heroBook.style.display = 'none';
+    } else {
+      if (heroImg) heroImg.remove();
+      const heroBook = heroBgEl.querySelector('.modal-hero-book');
+      if (heroBook) heroBook.style.display = '';
+    }
+  }
   set('modalHeroBar',      a.coverAccent, 'bg');
   set('modalHeroTitle',    a.coverTitle);
   set('modalHeroAuthor',   a.coverAuthor);
