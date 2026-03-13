@@ -406,7 +406,7 @@
       font-family: 'DM Serif Display', serif;
       font-size: 1.25rem;
       font-style: italic;
-      color: var(--white);
+      color: var(--text);
       line-height: 1.2;
       margin-bottom: 0.5rem;
     }
@@ -1428,7 +1428,84 @@
       .footer-links { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
       .news-card { padding: 1.8rem 1.5rem; }
     }
-  </style>
+
+    /* ─── DIAPORAMA ─── */
+    .slideshow-section {
+      padding: 5rem 3rem;
+      background: var(--off);
+      overflow: hidden;
+      position: relative;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide-scene {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Image principale */
+    #slideStage {
+      width: 220px;
+      aspect-ratio: 5 / 8;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(28,25,22,0.18), 0 0 0 1px var(--border);
+      position: relative;
+      z-index: 2;
+    }
+
+    .slide-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    .slide-track img {
+      flex-shrink: 0;
+      width: 220px;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Miniature de la prochaine image */
+    .slide-next-preview {
+      position: absolute;
+      right: -52px;
+      width: 44px;
+      aspect-ratio: 5 / 8;
+      overflow: hidden;
+      box-shadow: 4px 8px 20px rgba(28,25,22,0.2), 0 0 0 1px var(--border);
+      z-index: 1;
+      opacity: 0;
+      transform: scale(0.85) translateX(-6px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .slide-next-preview.visible {
+      opacity: 1;
+      transform: scale(1) translateX(0);
+    }
+
+    .slide-next-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .slideshow-section { padding: 4rem 1.5rem; }
+      #slideStage { width: 170px; }
+      .slide-track img { width: 170px; }
+      .slide-next-preview { right: -40px; width: 34px; }
+    }
+    </style>
 </head>
 <body>
 
@@ -1501,7 +1578,6 @@
       <h1>Tout par et pour<br><em>la littérature.</em></h1>
       <p class="hero-desc">Depuis 2023, Flèche Rose Éditions découvre et publie des talents d'ici et d'ailleurs. Parce que chaque histoire compte, nous nous engageons à porter des œuvres qui émeuvent, inspirent et laissent une empreinte durable dans le cœur des lecteurs.</p>
       <div class="hero-actions">
-        <a href="catalogue.html" class="btn btn-fill">Voir le catalogue</a>
 
       </div>
     </div>
@@ -1539,6 +1615,38 @@
     <div class="strip-item">
       <span class="strip-num">Haïti</span>
       <span class="strip-label">Maison d'édition indépendante</span>
+    </div>
+  </div>
+</section>
+
+<!-- DIAPORAMA -->
+<section class="slideshow-section" id="diaporama">
+  <div class="slide-scene">
+    <div id="slideStage">
+      <div class="slide-track" id="slideTrack">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b82f4df6-4285-4bb3-899e-0f7b9875d59d.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/7ef25bb1-65b3-46e3-ab82-6dcf97ce18ee.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/38759bc2-8fdc-4650-b231-553c019646ff.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/4e2c6100-b14c-4fad-b9af-189effed9d7c.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/5846a878-46d3-434f-90d4-00f8412623a8.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/72eb9e0f-500e-471b-ae08-965ed80ffb3c.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/c095b02a-7220-492a-afdf-0e8cbb489d86.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/245f8914-a234-4f50-aaf8-939dccdd19f0.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/ea8af72d-9009-4d9f-a046-928aa47c2811.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/19277f7e-a215-4ec1-a6a9-eb78759c7d2d.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/d394093c-a446-4ddd-a5e4-6b67f6da58af.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/87077e40-88d6-49ef-935f-d31c57cc7749.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/36825b7b-ac75-43b4-a6a8-f3964ebb369b.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/3b503ccc-e148-46e1-9766-73c7c5a86f20.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/2b22c706-148e-44d0-b87f-d400c24b8487.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/8a82ab99-3e1a-440c-b499-cce73ce01bb5.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/3ce70904-2373-44a4-88f2-23e585f13c35.jpg" alt="">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/be64d647-3568-4e54-9551-d5b277e9adf8.jpg" alt="">
+      </div>
+    </div>
+    <!-- Miniature prochaine image -->
+    <div class="slide-next-preview" id="slidePreview">
+      <img id="slidePreviewImg" src="" alt="">
     </div>
   </div>
 </section>
@@ -2381,6 +2489,78 @@
   loadIndexGalleryPreview();
 
 </script>
+<script>
+// ── DIAPORAMA ──
+(function() {
+  const track   = document.getElementById('slideTrack');
+  const stage   = document.getElementById('slideStage');
+  const preview = document.getElementById('slidePreview');
+  const previewImg = document.getElementById('slidePreviewImg');
+  const imgs    = track ? Array.from(track.querySelectorAll('img')) : [];
+  const srcs    = imgs.map(i => i.src);
+  const total   = imgs.length;
+
+  const DURATION   = 3500; // temps entre chaque slide (ms)
+  const PREVIEW_AT = 1200; // afficher la miniature X ms avant le glissement
+  const SLIDE_DUR  = 600;  // durée de la transition CSS
+
+  let current = 0;
+  let timer   = null;
+  let sliding = false;
+
+  function getWidth() {
+    return stage ? stage.offsetWidth : 220;
+  }
+
+  function nextIdx() {
+    return (current + 1) % total;
+  }
+
+  function showPreview() {
+    if (!preview || !previewImg) return;
+    previewImg.src = srcs[nextIdx()];
+    preview.classList.add('visible');
+  }
+
+  function hidePreview() {
+    if (!preview) return;
+    preview.classList.remove('visible');
+  }
+
+  function goNext() {
+    if (sliding || !track) return;
+    sliding = true;
+    hidePreview();
+    current = nextIdx();
+    track.style.transform = 'translateX(-' + (current * getWidth()) + 'px)';
+    setTimeout(() => { sliding = false; }, SLIDE_DUR);
+  }
+
+  function tick() {
+    // Afficher la miniature avant de glisser
+    setTimeout(showPreview, DURATION - PREVIEW_AT);
+    setTimeout(goNext, DURATION);
+  }
+
+  function start() {
+    clearInterval(timer);
+    tick();
+    timer = setInterval(tick, DURATION);
+  }
+
+  // Ajuster au resize
+  window.addEventListener('resize', () => {
+    if (!track) return;
+    track.style.transition = 'none';
+    track.style.transform  = 'translateX(-' + (current * getWidth()) + 'px)';
+    imgs.forEach(img => { img.style.width = getWidth() + 'px'; });
+    requestAnimationFrame(() => { track.style.transition = ''; });
+  });
+
+  if (total > 0) start();
+})();
+</script>
+
 <script src="articles.js"></script>
 <script>
   renderIndexArticles();
