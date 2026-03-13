@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title id="pageTitle">Article — Flèche Rose Éditions</title>
   <link rel="icon" type="image/png" href="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/170f5283-46f0-438d-9eee-7defcfbef546.png">
+
+  <!-- OpenGraph / Réseaux sociaux -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:site_name"   content="Flèche Rose Éditions" />
+  <meta property="og:title"       id="ogTitle"       content="Article — Flèche Rose Éditions" />
+  <meta property="og:description" id="ogDescription" content="Découvrez les articles de Flèche Rose Éditions." />
+  <meta property="og:image"       id="ogImage"       content="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/170f5283-46f0-438d-9eee-7defcfbef546.png" />
+  <meta property="og:url"         id="ogUrl"         content="" />
+  <meta property="og:locale"      content="fr_FR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@FlecheRoseEd" />
+  <meta name="twitter:title"       id="twTitle"       content="Article — Flèche Rose Éditions" />
+  <meta name="twitter:description" id="twDescription" content="Découvrez les articles de Flèche Rose Éditions." />
+  <meta name="twitter:image"       id="twImage"       content="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/170f5283-46f0-438d-9eee-7defcfbef546.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=Epilogue:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
@@ -582,6 +598,20 @@
     // Titre de l'onglet
     const titleTag = document.getElementById('pageTitle');
     if (titleTag) titleTag.textContent = a.titre.replace(/<[^>]+>/g,'') + ' — Flèche Rose Éditions';
+
+    // OpenGraph — mise à jour dynamique
+    const _ogTitle = a.titre.replace(/<[^>]+>/g,'') + ' — Flèche Rose Éditions';
+    const _ogDesc  = (a.lead || a.corps || '').replace(/<[^>]+>/g,'').trim().slice(0, 160) || 'Découvrez les articles de Flèche Rose Éditions.';
+    const _ogImage = a.image || 'https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/170f5283-46f0-438d-9eee-7defcfbef546.png';
+    const _ogUrl   = window.location.href;
+    const _setMeta = (id, attr, val) => { const m = document.getElementById(id); if (m) m.setAttribute(attr, val); };
+    _setMeta('ogTitle',       'content', _ogTitle);
+    _setMeta('ogDescription', 'content', _ogDesc);
+    _setMeta('ogImage',       'content', _ogImage);
+    _setMeta('ogUrl',         'content', _ogUrl);
+    _setMeta('twTitle',       'content', _ogTitle);
+    _setMeta('twDescription', 'content', _ogDesc);
+    _setMeta('twImage',       'content', _ogImage);
 
     // Hero
     const hero = el('articleHero');
