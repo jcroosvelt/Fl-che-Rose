@@ -1628,6 +1628,11 @@
 
 <!-- À PROPOS -->
 <!-- ACTUALITÉS -->
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION ACTUALITÉS
+════════════════════════════════════════════ -->
 <section id="actualites" class="section section-alt">
   <div class="catalogue-header reveal">
     <div>
@@ -1636,9 +1641,63 @@
     </div>
     <a href="articles.html" class="btn btn-line">Tous les articles →</a>
   </div>
-
-  <div class="articles-grid" id="indexArticlesGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:2.5rem;"></div>
+  <div id="indexActuGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:2.5rem;"></div>
 </section>
+
+<!-- ═══════════════════════════════════════════
+     MODALE DE LECTURE — ACTUALITÉS INDEX
+════════════════════════════════════════════ -->
+<div id="indexActuModal" style="display:none;position:fixed;inset:0;z-index:700;background:rgba(26,21,16,0.78);backdrop-filter:blur(6px);overflow-y:auto;padding:2rem 1rem;" onclick="indexActuCloseOnBackdrop(event)">
+  <div style="max-width:860px;margin:0 auto;background:var(--white);border-radius:2px;overflow:hidden;position:relative;">
+
+    <!-- Hero -->
+    <div id="iamHero" style="height:260px;position:relative;display:flex;align-items:flex-end;padding:2rem;">
+      <img id="iamHeroImg" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;display:none;">
+      <div id="iamHeroGrad" style="position:absolute;inset:0;"></div>
+      <div style="position:relative;z-index:2;">
+        <span id="iamBadge" style="display:inline-block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:var(--rose);color:#fff;padding:0.25rem 0.7rem;margin-bottom:0.75rem;"></span>
+        <h2 id="iamTitle" style="font-family:'DM Serif Display',serif;font-size:1.5rem;line-height:1.3;color:#fff;margin:0;max-width:640px;"></h2>
+      </div>
+    </div>
+
+    <!-- Méta + fermeture -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:0.75rem;">
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+        <span style="font-size:0.75rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span id="iamAuthor"></span>
+        </span>
+        <span style="font-size:0.75rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span id="iamDate"></span>
+        </span>
+        <span style="font-size:0.75rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <span id="iamRead"></span>
+        </span>
+      </div>
+      <button onclick="indexActuClose()" style="background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--muted);line-height:1;padding:0.25rem 0.5rem;" title="Fermer">×</button>
+    </div>
+
+    <!-- Corps -->
+    <div style="padding:2rem 2rem 1rem;max-width:680px;">
+      <p id="iamLead" style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;line-height:1.7;color:var(--text);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);"></p>
+      <div id="iamBody" style="font-family:'Epilogue',sans-serif;font-size:0.93rem;line-height:1.85;color:var(--text);"></div>
+      <div id="iamTags" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:0.5rem;"></div>
+    </div>
+
+    <!-- Navigation + lien page complète -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;border-top:1px solid var(--border);margin-top:1rem;">
+      <div style="display:flex;gap:0.75rem;">
+        <button id="iamPrev" onclick="indexActuNav(-1)" style="background:none;border:1px solid var(--border);padding:0.5rem 1rem;cursor:pointer;font-size:0.78rem;color:var(--muted);transition:all 0.2s;" onmouseover="this.style.borderColor='var(--rose)';this.style.color='var(--rose)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">← Précédent</button>
+        <button id="iamNext" onclick="indexActuNav(1)"  style="background:none;border:1px solid var(--border);padding:0.5rem 1rem;cursor:pointer;font-size:0.78rem;color:var(--muted);transition:all 0.2s;" onmouseover="this.style.borderColor='var(--rose)';this.style.color='var(--rose)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">Suivant →</button>
+      </div>
+      <a id="iamFullLink" href="#" style="font-size:0.78rem;color:var(--rose);text-decoration:none;letter-spacing:0.05em;">Lire la page complète →</a>
+    </div>
+
+  </div>
+</div>
+
 <section id="apropos" class="section">
   <div class="sec-label reveal"><span class="sec-label-text">À propos</span><div class="sec-label-line"></div></div>
   <div class="about-grid">
@@ -2264,5 +2323,129 @@
 <script>
   renderIndexArticles();
 </script>
+
+<script>
+(function() {
+  // ── Rendu des 3 derniers articles ──
+  function escHtml(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function readLbl(cat) {
+    if (cat === 'Chronique') return "Lire la chronique";
+    if (cat === 'Entretien') return "Lire l'entretien";
+    return "Lire l'annonce";
+  }
+
+  function renderActu() {
+    const grid = document.getElementById('indexActuGrid');
+    if (!grid || typeof articles === 'undefined') return;
+    const preview = articles.slice(0, 3);
+    grid.innerHTML = preview.map((a, i) => {
+      const author = (a.auteur||'').replace(/^Par\s+/i,'');
+      return `
+      <article onclick="indexActuOpen(${i})" style="background:var(--white);border:1px solid var(--border);border-radius:2px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:box-shadow 0.2s,transform 0.2s;"
+        onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.10)';this.style.transform='translateY(-3px)'"
+        onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div style="height:200px;background:${a.gradient||'#1a0a12'};position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+          ${a.image ? `<img src="${a.image}" alt="${escHtml(a.titre)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0.9;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,0.45) 100%);"></div>` : `
+          <div style="width:80px;aspect-ratio:5/8;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;flex-direction:column;justify-content:flex-end;padding:0.75rem;">
+            <div style="width:14px;height:2px;background:${a.coverAccent||'#d4607a'};margin-bottom:0.4rem;"></div>
+            <div style="font-family:'DM Serif Display',serif;font-size:0.52rem;font-style:italic;color:#fff;line-height:1.3;">${escHtml(a.coverTitle||'')}</div>
+            <div style="font-size:0.36rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">${escHtml(a.coverAuthor||'')}</div>
+          </div>`}
+        </div>
+        <div style="padding:1.4rem;display:flex;flex-direction:column;flex:1;gap:0.65rem;">
+          <div style="font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rose);font-family:'DM Sans',sans-serif;">${escHtml(a.date||'')}</div>
+          <h3 style="font-family:'DM Serif Display',serif;font-size:1rem;line-height:1.4;color:var(--text);margin:0;">${escHtml(a.titre||'')}</h3>
+          <p style="font-family:'Epilogue',sans-serif;font-size:0.82rem;color:var(--muted);line-height:1.6;margin:0;flex:1;">${(a.lead||'').replace(/<[^>]+>/g,'').slice(0,115)}…</p>
+          <div style="display:flex;align-items:center;color:var(--rose);font-family:'DM Sans',sans-serif;font-size:0.8rem;margin-top:0.25rem;">
+            <span>${escHtml(author)}</span>
+            <span style="margin-left:auto;">${readLbl(a.categorie)} →</span>
+          </div>
+        </div>
+      </article>`;
+    }).join('');
+  }
+
+  // ── Modale ──
+  let _iamIdx = 0;
+
+  window.indexActuOpen = function(i) {
+    if (typeof articles === 'undefined') return;
+    _iamIdx = i;
+    const a = articles[i];
+    if (!a) return;
+
+    // Hero
+    const hero = document.getElementById('iamHero');
+    const img  = document.getElementById('iamHeroImg');
+    const grad = document.getElementById('iamHeroGrad');
+    if (a.image) {
+      img.src = a.image; img.style.display = 'block';
+      grad.style.background = 'linear-gradient(to bottom,transparent 30%,rgba(0,0,0,0.65) 100%)';
+      hero.style.background = a.gradient||'#1a0a12';
+    } else {
+      img.style.display = 'none';
+      hero.style.background = a.gradient||'#1a0a12';
+      grad.style.background = 'linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.35) 100%)';
+    }
+
+    const s = (id,v) => { const e=document.getElementById(id); if(e) e.textContent=v||''; };
+    const h = (id,v) => { const e=document.getElementById(id); if(e) e.innerHTML=v||''; };
+
+    const author = (a.auteur||'').replace(/^Par\s+/i,'');
+    s('iamBadge',  a.categorie);
+    s('iamTitle',  a.titre);
+    s('iamAuthor', author);
+    s('iamDate',   a.date);
+    s('iamRead',   a.readTime ? a.readTime + ' de lecture' : '');
+    h('iamLead',   a.lead||'');
+    h('iamBody',   a.corps||'');
+    h('iamTags',   (a.tags||[]).map(t=>`<span style="font-size:0.7rem;padding:0.25rem 0.75rem;border:1px solid var(--border);color:var(--muted);">${t}</span>`).join(''));
+
+    const fullLink = document.getElementById('iamFullLink');
+    if (fullLink) fullLink.href = 'article.html?id=' + i;
+
+    document.getElementById('iamPrev').disabled = i === 0;
+    document.getElementById('iamNext').disabled = i === articles.length - 1;
+
+    const modal = document.getElementById('indexActuModal');
+    modal.style.display = 'block';
+    modal.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.indexActuClose = function() {
+    document.getElementById('indexActuModal').style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  window.indexActuCloseOnBackdrop = function(e) {
+    if (e.target === document.getElementById('indexActuModal')) indexActuClose();
+  };
+
+  window.indexActuNav = function(dir) {
+    const next = _iamIdx + dir;
+    if (typeof articles !== 'undefined' && next >= 0 && next < articles.length) indexActuOpen(next);
+  };
+
+  document.addEventListener('keydown', e => {
+    const m = document.getElementById('indexActuModal');
+    if (!m || m.style.display === 'none') return;
+    if (e.key === 'Escape') indexActuClose();
+    if (e.key === 'ArrowLeft')  indexActuNav(-1);
+    if (e.key === 'ArrowRight') indexActuNav(1);
+  });
+
+  // Lancer après chargement de articles.js
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderActu);
+  } else {
+    renderActu();
+  }
+})();
+</script>
+
 </body>
 </html>
