@@ -1,0 +1,21 @@
+# ─── Netlify Configuration — Flèche Rose Éditions ───────────────────────────
+# Ce fichier active les Edge Functions pour injecter les balises OpenGraph
+# côté serveur sur article.html, afin que les aperçus de partage fonctionnent.
+
+[build]
+  # Adaptez si vous avez un dossier de build différent (ex: "dist", "public")
+  publish = "."
+  edge_functions = "netlify/edge-functions"
+
+# ── Headers globaux de sécurité ──────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# ── Edge Function sur article.html ───────────────────────────────────────────
+[[edge_functions]]
+  path = "/article.html"
+  function = "og-inject"
