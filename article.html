@@ -283,6 +283,9 @@
     .comment-date { font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
     .comment-text { font-family: 'Source Serif 4', serif; font-size: 0.85rem; font-weight: 300; line-height: 1.65; color: #3a3028; }
     .comments-empty { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 0.9rem; color: var(--muted); text-align: center; padding: 1.5rem 0; }
+    .comment-char-count { font-size: 0.62rem; color: var(--muted); text-align: right; margin-top: 0.25rem; transition: color 0.2s; }
+    .comment-char-count.warn { color: var(--rose); }
+    .comment-loading { font-size: 0.75rem; color: var(--muted); font-style: italic; text-align: center; padding: 1rem 0; }
 
     /* ─── SIDEBAR ─── */
     .article-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 88px; }
@@ -471,7 +474,8 @@
           <input class="comment-input" id="commentName" type="text" placeholder="Votre prénom *" maxlength="60">
           <input class="comment-input" id="commentEmail" type="email" placeholder="Votre e-mail (non publié)">
         </div>
-        <textarea class="comment-textarea" id="commentText" placeholder="Votre commentaire *" maxlength="1000"></textarea>
+        <textarea class="comment-textarea" id="commentText" placeholder="Votre commentaire * (140 caractères max)" maxlength="140"></textarea>
+        <div class="comment-char-count"><span id="charCount">0</span>/140</div>
         <div class="comment-error" id="commentError">Merci de renseigner votre prénom et votre commentaire.</div>
         <button class="comment-submit" onclick="submitComment()">Publier le commentaire</button>
       </div>
@@ -523,6 +527,131 @@
   </ul>
 </footer>
 
+<!-- Firebase Commentaires -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, query, where, orderBy, onSnapshot, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAs0WELIpZJov8WKs7ym3SUyp_0F6U5uXI",
+    authDomain: "fleche-rose.firebaseapp.com",
+    projectId: "fleche-rose",
+    storageBucket: "fleche-rose.firebasestorage.app",
+    messagingSenderId: "678798911990",
+    appId: "1:678798911990:web:4c5d1f1cf67a64b500ffd7",
+    measurementId: "G-0S42819VF5"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+
+  // ── Compteur de caractères ──
+  document.addEventListener('DOMContentLoaded', () => {
+    const texteEl    = document.getElementById('commentText');
+    const charCountEl = document.getElementById('charCount');
+    if (texteEl && charCountEl) {
+      texteEl.addEventListener('input', () => {
+        const len = texteEl.value.length;
+        charCountEl.textContent = len;
+        charCountEl.parentElement.classList.toggle('warn', len >= 120);
+      });
+    }
+  });
+
+  // ── Utilitaire ──
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // ── Rendu des commentaires ──
+  window.renderComments = function(articleIdx) {
+    window._currentArticleIdx = articleIdx;
+    const list  = document.getElementById('commentsList');
+    const badge = document.getElementById('commentsCountBadge');
+    if (!list) return;
+
+    list.innerHTML = '<p class="comment-loading">Chargement des commentaires…</p>';
+
+    const q = query(
+      collection(db, 'commentaires'),
+      where('articleId', '==', articleIdx),
+      orderBy('date', 'desc')
+    );
+
+    onSnapshot(q, (snapshot) => {
+      if (badge) badge.textContent = snapshot.size;
+      if (snapshot.empty) {
+        list.innerHTML = '<p class="comments-empty">Soyez le premier à commenter.</p>';
+        return;
+      }
+      list.innerHTML = '';
+      snapshot.forEach(doc => {
+        const d = doc.data();
+        const initiale = (d.nom || '?')[0].toUpperCase();
+        const dateStr  = d.date?.toDate
+          ? d.date.toDate().toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' })
+          : '';
+        const item = document.createElement('div');
+        item.className = 'comment-item';
+        item.innerHTML =
+          '<div class="comment-avatar">' + initiale + '</div>' +
+          '<div class="comment-bubble">' +
+            '<div class="comment-meta">' +
+              '<span class="comment-author-name">' + escapeHtml(d.nom) + '</span>' +
+              '<span class="comment-date">' + dateStr + '</span>' +
+            '</div>' +
+            '<p class="comment-text">' + escapeHtml(d.texte) + '</p>' +
+          '</div>';
+        list.appendChild(item);
+      });
+    });
+  };
+
+  // ── Soumission ──
+  window.submitComment = async function() {
+    const nomEl   = document.getElementById('commentName');
+    const texteEl = document.getElementById('commentText');
+    const errEl   = document.getElementById('commentError');
+    const btn     = document.querySelector('.comment-submit');
+    const charCountEl = document.getElementById('charCount');
+
+    const nom   = (nomEl?.value || '').trim();
+    const texte = (texteEl?.value || '').trim();
+
+    if (!nom || !texte) {
+      if (errEl) { errEl.style.display = 'block'; errEl.textContent = 'Merci de renseigner votre prénom et votre commentaire.'; }
+      return;
+    }
+    if (texte.length > 140) {
+      if (errEl) { errEl.style.display = 'block'; errEl.textContent = 'Le commentaire ne doit pas dépasser 140 caractères.'; }
+      return;
+    }
+    if (errEl) errEl.style.display = 'none';
+
+    const articleIdx = (typeof window._currentArticleIdx !== 'undefined') ? window._currentArticleIdx : 0;
+    if (btn) { btn.disabled = true; btn.textContent = 'Publication…'; }
+
+    try {
+      await addDoc(collection(db, 'commentaires'), {
+        articleId: articleIdx,
+        nom:   nom,
+        texte: texte,
+        date:  serverTimestamp()
+      });
+      if (nomEl)        nomEl.value   = '';
+      if (texteEl)      texteEl.value = '';
+      if (charCountEl)  { charCountEl.textContent = '0'; charCountEl.parentElement.classList.remove('warn'); }
+    } catch(e) {
+      if (errEl) { errEl.style.display = 'block'; errEl.textContent = 'Erreur lors de la publication. Veuillez réessayer.'; }
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = 'Publier le commentaire'; }
+    }
+  };
+</script>
+
 <script src="articles.js"></script>
 <script>
   // helper : accès sécurisé aux éléments DOM
@@ -555,7 +684,6 @@
   });
 
   // ── COMMENTAIRES ──
-  // commentsStore, renderComments et submitComment sont fournis par articles.js
   let currentIdx = 0;
 
   // ── PARTAGE ──
