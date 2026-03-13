@@ -35,7 +35,7 @@ const articles = [
     titre:      "Melyneda Civil Vilton : « écrire aujourd'hui, c'est résister à l'effacement »",
     date:       "Mars 2026",
     auteur:     "Par Mardochée Gay",
-    auteurRole: "Chroniqueuse — Flèche Rose Éditions",
+    auteurRole: "Chroniqueur — Flèche Rose Éditions",
     auteurBio:  "Mardochée Gay est auteure et membre de l'équipe éditoriale de Flèche Rose Éditions. Elle signe des portraits d'auteures engagées dans la littérature haïtienne contemporaine.",
     readTime:   "5 min",
     categorie:  "Entretien",
