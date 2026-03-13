@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catalogue — Flèche Rose Éditions</title>
+  <meta name="description" content="Découvrez le catalogue complet de Flèche Rose Éditions — poésie, roman et essai par des auteurs haïtiens contemporains.">
+  <meta property="og:title" content="Catalogue — Flèche Rose Éditions">
+  <meta property="og:description" content="Découvrez le catalogue complet de Flèche Rose Éditions — poésie, roman et essai par des auteurs haïtiens contemporains.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_HT">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Epilogue:wght@300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white:   #faf9f7;
+      --off:     #f2efeb;
+      --border:  #e5e0d8;
+      --text:    #1c1916;
+      --muted:   #9a9189;
+      --rose:    #8a1535;
+      --rose-lt: #f0d8de;
+      --rose-dk: #6b0f28;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLL PROGRESS ─── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 199;
+      height: 2px; width: 0%;
+      background: var(--rose);
+      transition: width 0.1s linear;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 3rem;
+      height: 68px;
+      background: rgba(250,249,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-name small {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: -2px;
+    }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a.active { color: var(--rose); }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 1px;
+      background: var(--rose);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+    .search-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); padding: 0.4rem;
+      display: flex; align-items: center;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+    .search-btn:hover { color: var(--rose); }
+
+    /* ─── SEARCH OVERLAY ─── */
+    .search-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(28,25,22,0.6);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: flex-start; justify-content: center;
+      padding-top: 120px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .search-overlay.open { opacity: 1; pointer-events: all; }
+    .search-box {
+      width: 100%; max-width: 640px;
+      margin: 0 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(28,25,22,0.2);
+    }
+    .search-input-wrap {
+      display: flex; align-items: center;
+      padding: 1rem 1.5rem; gap: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .search-input-wrap svg { color: var(--muted); flex-shrink: 0; }
+    .search-input {
+      flex: 1; border: none; outline: none;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem; font-style: italic;
+      color: var(--text); background: transparent;
+    }
+    .search-input::placeholder { color: var(--muted); }
+    .search-close {
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 1.2rem;
+      transition: color 0.2s; padding: 0;
+    }
+    .search-close:hover { color: var(--rose); }
+    .search-results { max-height: 400px; overflow-y: auto; padding: 0.5rem 0; }
+    .search-result-item {
+      padding: 1rem 1.5rem; cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+      display: flex; flex-direction: column; gap: 0.2rem;
+    }
+    .search-result-item:last-child { border-bottom: none; }
+    .search-result-item:hover { background: var(--off); }
+    .sri-section { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); }
+    .sri-title { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--text); }
+    .sri-excerpt { font-size: 0.78rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .search-empty { padding: 2rem 1.5rem; text-align: center; font-family: 'DM Serif Display', serif; font-style: italic; color: var(--muted); font-size: 1rem; }
+    .search-hint { padding: 1rem 1.5rem; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--muted); text-align: center; }
+
+    /* ─── HAMBURGER ─── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; justify-content: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; height: 1.5px; width: 100%;
+      background: var(--text);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ─── DRAWER ─── */
+    .nav-drawer {
+      position: fixed; top: 68px; left: 0; right: 0;
+      background: rgba(250,249,247,0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 190;
+      transform: translateY(-110%);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+      padding: 2rem 2rem 2.5rem;
+    }
+    .nav-drawer.open { transform: translateY(0); }
+    .nav-drawer ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .nav-drawer ul li a {
+      display: block; padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .nav-drawer ul li a:hover { color: var(--rose); padding-left: 0.5rem; }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding-top: 68px;
+      background: var(--text);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: var(--rose);
+      opacity: 0.07;
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 10%;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      background: var(--rose-lt);
+      opacity: 0.04;
+    }
+
+    .page-header-inner {
+      padding: 5rem 3rem 4rem;
+      position: relative; z-index: 1;
+      max-width: 700px;
+    }
+
+    .page-header-tag {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.62rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--rose);
+      margin-bottom: 2rem;
+    }
+
+    .page-header-tag::before {
+      content: '';
+      display: block; width: 24px; height: 1px;
+      background: var(--rose);
+    }
+
+    .page-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 4vw, 4.5rem);
+      font-weight: 400; line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      opacity: 1; animation: none;
+    }
+
+    .page-header h1 em { font-style: italic; color: var(--rose); }
+
+    .page-header-desc {
+      margin-top: 1.5rem;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 1rem; font-weight: 300;
+      line-height: 1.75; color: rgba(250,249,247,0.5);
+      max-width: 44ch;
+    }
+
+    .page-header-strip {
+      display: flex;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 3rem;
+    }
+
+    .phs-item {
+      flex: 1; padding: 1.5rem 3rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .phs-item:last-child { border-right: none; }
+
+    .phs-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem; color: var(--white);
+    }
+
+    .phs-label {
+      font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.3);
+      margin-top: 0.2rem;
+    }
+
+    /* ─── FILTERS ─── */
+    .filters-bar {
+      padding: 2rem 3rem;
+      background: var(--off);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filters-label {
+      font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .filter-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .filter-tab {
+      font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .filter-tab:hover { border-color: var(--rose); color: var(--rose); }
+    .filter-tab.active { background: var(--rose); border-color: var(--rose); color: var(--white); }
+
+    .filters-count {
+      margin-left: auto;
+      font-size: 0.65rem; letter-spacing: 0.12em;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .filters-count span {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem; color: var(--text);
+    }
+
+    /* ─── PRÉ-COMMANDE GRID ─── */
+    .preorder-grid-heading {
+      display: flex; align-items: center; gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .preorder-grid-line { flex: 1; height: 1px; background: var(--border); }
+    .preorder-grid-label {
+      font-size: 0.46rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--rose); white-space: nowrap;
+      padding: 0.24rem 0.8rem;
+      border: 1px solid var(--rose);
+    }
+
+    /* Badge sur la vignette */
+    .book-preorder-badge {
+      position: absolute; top: 0.65rem; left: 0.65rem;
+      font-size: 0.4rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #fff; background: var(--rose);
+      padding: 0.2rem 0.6rem;
+      pointer-events: none;
+    }
+
+    /* ─── Couverture gradient (modale pré-commande) ─── */
+    .bm-cover.bc-fml {
+      background: linear-gradient(160deg,#2c1a2e 0%,#8a1535 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .bm-cover.bc-fml .bc-fml-book {
+      width: 90px; aspect-ratio: 5/8;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.22);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0.85rem;
+      box-shadow: 8px 12px 36px rgba(0,0,0,0.4);
+    }
+    .bm-cover.bc-fml .bc-fml-bar { width:60%;height:2px;background:#d45f7a;margin-bottom:0.45rem; }
+    .bm-cover.bc-fml .bc-fml-title { font-family:'DM Serif Display',serif;font-size:0.52rem;font-style:italic;color:#fff;line-height:1.3; }
+    .bm-cover.bc-fml .bc-fml-auth { font-size:0.34rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.42);margin-top:3px; }
+
+    /* Badge pré-commande dans la modale */
+    .bm-preorder-badge {
+      display: inline-block;
+      font-size: 0.44rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: #fff; background: var(--rose);
+      padding: 0.24rem 0.7rem; margin-bottom: 0.6rem;
+    }
+
+    /* ─── CATALOGUE GRID ─── */
+
+    .catalogue-section {
+      padding: 5rem 3rem 7rem;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem 2rem;
+    }
+
+    .book-card {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .book-card:hover { transform: translateY(-6px); }
+    .book-card.hidden-card { display: none; }
+
+    .book-cover-wrap {
+      width: 100%; aspect-ratio: 5/8;
+      margin-bottom: 1.2rem;
+      overflow: hidden;
+      position: relative;
+      transition: box-shadow 0.3s ease;
+    }
+    .book-card:hover .book-cover-wrap {
+      box-shadow: 0 20px 50px rgba(28,25,22,0.18);
+    }
+
+    .book-cover-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--rose); opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .book-card:hover .book-cover-wrap::after { opacity: 0.06; }
+
+    .book-cover-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .book-card:hover .book-cover-img { transform: scale(1.03); }
+
+    .book-cover-art {
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.4rem;
+      transition: transform 0.4s ease;
+      position: relative;
+    }
+    .book-card:hover .book-cover-art { transform: scale(1.03); }
+
+    .bc-deco {
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      opacity: 0.12;
+    }
+
+    /* Unique colour palette per book */
+    .bc1 { background: #1c2b22; }  /* Vergetures */
+    .bc2 { background: #2b1c1c; }  /* Résistance */
+    .bc3 { background: #1c1c2b; }  /* Grès Kakawo */
+    .bc4 { background: #2a1f28; }  /* Lapèsòn */
+    .bc5 { background: #1e2730; }  /* Encre Rose */
+    .bc6 { background: #181e26; }  /* Send Nudes */
+    .bc7 { background: #28201a; }  /* Eroticone */
+    .bc8 { background: #1a2418; }  /* Doigt d'honneur */
+    .bc9 { background: #261e10; }  /* Zenglen boutèy */
+    .bc10 { background: #1f1a2e; } /* La douce qui vient */
+
+    .bc-line {
+      width: 28px; height: 2px;
+      background: var(--rose);
+      margin-bottom: 0.75rem;
+    }
+
+    .bc-genre {
+      font-size: 0.48rem; letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.35);
+      margin-bottom: 0.5rem;
+    }
+
+    .bc-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.95rem; font-style: italic;
+      color: rgba(250,249,247,0.92);
+      line-height: 1.25; margin-bottom: 0.5rem;
+    }
+
+    .bc-author {
+      font-size: 0.5rem; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.35);
+    }
+
+    .book-meta {
+      display: flex; flex-direction: column; gap: 0.15rem;
+    }
+
+    .book-meta-badge {
+      display: inline-block;
+      font-size: 0.52rem; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.3rem;
+    }
+
+    .book-meta-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem; font-weight: 400;
+      color: var(--text);
+    }
+
+    .book-meta-author {
+      font-size: 0.68rem; color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .book-meta-year {
+      font-size: 0.6rem; letter-spacing: 0.1em;
+      color: var(--border);
+      margin-top: 0.25rem;
+    }
+
+    /* ─── MODAL ─── */
+    .book-modal {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(28,25,22,0.7);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .book-modal.open { opacity: 1; pointer-events: all; }
+
+    .bm-inner {
+      background: var(--white);
+      max-width: 860px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      position: relative;
+    }
+
+    .bm-cover-col {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 3rem 2rem;
+      background: var(--off);
+      border-right: 1px solid var(--border);
+    }
+
+    .bm-cover {
+      width: 160px; aspect-ratio: 5/8;
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 1.4rem;
+      box-shadow: 12px 20px 40px rgba(28,25,22,0.2);
+      transform: rotate(-2deg);
+      transition: transform 0.4s;
+    }
+    .bm-cover:hover { transform: rotate(0deg) translateY(-4px); }
+
+    .bm-text-col {
+      padding: 3rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+
+    .bm-badge {
+      font-size: 0.55rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--rose);
+    }
+
+    .bm-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem; font-weight: 400;
+      font-style: italic; line-height: 1.15;
+      color: var(--text);
+    }
+
+    .bm-author {
+      font-size: 0.85rem; color: var(--muted);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bm-meta-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .bm-meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .bm-meta-label {
+      font-size: 0.55rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    .bm-meta-val {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.95rem; font-style: italic;
+      color: var(--text);
+    }
+
+    .bm-desc {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.9rem; font-weight: 300;
+      line-height: 1.75; color: var(--muted);
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .bm-price {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.1rem;
+      padding: 0.85rem 1.1rem;
+      background: rgba(140,40,70,0.07);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .bm-price-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-family: 'Epilogue', sans-serif;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .bm-price-values {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .bm-price-tag {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--rose);
+      background: rgba(140,40,70,0.12);
+      padding: 0.2rem 0.65rem;
+      border-radius: 5px;
+      letter-spacing: 0.02em;
+    }
+
+    .bm-close {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 1.4rem;
+      line-height: 1; padding: 0.3rem;
+      transition: color 0.2s;
+    }
+    .bm-close:hover { color: var(--rose); }
+
+    /* ─── DU MÊME AUTEUR ─── */
+    .bm-same-author {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .bm-same-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .bm-same-grid {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+    }
+
+    .bm-same-card {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      background: var(--white);
+      max-width: 180px;
+    }
+
+    .bm-same-card:hover {
+      border-color: var(--rose);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(138,21,53,0.08);
+    }
+
+    .bm-same-thumb {
+      width: 32px;
+      aspect-ratio: 5/8;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .bm-same-thumb-fallback {
+      width: 32px;
+      aspect-ratio: 5/8;
+      flex-shrink: 0;
+    }
+
+    .bm-same-info { display: flex; flex-direction: column; gap: 0.1rem; overflow: hidden; }
+
+    .bm-same-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.72rem; font-style: italic;
+      color: var(--text);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .bm-same-year {
+      font-size: 0.55rem; letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    /* ─── BOUTONS D'ACHAT ─── */
+    .bm-buy-section {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .bm-buy-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .bm-buy-buttons {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+    }
+
+    .bm-buy-btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.7rem 1.2rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.05em;
+    }
+
+    .bm-buy-btn img {
+      height: 20px; width: auto;
+      object-fit: contain;
+    }
+
+    .bm-buy-btn:hover {
+      border-color: var(--rose);
+      color: var(--rose);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(138,21,53,0.1);
+    }
+
+    .bm-buy-btn--moncash img { height: 22px; }
+
+    .bm-buy-btn--preorder {
+      background: var(--rose);
+      border-color: var(--rose);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 0.8rem 1.6rem;
+    }
+    .bm-buy-btn--preorder:hover {
+      background: var(--rose-dk);
+      border-color: var(--rose-dk);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(138,21,53,0.25);
+    }
+
+    /* ─── POPUP ─── */
+    .buy-popup-overlay {
+      position: fixed; inset: 0; z-index: 700;
+      background: rgba(28,25,22,0.6);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    .buy-popup-overlay.open {
+      opacity: 1; pointer-events: all;
+    }
+
+    .buy-popup {
+      background: var(--white);
+      max-width: 480px; width: 100%;
+      padding: 2.5rem;
+      position: relative;
+      border-top: 3px solid var(--rose);
+      box-shadow: 0 30px 80px rgba(28,25,22,0.25);
+      animation: fadeUp 0.3s ease;
+    }
+
+    .buy-popup-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 1.2rem;
+      transition: color 0.2s; padding: 0.2rem;
+    }
+    .buy-popup-close:hover { color: var(--rose); }
+
+    .buy-popup-icon {
+      font-size: 2rem; margin-bottom: 1rem;
+    }
+
+    .buy-popup-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--text); margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .buy-popup-text {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.88rem; font-weight: 300;
+      line-height: 1.7; color: var(--muted);
+      margin-bottom: 1.8rem;
+    }
+
+    .buy-popup-contacts {
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+
+    .buy-popup-wa {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .buy-popup-wa:hover {
+      border-color: #25d366;
+      background: #f0fdf4;
+    }
+
+    .buy-popup-wa svg {
+      color: #25d366; flex-shrink: 0;
+    }
+
+    .buy-popup-wa--soon {
+      opacity: 0.45; cursor: default;
+    }
+    .buy-popup-wa--soon:hover {
+      border-color: var(--border);
+      background: var(--white);
+    }
+    .buy-popup-wa--soon svg { color: var(--muted); }
+
+    .wa-region {
+      display: block;
+      font-size: 0.72rem; font-weight: 500;
+      color: var(--text);
+    }
+
+    .wa-number {
+      display: block;
+      font-size: 0.65rem; letter-spacing: 0.05em;
+      color: var(--muted); margin-top: 2px;
+    }
+
+    .wa-soon {
+      font-style: italic;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--text);
+      color: var(--white);
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 2rem;
+      border-top: 3px solid var(--rose);
+    }
+
+    .footer-brand { display: flex; align-items: center; gap: 0.75rem; }
+
+    .footer-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.95rem; color: var(--white);
+    }
+
+    .footer-copy {
+      text-align: center;
+      font-size: 0.62rem; letter-spacing: 0.1em;
+      color: rgba(250,249,247,0.3);
+    }
+
+    .footer-links {
+      display: flex; justify-content: flex-end;
+      gap: 2rem; list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.4);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--rose); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .reveal { opacity: 1; transform: none;
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1),
+                  transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal.hidden { opacity: 0; transform: translateY(28px); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links, .search-btn { display: none; }
+      .nav-hamburger { display: flex; }
+      .books-grid { grid-template-columns: repeat(2, 1fr); }
+      .bm-inner { grid-template-columns: 1fr; }
+      .bm-cover-col { padding: 2rem; flex-direction: row; gap: 2rem; align-items: flex-start; }
+      .page-header-strip { flex-wrap: wrap; }
+      nav { padding: 0 1.5rem; }
+      .catalogue-section { padding: 3rem 1.5rem 5rem; }
+      .filters-bar { padding: 1.5rem; }
+      footer { grid-template-columns: 1fr; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 560px) {
+      .books-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+      .page-header-inner { padding: 3.5rem 1.5rem 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProg"></div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/2fb2d9e9-fb31-497a-b978-9e99ac0bb639.png" alt="Flèche Rose Éditions" style="height:40px; width:auto; display:block;">
+    <div class="nav-name">Flèche Rose Éditions<small>Maison d'édition</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="catalogue.html" class="active">Catalogue</a></li>
+    <li><a href="aparaitre.html">À paraître</a></li>
+    <li><a href="index.html#selection">Sélection</a></li>
+    <li><a href="auteur.html">Auteurs</a></li>
+    <li><a href="index.html#actualites">Actualités</a></li>
+    <li><a href="galerie.html">Galerie</a></li>
+    <li><a href="presse.html">Presse</a></li>
+    <li><a href="soumettre_manuscrit.html">Manuscrits</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="search-btn" onclick="openSearch()" aria-label="Rechercher">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </button>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="catalogue.html" onclick="toggleMenu()">Catalogue</a></li>
+    <li><a href="aparaitre.html" onclick="toggleMenu()">À paraître</a></li>
+    <li><a href="index.html#selection" onclick="toggleMenu()">Sélection</a></li>
+    <li><a href="auteur.html" onclick="toggleMenu()">Auteurs</a></li>
+    <li><a href="index.html#actualites" onclick="toggleMenu()">Actualités</a></li>
+    <li><a href="galerie.html" onclick="toggleMenu()">Galerie</a></li>
+    <li><a href="presse.html" onclick="toggleMenu()">Presse</a></li>
+    <li><a href="soumettre_manuscrit.html" onclick="toggleMenu()">Manuscrits</a></li>
+    <li><a href="index.html#contact" onclick="toggleMenu()">Contact</a></li>
+  </ul>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay" onclick="closeOnBackdrop(event)">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input class="search-input" id="searchInput" type="text" placeholder="Rechercher un titre, auteur, sujet…" oninput="doSearch(this.value)">
+      <button class="search-close" onclick="closeSearch()">✕</button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <div class="search-hint">Tapez pour rechercher dans tout le site</div>
+    </div>
+  </div>
+</div>
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-tag">Notre catalogue</div>
+    <h1>Nos <em>livres</em></h1>
+  </div>
+  <div class="page-header-strip">
+    <div class="phs-item">
+      <div class="phs-num">10</div>
+      <div class="phs-label">Titres</div>
+    </div>
+    <div class="phs-item">
+      <div class="phs-num">8</div>
+      <div class="phs-label">Auteurs</div>
+    </div>
+    <div class="phs-item">
+      <div class="phs-num">3</div>
+      <div class="phs-label">Genres</div>
+    </div>
+    <div class="phs-item">
+      <div class="phs-num">2021–25</div>
+      <div class="phs-label">Parutions</div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── FILTERS ─── -->
+<div class="filters-bar">
+  <span class="filters-label">Filtrer par</span>
+  <div class="filter-tabs">
+    <button class="filter-tab active" data-filter="all">Tout</button>
+    <button class="filter-tab" data-filter="Poésie">Poésie</button>
+    <button class="filter-tab" data-filter="Roman">Roman</button>
+    <button class="filter-tab" data-filter="Essai">Essai</button>
+  </div>
+  <div class="filters-count"><span id="countDisplay">10</span> titre(s) affiché(s)</div>
+</div>
+
+<!-- ─── CATALOGUE ─── -->
+
+<section class="catalogue-section">
+  <div class="books-grid" id="booksGrid">
+
+    <!-- 2025 · Encre Rose -->
+    <div class="book-card reveal hidden" data-genre="Poésie" data-index="4" onclick="openModal(4)">
+      <div class="book-cover-wrap">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/552f9f3f-faad-4159-b49f-bce911086e62.jpg" alt="Encre Rose" class="book-cover-img">
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Poésie</span>
+        <div class="book-meta-title">Encre Rose</div>
+        <div class="book-meta-author">Lefranc Dorélus</div>
+        <div class="book-meta-year">2025</div>
+      </div>
+    </div>
+
+    <!-- 2024 · Lapèsòn -->
+    <div class="book-card reveal hidden" data-genre="Poésie" data-index="3" onclick="openModal(3)">
+      <div class="book-cover-wrap">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/f5e10475-4a76-4539-a06d-660d27b668ec.png" alt="Lapèsòn" class="book-cover-img">
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Poésie</span>
+        <div class="book-meta-title">Lapèsòn</div>
+        <div class="book-meta-author">Christopher Pierre</div>
+        <div class="book-meta-year">2024</div>
+      </div>
+    </div>
+
+    <!-- 2024 · Eroticone -->
+    <div class="book-card reveal hidden" data-genre="Poésie" data-index="6" onclick="openModal(6)">
+      <div class="book-cover-wrap">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/6c5e6dc9-5d12-411e-837e-f1978a7f46e3.jpg" alt="Eroticone" class="book-cover-img">
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Poésie</span>
+        <div class="book-meta-title">Eroticone</div>
+        <div class="book-meta-author">Salvatorré</div>
+        <div class="book-meta-year">2024</div>
+      </div>
+    </div>
+
+    <!-- 2023 · Vergetures -->
+    <div class="book-card reveal hidden" data-genre="Roman" data-index="0" onclick="openModal(0)">
+      <div class="book-cover-wrap">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/3dae2ea2-bd43-4d05-a6a7-6c8c9385aae3.jpg" alt="Vergetures" class="book-cover-img">
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Roman</span>
+        <div class="book-meta-title">Vergetures</div>
+        <div class="book-meta-author">Mardochée Gay</div>
+        <div class="book-meta-year">2023</div>
+      </div>
+    </div>
+
+    <!-- 2023 · Doigt d'honneur -->
+    <div class="book-card reveal hidden" data-genre="Roman" data-index="7" onclick="openModal(7)">
+      <div class="book-cover-wrap">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b7f7ebaf-a422-4826-9258-0b615554fcb8.jpg" alt="Doigt d'honneur" class="book-cover-img">
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Roman</span>
+        <div class="book-meta-title">Doigt d'honneur</div>
+        <div class="book-meta-author">Jean Michelot Polynice</div>
+        <div class="book-meta-year">2023</div>
+      </div>
+    </div>
+
+    <!-- 2022 · Résistance/Rezistans -->
+    <div class="book-card reveal hidden" data-genre="Essai" data-index="1" onclick="openModal(1)">
+      <div class="book-cover-wrap">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b1527c63-bde9-430f-a4cf-b87ab49b8f8b.jpg" alt="Résistance / Rezistans" class="book-cover-img">
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Essai</span>
+        <div class="book-meta-title">Résistance / Rezistans</div>
+        <div class="book-meta-author">Schneider Vertus</div>
+        <div class="book-meta-year">2022</div>
+      </div>
+    </div>
+
+    <!-- 2022 · Grès Kakawo -->
+    <div class="book-card reveal hidden" data-genre="Poésie" data-index="2" onclick="openModal(2)">
+      <div class="book-cover-wrap">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/e0781b62-e68f-4bb5-9aea-c8db405957be.jpg" alt="Grès Kakawo" class="book-cover-img">
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Poésie</span>
+        <div class="book-meta-title">Grès Kakawo</div>
+        <div class="book-meta-author">Jean Michelot Polynice</div>
+        <div class="book-meta-year">2022</div>
+      </div>
+    </div>
+
+    <!-- 2022 · Send Nudes -->
+    <div class="book-card reveal hidden" data-genre="Poésie" data-index="5" onclick="openModal(5)">
+      <div class="book-cover-wrap">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/682f8384-159d-482d-b370-f51939fe02e2.jpg" alt="Send Nudes" class="book-cover-img">
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Poésie</span>
+        <div class="book-meta-title">Send Nudes</div>
+        <div class="book-meta-author">Lefranc Dorélus, Mardochée Gay, Jean Michelot Polynice</div>
+        <div class="book-meta-year">2022</div>
+      </div>
+    </div>
+
+    <!-- 2022 · Zenglen boutèy -->
+    <div class="book-card reveal hidden" data-genre="Poésie" data-index="8" onclick="openModal(8)">
+      <div class="book-cover-wrap">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/302f0910-cacf-4507-ba4a-6d9ca22b0ae1.jpg" alt="Zenglen boutèy" class="book-cover-img">
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Poésie</span>
+        <div class="book-meta-title">Zenglen boutèy</div>
+        <div class="book-meta-author">Anthologie collective</div>
+        <div class="book-meta-year">2022</div>
+      </div>
+    </div>
+
+    <!-- 2021 · La douce qui vient -->
+    <div class="book-card reveal hidden" data-genre="Poésie" data-index="9" onclick="openModal(9)">
+      <div class="book-cover-wrap">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/6aed195d-2a40-400e-b921-ca84e02ae03c.png" alt="La douce qui vient" class="book-cover-img">
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Poésie</span>
+        <div class="book-meta-title">La douce qui vient</div>
+        <div class="book-meta-author">Mardochée Gay</div>
+        <div class="book-meta-year">2021</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PRÉ-COMMANDE ─── -->
+<section class="catalogue-section" id="precommande" style="padding-top:0;">
+  <div class="preorder-grid-heading">
+    <div class="preorder-grid-line"></div>
+    <span class="preorder-grid-label">Pré-commande</span>
+    <div class="preorder-grid-line"></div>
+  </div>
+  <div class="books-grid">
+
+    <!-- Femme Mille Lieux -->
+    <div class="book-card reveal hidden" onclick="openModal(10)">
+      <div class="book-cover-wrap" style="position:relative;">
+        <div class="book-cover-art bc-fml-card" style="width:100%;height:100%;background:linear-gradient(160deg,#2c1a2e 0%,#8a1535 100%);overflow:hidden;">          <div class="bc-deco" style="background:#d45f7a;"></div>
+          <div class="bc-line"></div>
+          <div class="bc-genre">Anthologie</div>
+          <div class="bc-title">Femme Mille Lieux</div>
+          <div class="bc-author">Anthologie collective</div>
+        </div>
+        <span class="book-preorder-badge">Pré-commande</span>
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Anthologie</span>
+        <div class="book-meta-title">Femme Mille Lieux</div>
+        <div class="book-meta-author">Anthologie collective</div>
+        <div class="book-meta-year">2026</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── BOOK MODAL ─── -->
+<div class="book-modal" id="bookModal" onclick="closeModalOutside(event)">
+  <div class="bm-inner" id="bmInner">
+    <button class="bm-close" onclick="closeModal()">✕</button>
+    <div class="bm-cover-col">
+      <div class="bm-cover" id="bmCover">
+        <div class="bc-deco" id="bmDeco" style="background:#8a1535;"></div>
+        <div class="bc-line"></div>
+        <div class="bc-genre" id="bmCoverGenre"></div>
+        <div class="bc-title" id="bmCoverTitle"></div>
+        <div class="bc-author" id="bmCoverAuthor"></div>
+      </div>
+    </div>
+    <div class="bm-text-col">
+      <div class="bm-badge" id="bmBadge"></div>
+      <span class="bm-preorder-badge" id="bmPreorderBadge" style="display:none;">Pré-commande</span>
+      <div class="bm-title" id="bmTitle"></div>
+      <div class="bm-author" id="bmAuthor"></div>
+      <div class="bm-meta-grid">
+        <div class="bm-meta-item">
+          <span class="bm-meta-label">Genre</span>
+          <span class="bm-meta-val" id="bmGenre"></span>
+        </div>
+        <div class="bm-meta-item">
+          <span class="bm-meta-label">Année</span>
+          <span class="bm-meta-val" id="bmYear"></span>
+        </div>
+        <div class="bm-meta-item">
+          <span class="bm-meta-label">Auteur(s)</span>
+          <span class="bm-meta-val" id="bmAuthorFull"></span>
+        </div>
+        <div class="bm-meta-item">
+          <span class="bm-meta-label">Maison</span>
+          <span class="bm-meta-val">Flèche Rose Éditions</span>
+        </div>
+      </div>
+      <div class="bm-desc" id="bmDesc"></div>
+      <div class="bm-price" id="bmPrice">
+        <span class="bm-price-label">Prix</span>
+        <div class="bm-price-values" id="bmPriceValues"></div>
+      </div>
+
+      <!-- ─── BOUTONS D'ACHAT ─── -->
+      <div class="bm-buy-section">
+        <div class="bm-buy-label" id="bmBuyLabel">Commander ce livre</div>
+        <div class="bm-buy-buttons" id="bmBuyButtons">
+          <button class="bm-buy-btn" onclick="showBuyPopup()">
+            <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/e239d34e-7a05-4acc-a2ff-2fb42bb50698.png" alt="PayPal">
+            <span>Payer via PayPal</span>
+          </button>
+          <button class="bm-buy-btn bm-buy-btn--moncash" onclick="showBuyPopup()">
+            <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/64c7d3eb-79ec-4bcd-9329-2f4fe944947f.png" alt="MonCash">
+            <span>Payer via MonCash</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── DU MÊME AUTEUR ─── -->
+      <div class="bm-same-author" id="bmSameAuthor" style="display:none;">
+        <div class="bm-same-label">Du même auteur</div>
+        <div class="bm-same-grid" id="bmSameGrid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── POPUP ACHAT INDISPONIBLE ─── -->
+<div class="buy-popup-overlay" id="buyPopup" onclick="closeBuyPopup(event)">
+  <div class="buy-popup">
+    <button class="buy-popup-close" onclick="closeBuyPopup()">✕</button>
+    <div class="buy-popup-icon">🛒</div>
+    <h3 class="buy-popup-title">Lien d'achat bientôt disponible</h3>
+    <p class="buy-popup-text">Le paiement en ligne est en cours de mise en place. En attendant, contactez-nous directement sur WhatsApp pour commander ce livre.</p>
+    <div class="buy-popup-contacts">
+      <a class="buy-popup-wa" href="https://wa.me/50932477739" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div>
+          <span class="wa-region">🇭🇹 Haïti</span>
+        </div>
+      </a>
+      <a class="buy-popup-wa" href="https://wa.me/33780757414" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div>
+          <span class="wa-region">🇫🇷 France / Europe</span>
+        </div>
+      </a>
+      <a class="buy-popup-wa" href="https://wa.me/18294535256" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div>
+          <span class="wa-region">🇺🇸 USA / Amérique du Nord</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-brand">
+    <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/2fb2d9e9-fb31-497a-b978-9e99ac0bb639.png" alt="Flèche Rose Éditions" style="height:44px; width:auto; filter:brightness(0) invert(1); opacity:0.85;">
+    <div class="footer-name">Flèche Rose Éditions<small style="display:block;font-family:'DM Sans',sans-serif;font-size:0.6rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,249,247,0.4);margin-top:-2px;">Maison d'édition indépendante</small></div>
+  </div>
+  <div class="footer-copy">© 2026 — Tous droits réservés</div>
+  <ul class="footer-links">
+    <li><a href="#">Mentions légales</a></li>
+    <li><a href="presse.html">Presse</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  // ─── DATA ───
+  // Index map: 0=Vergetures, 1=Résistance, 2=Grès Kakawo, 3=Lapèsòn,
+  //            4=Encre Rose, 5=Send Nudes, 6=Eroticone, 7=Doigt d'honneur,
+  //            8=Zenglen boutèy, 9=La douce qui vient
+  const books = [
+    {
+      titre: "Vergetures",
+      auteur: "Mardochée Gay",
+      genre: "Roman",
+      annee: "2023",
+      bg: "bc1",
+      deco: "#7ec67e",
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/3dae2ea2-bd43-4d05-a6a7-6c8c9385aae3.jpg",
+      desc: "Premier roman de Mardochée Gay, publié chez Flèche Rose Éditions. Avec une plume encrée d'érotisme et de passion, l'auteur peint des histoires toutes différentes, mais unies par un même fil : le verbe aimer à ré-inventer. Les vergetures comme visages multiples du cœur — manière au corps de prouver qu'il est libre d'être à la fois corps et rivière.",
+      sameAuthor: [9, 5, 8]  // La douce qui vient, Send Nudes, Zenglen boutèy
+    },
+    {
+      titre: "Résistance / Rezistans",
+      auteur: "Schneider Vertus",
+      genre: "Essai",
+      annee: "2022",
+      bg: "bc2",
+      deco: "#c67e7e",
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b1527c63-bde9-430f-a4cf-b87ab49b8f8b.jpg",
+      desc: "Premier essai de Schneider Vertus, publié le 6 octobre 2022 aux Éditions Flèche Rose. L'auteur, originaire de Carrefour, y enseigne la résistance — rester fort dans les moments les plus pénibles — tout en appelant le citoyen à s'impliquer dans le développement de sa communauté. Un progrès qui repose inéluctablement sur l'éducation, car l'éducation élève une nation.",
+      sameAuthor: [8]  // Zenglen boutèy
+    },
+    {
+      titre: "Grès Kakawo",
+      auteur: "Jean Michelot Polynice",
+      genre: "Poésie",
+      annee: "2022",
+      bg: "bc3",
+      deco: "#7e8ec6",
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/e0781b62-e68f-4bb5-9aea-c8db405957be.jpg",
+      desc: "Deuxième ouvrage de Jean Michelot Polynice, dit Michelot Le Cupidon, après son premier recueil de nouvelles «Si les culottes pouvaient parler». Grès Kakawo est un recueil de poésies érotiques en quatre parties, suivies de quatre lettres, inspiré des chansons des anciens troubadours haïtiens — notamment Les Frères Dodo et Koupe Kloure. Préfacé par Lefranc Dorélus dit Simba Birdsinger, l'ouvrage puise ses images dans le quotidien haïtien et l'origine de l'auteur, pour livrer une œuvre à la fois érotique et hautement symbolique.",
+      sameAuthor: [7, 5, 8]  // Doigt d'honneur, Send Nudes, Zenglen boutèy
+    },
+    {
+      titre: "Lapèsòn",
+      auteur: "Christopher Pierre",
+      genre: "Poésie",
+      annee: "2024",
+      bg: "bc4",
+      deco: "#c67eb0",
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/f5e10475-4a76-4539-a06d-660d27b668ec.png",
+      desc: "Publié en novembre 2024 chez Flèche Rose Éditions, Lapèsòn est le premier recueil de Christopher Pierre — étudiant en communication sociale, poète et chantre de la langue créole haïtienne. Écrit entièrement en créole, ce recueil propose une poésie qui s'écoute autant qu'elle se lit : entre amour qui élève, chaos de la capitale et rêves planqués dans des territoires perdus. Lapèsòn, c'est un archétype de l'humanité — quelqu'un qui cherche sa voie, qui aime, qui souffre, qui résiste. C'est peut-être toi. Moi. Tout le monde.",
+      sameAuthor: [8]  // Zenglen boutèy
+    },
+    {
+      titre: "Encre Rose",
+      auteur: "Lefranc Dorélus",
+      genre: "Poésie",
+      annee: "2025",
+      bg: "bc5",
+      deco: "#c67e7e",
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/552f9f3f-faad-4159-b49f-bce911086e62.jpg",
+      desc: "Premier recueil de poésie de Lefranc Dorélus, psychologue, compositeur, chanteur et écrivain-poète, Encre Rose a été lancé le 7 décembre 2025 à l'Institution Mixte Mi Nino, à Côte-Plage 26, Carrefour. Placé sous les auspices de Flèche Rose Éditions, ce recueil peint la réalité du quotidien pour créer un nouveau narratif du beau et du réel — un espace où même le silence devient habitable.",
+      sameAuthor: [5, 8]  // Send Nudes, Zenglen boutèy
+    },
+    {
+      titre: "Send Nudes",
+      auteur: "Lefranc Dorélus, Mardochée Gay, Jean Michelot Polynice",
+      genre: "Poésie",
+      annee: "2022",
+      bg: "bc6",
+      deco: "#c6b07e",
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/682f8384-159d-482d-b370-f51939fe02e2.jpg",
+      desc: "Paru en décembre 2022, Send Nudes réunit Jean Michelot Polynice, Lefranc Dorélus et Mardochée Gay autour de trente poèmes fumants, écrits dans un style limpide et jubilatoire. Une pure jouissance de lecture.",
+      sameAuthor: [4, 8, 0, 9, 2, 7]  // tous les co-auteurs
+    },
+    {
+      titre: "Eroticone",
+      auteur: "Salvatorré",
+      genre: "Poésie",
+      annee: "2024",
+      bg: "bc7",
+      deco: "#c67e9e",
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/6c5e6dc9-5d12-411e-837e-f1978a7f46e3.jpg",
+      desc: "Premier recueil de Sébastien Gallard Paul, dit Salvatorré, publié chez Flèche Rose Éditions. Trente poèmes érotiques écrits en français et en créole, portés par l'audace et la sensibilité d'un jeune auteur né en 2003 à Port-au-Prince. Un ouvrage qui célèbre la création littéraire haïtienne et la vitalité d'une nouvelle génération.",
+      sameAuthor: []  // Salvatorré n'a pas participé à Zenglen boutèy
+    },
+    {
+      titre: "Doigt d'honneur",
+      auteur: "Jean Michelot Polynice",
+      genre: "Roman",
+      annee: "2023",
+      bg: "bc8",
+      deco: "#7ec67e",
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b7f7ebaf-a422-4826-9258-0b615554fcb8.jpg",
+      desc: "Dans ce roman à caractère biographique, Jean Michelot Polynice — dit « Le Cupidon » — plonge au cœur des réalités socio-économiques d'Haïti sur fond d'une histoire d'amour assumée et provocatrice. Fidèle à sa démarche, il soulève les tabous liés à la sexualité avec une franchise désarmante, convaincu que briser les silences est un acte littéraire et politique. Doigt d'honneur est à la fois une déclaration d'amour et un pied de nez à une société qui peine encore à regarder le désir en face.",
+      sameAuthor: [2, 5, 8]  // Grès Kakawo, Send Nudes, Zenglen boutèy
+    },
+    {
+      titre: "Zenglen boutèy",
+      auteur: "Anthologie collective",
+      genre: "Poésie",
+      annee: "2022",
+      bg: "bc9",
+      deco: "#c6b07e",
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/302f0910-cacf-4507-ba4a-6d9ca22b0ae1.jpg",
+      desc: "Premier recueil collectif du club littéraire Flèche Rose, fondé le 14 août 2021 à Carrefour. Lancé lors du premier anniversaire du club, Zenglen Boutèy réunit plus d'une vingtaine de voix en 33 poèmes. Cette bouteille fragmentée en miettes décrit, dans chacune de ses particules, le quotidien et les désirs des jeunes auteurs — une révolution du goût pour les choses littéraires dans l'esprit de la jeunesse haïtienne.",
+      sameAuthor: []  // anthologie collective, pas de section du même auteur
+    },
+    {
+      titre: "La douce qui vient",
+      auteur: "Mardochée Gay",
+      genre: "Poésie",
+      annee: "2021",
+      bg: "bc10",
+      deco: "#c67eb0",
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/6aed195d-2a40-400e-b921-ca84e02ae03c.png",
+      desc: "Premier recueil de poésies de Mardochée Gay, lancé le 5 décembre 2021 à l'école L'Hirondelle, à Bertin, Carrefour. Un livre qui invite le lecteur à voyager dans l'univers de l'auteur — là où le spleen et l'érotisme se mêlent pour placer la littérature dans un contexte ancré dans la culture haïtienne. Une douceur poétique qui donne le frisson littéraire.",
+      sameAuthor: [0, 5, 8]  // Vergetures, Send Nudes, Zenglen boutèy
+    },
+    {
+      titre: "Femme Mille Lieux",
+      auteur: "Anthologie collective",
+      genre: "Anthologie",
+      annee: "2026",
+      bg: "bc-fml",
+      deco: "#d45f7a",
+      img: "",
+      gradient: "linear-gradient(160deg,#2c1a2e 0%,#8a1535 100%)",
+      desc: "Flèche Rose Éditions vous invite à découvrir Femme-Mille-Lieux, un livre où les femmes prennent la parole, racontent leurs chemins, leurs forces et leurs rêves. Chaque page est une voix, chaque texte est un voyage. Réservez dès maintenant votre exemplaire en précommande et soyez parmi les premiers à tenir ce livre entre vos mains. Parution prévue : avril 2026.",
+      prices: ["1 500 G", "20 €", "20 $"],
+      preorder: true,
+      sameAuthor: []
+    }
+  ];
+
+  // ─── FILTRES ───
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      let count = 0;
+      document.querySelectorAll('.book-card').forEach(card => {
+        const match = filter === 'all' || card.dataset.genre === filter;
+        card.classList.toggle('hidden-card', !match);
+        if (match) count++;
+      });
+      document.getElementById('countDisplay').textContent = count;
+    });
+  });
+
+  // ─── MODAL ───
+  function openModal(idx) {
+    const b = books[idx];
+
+    // Cover
+    const coverEl = document.getElementById('bmCover');
+    if (b.img) {
+      coverEl.innerHTML = `<img src="${b.img}" alt="${b.titre}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+      coverEl.className = 'bm-cover';
+      coverEl.style.background = '';
+    } else if (b.gradient) {
+      // Couverture gradient (sans image) — ex. pré-commande
+      coverEl.className = 'bm-cover bc-fml';
+      coverEl.style.background = b.gradient;
+      coverEl.innerHTML = `
+        <div class="bc-fml-book">
+          <div class="bc-fml-bar"></div>
+          <div class="bc-fml-title">${b.titre}</div>
+          <div class="bc-fml-auth">${b.auteur.split(',')[0]}</div>
+        </div>`;
+    } else {
+      coverEl.className = 'bm-cover ' + b.bg;
+      coverEl.innerHTML = `
+        <div class="bc-deco" style="background:${b.deco};"></div>
+        <div class="bc-line"></div>
+        <div class="bc-genre">${b.genre}</div>
+        <div class="bc-title">${b.titre}</div>
+        <div class="bc-author">${b.auteur.split(',')[0]}</div>`;
+    }
+
+    // Metadata
+    const badgeEl = document.getElementById('bmBadge');
+    badgeEl.textContent = b.genre;
+    const preorderBadgeEl = document.getElementById('bmPreorderBadge');
+    if (preorderBadgeEl) {
+      preorderBadgeEl.style.display = b.preorder ? 'inline-block' : 'none';
+    }
+    document.getElementById('bmTitle').textContent = b.titre;
+    document.getElementById('bmAuthor').textContent = b.auteur + ' · ' + b.annee;
+    document.getElementById('bmGenre').textContent = b.genre;
+    document.getElementById('bmYear').textContent = b.annee;
+    document.getElementById('bmAuthorFull').textContent = b.auteur;
+    if (b.preorder) {
+      document.getElementById('bmDesc').innerHTML = `<strong style="display:block;font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;color:var(--rose);margin-bottom:0.75rem;">${b.titre} est disponible en précommande !</strong>${b.desc}`;
+    } else {
+      document.getElementById('bmDesc').textContent = b.desc;
+    }
+
+    // Prix : custom si défini, sinon selon le genre
+    const prices = b.prices
+      ? b.prices
+      : b.genre === 'Roman'
+        ? ['1 500 HTG', '$20.99', '€20.99']
+        : ['1 000 HTG', '$15.99', '€15.99'];
+    const priceValues = document.getElementById('bmPriceValues');
+    priceValues.innerHTML = prices.map(p => `<span class="bm-price-tag">${p}</span>`).join('');
+
+    // Du même auteur / Des mêmes auteurs
+    const sameSection = document.getElementById('bmSameAuthor');
+    const sameGrid    = document.getElementById('bmSameGrid');
+    const sameLabel   = document.querySelector('.bm-same-label');
+    sameGrid.innerHTML = '';
+    if (b.sameAuthor && b.sameAuthor.length > 0) {
+      sameLabel.textContent = b.auteur.includes(',') ? 'Des mêmes auteurs' : 'Du même auteur';
+      b.sameAuthor.forEach(i => {
+        const other = books[i];
+        const card = document.createElement('div');
+        card.className = 'bm-same-card';
+        card.onclick = () => openModal(i);
+        card.innerHTML = other.img
+          ? `<img class="bm-same-thumb" src="${other.img}" alt="${other.titre}">`
+          : `<div class="bm-same-thumb-fallback ${other.bg || 'bc1'}"></div>`;
+        card.innerHTML += `
+          <div class="bm-same-info">
+            <span class="bm-same-title">${other.titre}</span>
+            <span class="bm-same-year">${other.annee}</span>
+          </div>`;
+        sameGrid.appendChild(card);
+      });
+      sameSection.style.display = 'block';
+    } else {
+      sameSection.style.display = 'none';
+    }
+
+    // Boutons d'achat — dynamiques selon pré-commande ou non
+    const buyLabel = document.getElementById('bmBuyLabel');
+    const buyButtons = document.getElementById('bmBuyButtons');
+    if (b.preorder) {
+      buyLabel.textContent = 'Pré-commander ce livre';
+      buyButtons.innerHTML = `
+        <button class="bm-buy-btn bm-buy-btn--preorder" onclick="showBuyPopup()">
+          Pré-commander
+        </button>`;
+    } else {
+      buyLabel.textContent = 'Commander ce livre';
+      buyButtons.innerHTML = `
+        <button class="bm-buy-btn" onclick="showBuyPopup()">
+          <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/e239d34e-7a05-4acc-a2ff-2fb42bb50698.png" alt="PayPal">
+          <span>Payer via PayPal</span>
+        </button>
+        <button class="bm-buy-btn bm-buy-btn--moncash" onclick="showBuyPopup()">
+          <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/64c7d3eb-79ec-4bcd-9329-2f4fe944947f.png" alt="MonCash">
+          <span>Payer via MonCash</span>
+        </button>`;
+    }
+
+    document.getElementById('bookModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('bmInner').scrollTop = 0;
+  }
+
+  function closeModal() {
+    document.getElementById('bookModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('bookModal')) closeModal();
+  }
+
+  // ─── POPUP ACHAT ───
+  function showBuyPopup() {
+    document.getElementById('buyPopup').classList.add('open');
+  }
+
+  function closeBuyPopup(e) {
+    if (!e || e.target === document.getElementById('buyPopup') || !e.target) {
+      document.getElementById('buyPopup').classList.remove('open');
+    }
+  }
+
+  // ─── SEARCH ───
+  const searchData = [
+    { section: 'Catalogue', title: 'Vergetures', excerpt: 'Premier roman de Mardochée Gay', anchor: '#' },
+    { section: 'Catalogue', title: 'Résistance / Rezistans', excerpt: 'Essai de Schneider Vertus', anchor: '#' },
+    { section: 'Catalogue', title: 'Grès Kakawo', excerpt: 'Poésie érotique de Jean Michelot Polynice', anchor: '#' },
+    { section: 'Catalogue', title: 'Lapèsòn', excerpt: 'Premier recueil de Christopher Pierre en créole haïtien', anchor: '#' },
+    { section: 'Catalogue', title: 'Encre Rose', excerpt: 'Recueil de Lefranc Dorélus', anchor: '#' },
+    { section: 'Catalogue', title: 'Send Nudes', excerpt: 'Recueil collectif — Dorélus, Gay, Polynice', anchor: '#' },
+    { section: 'Catalogue', title: 'Eroticone', excerpt: 'Premier recueil de Salvatorré', anchor: '#' },
+    { section: 'Catalogue', title: 'Doigt d\'honneur', excerpt: 'Roman de Jean Michelot Polynice', anchor: '#' },
+    { section: 'Catalogue', title: 'Zenglen boutèy', excerpt: 'Anthologie collective du club Flèche Rose', anchor: '#' },
+    { section: 'Catalogue', title: 'La douce qui vient', excerpt: 'Premier recueil de Mardochée Gay', anchor: '#' },
+    { section: 'Pré-commande', title: 'Femme Mille Lieux', excerpt: 'Anthologie collective — parution avril 2026', anchor: '#precommande' },
+  ];
+
+  function openSearch() {
+    document.getElementById('searchOverlay').classList.add('open');
+    setTimeout(() => document.getElementById('searchInput').focus(), 100);
+  }
+  function closeSearch() {
+    document.getElementById('searchOverlay').classList.remove('open');
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchResults').innerHTML = '<div class="search-hint">Tapez pour rechercher dans tout le site</div>';
+  }
+  function closeOnBackdrop(e) {
+    if (e.target === document.getElementById('searchOverlay')) closeSearch();
+  }
+  function doSearch(query) {
+    const q = query.trim().toLowerCase();
+    const container = document.getElementById('searchResults');
+    if (!q) { container.innerHTML = '<div class="search-hint">Tapez pour rechercher dans tout le site</div>'; return; }
+    const results = searchData.filter(item =>
+      item.title.toLowerCase().includes(q) || item.excerpt.toLowerCase().includes(q) || item.section.toLowerCase().includes(q)
+    );
+    if (results.length === 0) {
+      container.innerHTML = '<div class="search-empty">Aucun résultat pour &laquo;&nbsp;' + query + '&nbsp;&raquo;</div>';
+      return;
+    }
+    container.innerHTML = results.map(r => `
+      <div class="search-result-item" onclick="closeSearch()">
+        <span class="sri-section">${r.section}</span>
+        <span class="sri-title">${r.title}</span>
+        <span class="sri-excerpt">${r.excerpt}</span>
+      </div>
+    `).join('');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeSearch(); document.getElementById('buyPopup').classList.remove('open'); }
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  });
+
+  // ─── HAMBURGER ───
+  function toggleMenu() {
+    const btn = document.getElementById('hamburger');
+    const drawer = document.getElementById('navDrawer');
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const drawer = document.getElementById('navDrawer');
+    const btn = document.getElementById('hamburger');
+    if (drawer && drawer.classList.contains('open') && !drawer.contains(e.target) && !btn.contains(e.target)) {
+      btn.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ─── SCROLL PROGRESS ───
+  window.addEventListener('scroll', () => {
+    const prog = document.getElementById('scrollProg');
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (window.scrollY / max * 100) + '%';
+  });
+
+  // ─── REVEAL ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.remove('hidden'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 0.08 + 's';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
