@@ -128,8 +128,9 @@ function renderIndexArticles() {
       style="background:var(--white);border:1px solid var(--border);border-radius:2px;overflow:hidden;display:flex;flex-direction:column;height:100%;transition:box-shadow 0.2s,transform 0.2s;cursor:pointer;"
       onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.10)';this.style.transform='translateY(-3px)'"
       onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
-      <div style="background:${a.gradient};height:180px;display:flex;align-items:center;justify-content:center;padding:1.5rem;position:relative;overflow:hidden;">
-        ${a.image ? `<img src="${a.image}" alt="${escapeHtml(a.titre)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0.85;">` : ''}
+      <div style="background:${a.gradient};height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+        ${a.image ? `<img src="${a.image}" alt="${escapeHtml(a.titre)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0.9;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.45) 100%);"></div>` : ''}
         ${!a.image ? `<div style="width:90px;aspect-ratio:5/8;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;flex-direction:column;justify-content:flex-end;padding:0.8rem;">
           <div style="width:16px;height:2px;background:${a.coverAccent};margin-bottom:0.4rem;"></div>
           <div style="font-family:'DM Serif Display',serif;font-size:0.55rem;font-style:italic;color:#fff;line-height:1.3;">${escapeHtml(a.coverTitle)}</div>
@@ -148,9 +149,9 @@ function renderIndexArticles() {
   }).join('');
 }
 
-/* Depuis index.html, redirige vers articles.html en ouvrant la modale */
+/* Depuis index.html, redirige vers la page de l'article */
 function openArticle(idx) {
-  window.location.href = 'articles.html#article-' + idx;
+  window.location.href = 'article.html?id=' + idx;
 }
 
 
@@ -184,16 +185,6 @@ function initArticlesPage() {
   });
 
   renderPage();
-
-  // Ouvre la modale si hash #article-N présent (venant d'index.html)
-  const hash = window.location.hash;
-  if (hash && hash.startsWith('#article-')) {
-    const idx = parseInt(hash.replace('#article-', ''), 10);
-    if (!isNaN(idx) && idx >= 0 && idx < articles.length) {
-      openModal(idx);
-      history.replaceState(null, '', window.location.pathname);
-    }
-  }
 }
 
 function renderPage() {
@@ -229,7 +220,7 @@ function renderPage() {
 
   if (featuredEl) {
     featuredEl.style.display = 'grid';
-    featuredEl.onclick = () => openModal(vedetteGlobalIdx);
+    featuredEl.onclick = () => { window.location.href = 'article.html?id=' + vedetteGlobalIdx; };
     featuredEl.dataset.category = vedette.categorie.toLowerCase();
 
     const afVisual = featuredEl.querySelector('.af-visual');
@@ -286,7 +277,7 @@ function renderPage() {
       const lbl        = readLabel(a.categorie);
       const accentCSS  = `style="background:${a.coverAccent};"`;
       return `
-      <article class="article-card reveal" data-category="${a.categorie.toLowerCase()}" onclick="openModal(${idx})">
+      <article class="article-card reveal" data-category="${a.categorie.toLowerCase()}" onclick="window.location.href='article.html?id=${idx}'">
         <div class="ac-visual" style="background:${a.gradient};">
           <div class="ac-cover">
             <div class="ac-cover-line" ${accentCSS}></div>

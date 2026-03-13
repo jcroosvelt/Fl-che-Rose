@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="pageTitle">Article — Flèche Rose Éditions</title>
+  <link rel="icon" type="image/png" href="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/170f5283-46f0-438d-9eee-7defcfbef546.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=Epilogue:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white:   #faf9f7;
+      --off:     #f2efeb;
+      --cream:   #faf7f2;
+      --warm:    #f0ebe0;
+      --border:  #e5e0d8;
+      --text:    #1c1916;
+      --muted:   #9a9189;
+      --rose:    #8a1535;
+      --rose-lt: #f0d8de;
+      --rose-dk: #6b0f28;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    /* ─── BARRE DE PROGRESSION ─── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 999;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--rose-dk), var(--rose));
+      transition: width 0.1s linear;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 3rem; height: 68px;
+      background: rgba(250,249,247,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-logo { height: 44px; width: auto; display: block; }
+    .nav-name { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--text); }
+    .nav-name small { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: -2px; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px; background: var(--rose); transform: scaleX(0); transition: transform 0.25s ease; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* ─── HAMBURGER ─── */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; height: 1.5px; width: 100%; background: var(--text); transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-drawer { position: fixed; top: 68px; left: 0; right: 0; background: rgba(250,249,247,0.98); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); z-index: 190; transform: translateY(-110%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); padding: 2rem 2rem 2.5rem; }
+    .nav-drawer.open { transform: translateY(0); }
+    .nav-drawer ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .nav-drawer ul li a { display: block; padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s, padding-left 0.2s; }
+    .nav-drawer ul li a:hover { color: var(--rose); padding-left: 0.5rem; }
+
+    /* ─── HERO IMAGE ─── */
+    .article-hero {
+      padding-top: 68px;
+      height: clamp(300px, 50vh, 520px);
+      position: relative;
+      overflow: hidden;
+      background: var(--text);
+    }
+    .article-hero-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      opacity: 0.7;
+    }
+    .article-hero-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(10,7,4,0.2) 0%, rgba(10,7,4,0.75) 100%);
+    }
+    .article-hero-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2.5rem 3rem;
+      z-index: 2;
+    }
+    .article-hero-no-img {
+      position: absolute; inset: 0;
+      display: flex; align-items: flex-end;
+      padding: 2.5rem 3rem;
+    }
+    .article-hero-content-wrap { position: relative; z-index: 1; }
+    .article-breadcrumb {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); margin-bottom: 1rem;
+    }
+    .article-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .article-breadcrumb a:hover { color: var(--rose); }
+    .article-breadcrumb span { color: var(--rose); }
+    .article-hero-badge {
+      display: inline-block; font-size: 0.46rem; letter-spacing: 0.26em;
+      text-transform: uppercase; color: #fff; background: var(--rose);
+      padding: 0.26rem 0.75rem; margin-bottom: 1rem;
+    }
+    .article-hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      font-weight: 400; line-height: 1.12;
+      color: #fff; margin-bottom: 1rem;
+    }
+    .article-hero-meta {
+      display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .article-hero-chip {
+      display: flex; align-items: center; gap: 0.45rem;
+      font-size: 0.72rem; color: rgba(255,255,255,0.7);
+    }
+    .article-hero-chip svg { color: rgba(255,255,255,0.4); }
+
+    /* ─── LAYOUT PRINCIPAL ─── */
+    .article-page {
+      max-width: 1100px; margin: 0 auto;
+      padding: 4rem 3rem 6rem;
+      display: grid;
+      grid-template-columns: minmax(0,1fr) 260px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* ─── CORPS DE L'ARTICLE ─── */
+    .article-author-strip {
+      display: flex; align-items: center; gap: 0.85rem;
+      padding: 1rem 1.25rem;
+      background: #fff; border: 1px solid var(--border);
+      border-left: 3px solid var(--rose);
+      margin-bottom: 2rem;
+    }
+    .article-author-av {
+      width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--rose-lt), #f0d0da);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif; font-size: 0.95rem;
+      font-style: italic; color: var(--rose);
+    }
+    .article-author-name { font-family: 'DM Serif Display', serif; font-size: 0.9rem; font-style: italic; color: var(--text); }
+    .article-author-role { font-size: 0.48rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+
+    .article-lead {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.08rem; font-style: italic;
+      line-height: 1.72; color: #4a3830;
+      padding: 1.25rem 1.4rem;
+      background: #fff; border-left: 3px solid var(--rose);
+      margin-bottom: 2rem;
+    }
+    .article-ornament {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem;
+    }
+    .article-orn-bar { width: 28px; height: 1px; background: var(--rose); }
+    .article-orn-diamond { width: 5px; height: 5px; background: var(--rose); transform: rotate(45deg); }
+    .article-orn-line { flex: 1; height: 1px; background: var(--border); }
+
+    .article-prose {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.96rem; font-weight: 300;
+      line-height: 1.92; color: #3d3730;
+    }
+    .article-prose p { margin-bottom: 1.5rem; }
+    .article-prose p:last-child { margin-bottom: 0; }
+    .article-prose strong { font-weight: 500; color: var(--text); }
+    .article-prose em { font-style: italic; color: var(--rose); }
+    .article-prose blockquote {
+      margin: 2.5rem 0; padding: 1.6rem 1.8rem 1.6rem 2.2rem;
+      background: #fff; border-left: 3px solid var(--rose); position: relative;
+    }
+    .article-prose blockquote::before {
+      content: '"'; font-family: 'DM Serif Display', serif;
+      font-size: 5rem; line-height: 0.8; color: #f0d8de;
+      position: absolute; top: 1rem; left: 1rem; pointer-events: none;
+    }
+    .article-prose blockquote p {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem; font-style: italic;
+      line-height: 1.62; color: var(--text); margin: 0; position: relative; z-index: 1;
+    }
+
+    /* ─── TAGS ─── */
+    .article-tags {
+      margin-top: 2.5rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .article-tags-lbl { font-size: 0.46rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .article-tag {
+      font-size: 0.46rem; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.26rem 0.65rem; border: 1px solid var(--border); color: var(--muted);
+      transition: border-color 0.15s, color 0.15s; cursor: default;
+    }
+    .article-tag:hover { border-color: var(--rose); color: var(--rose); }
+
+    /* ─── PARTAGE ─── */
+    .share-bar {
+      margin-top: 2rem; padding: 1.2rem 0;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .share-label { font-size: 0.46rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-right: 0.25rem; }
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.38rem 0.85rem; font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.05em;
+      cursor: pointer; border: 1px solid; transition: background 0.15s, color 0.15s;
+    }
+    .share-fb  { background:#fff; border-color:#3b5998; color:#3b5998; }
+    .share-fb:hover  { background:#3b5998; color:#fff; }
+    .share-wa  { background:#fff; border-color:#25d366; color:#25d366; }
+    .share-wa:hover  { background:#25d366; color:#fff; }
+    .share-copy{ background:#fff; border-color:var(--border); color:#7a7060; }
+    .share-copy:hover{ background:var(--warm); border-color:var(--rose); color:var(--rose); }
+    .share-copy.copied { background:var(--rose); border-color:var(--rose); color:#fff; }
+
+    /* ─── NAVIGATION PREV/NEXT ─── */
+    .article-nav {
+      margin-top: 3rem; padding-top: 2rem;
+      border-top: 2px solid var(--text);
+      display: flex; justify-content: space-between; gap: 1rem;
+    }
+    .article-nav-btn {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .article-nav-btn:hover { color: var(--rose); }
+    .article-nav-btn.disabled { opacity: 0.25; pointer-events: none; }
+    .article-nav-prev .arrow { font-size: 1rem; }
+    .article-nav-next { text-align: right; }
+    .article-nav-next .arrow { font-size: 1rem; }
+
+    /* ─── COMMENTAIRES ─── */
+    .comments-section { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .comments-heading { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem; }
+    .comments-heading-text { font-family: 'DM Serif Display', serif; font-size: 1.05rem; font-style: italic; color: var(--text); }
+    .comments-count-badge { font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; background: var(--rose-lt); color: var(--rose); padding: 0.22rem 0.65rem; }
+    .comments-line { flex: 1; height: 1px; background: var(--border); }
+    .comment-form { margin-bottom: 2.5rem; }
+    .comment-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .comment-input, .comment-textarea { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; background: #faf7f2; border: 1px solid var(--border); color: var(--text); padding: 0.7rem 0.95rem; outline: none; transition: border-color 0.2s; width: 100%; }
+    .comment-input:focus, .comment-textarea:focus { border-color: var(--rose); }
+    .comment-textarea { resize: vertical; min-height: 90px; display: block; }
+    .comment-submit { margin-top: 0.75rem; font-family: 'DM Sans', sans-serif; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; background: var(--rose); color: #fff; border: 1px solid var(--rose); padding: 0.7rem 1.8rem; cursor: pointer; transition: background 0.22s; }
+    .comment-submit:hover { background: var(--rose-dk); }
+    .comment-error { font-size: 0.72rem; color: #c0392b; margin-top: 0.4rem; display: none; }
+    .comments-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .comment-item { display: grid; grid-template-columns: 36px 1fr; gap: 0.9rem; align-items: flex-start; }
+    .comment-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--rose-lt); display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 0.75rem; color: var(--rose); text-transform: uppercase; }
+    .comment-bubble { background: #f5f2ed; border: 1px solid #e8e0d4; padding: 0.9rem 1.1rem; }
+    .comment-meta { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.45rem; flex-wrap: wrap; }
+    .comment-author-name { font-family: 'DM Serif Display', serif; font-size: 0.85rem; color: var(--text); }
+    .comment-date { font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .comment-text { font-family: 'Source Serif 4', serif; font-size: 0.85rem; font-weight: 300; line-height: 1.65; color: #3a3028; }
+    .comments-empty { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 0.9rem; color: var(--muted); text-align: center; padding: 1.5rem 0; }
+
+    /* ─── SIDEBAR ─── */
+    .article-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 88px; }
+    .sb-card { background: #fff; border: 1px solid var(--border); overflow: hidden; }
+    .sb-lbl { display: block; font-size: 0.42rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--rose); padding: 0.85rem 1.1rem 0; margin-bottom: 0.75rem; }
+    .sb-author-row { display: flex; align-items: center; gap: 0.75rem; padding: 0 1.1rem; }
+    .sb-av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--rose-lt), #f0d0da); display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 0.85rem; font-style: italic; color: var(--rose); flex-shrink: 0; }
+    .sb-author-name { font-family: 'DM Serif Display', serif; font-size: 0.85rem; font-style: italic; color: var(--text); }
+    .sb-author-role { font-size: 0.46rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin-top: 1px; }
+    .sb-bio { font-size: 0.72rem; font-weight: 300; line-height: 1.65; color: var(--muted); padding: 0.75rem 1.1rem 1rem; border-top: 1px solid var(--border); margin-top: 0.75rem; }
+    .sb-book-visual { height: 100px; display: flex; align-items: center; justify-content: center; }
+    .sb-spine { width: 52px; aspect-ratio: 5/8; display: flex; flex-direction: column; justify-content: flex-end; padding: 0.5rem; box-shadow: 4px 6px 18px rgba(0,0,0,0.18); transition: transform 0.3s; }
+    .sb-card:hover .sb-spine { transform: translateY(-5px) rotate(-1.5deg); }
+    .sb-spine-bar { height: 2px; width: 55%; margin-bottom: 0.3rem; }
+    .sb-spine-title { font-family: 'DM Serif Display', serif; font-size: 0.4rem; font-style: italic; color: #fff; line-height: 1.3; }
+    .sb-spine-auth { font-size: 0.3rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .sb-book-info { padding: 0.7rem 1.1rem 1.1rem; }
+    .sb-book-title { font-family: 'DM Serif Display', serif; font-size: 0.85rem; font-style: italic; color: var(--text); margin-bottom: 0.1rem; }
+    .sb-book-auth { font-size: 0.46rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .sb-book-cta { font-size: 0.46rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; border-bottom: 1px solid rgba(138,21,53,0.25); padding-bottom: 1px; transition: gap 0.18s, border-color 0.18s; }
+    .sb-book-cta:hover { gap: 0.55rem; border-color: var(--rose); }
+
+    /* ─── RETOUR ─── */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--rose); }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--text); color: var(--white); padding: 3rem; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 2rem; border-top: 3px solid var(--rose); }
+    .footer-logo { height: 52px; width: auto; display: block; filter: brightness(0) invert(1) opacity(0.85); }
+    .footer-copy { text-align: center; font-size: 0.62rem; letter-spacing: 0.1em; color: rgba(250,249,247,0.3); }
+    .footer-links { display: flex; justify-content: flex-end; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,249,247,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--rose); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .article-page { grid-template-columns: 1fr; gap: 0; padding: 2.5rem 1.5rem 5rem; }
+      .article-sidebar { position: static; margin-top: 3rem; }
+      .article-hero-content, .article-hero-no-img { padding: 2rem 1.5rem; }
+      .article-hero-title { font-size: clamp(1.3rem, 4vw, 1.8rem); }
+      footer { grid-template-columns: 1fr; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .comment-form-row { grid-template-columns: 1fr; }
+      .article-hero { height: clamp(260px, 55vw, 340px); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/170f5283-46f0-438d-9eee-7defcfbef546.png" alt="Flèche Rose Éditions" class="nav-logo" onerror="this.style.display='none'">
+    <div class="nav-name">Flèche Rose Éditions<small>Maison d'édition</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#catalogue">Catalogue</a></li>
+    <li><a href="index.html#selection">Sélection</a></li>
+    <li><a href="index.html#apropos">À propos</a></li>
+    <li><a href="articles.html">Actualités</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MENU MOBILE -->
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="index.html#catalogue" onclick="toggleMenu()">Catalogue</a></li>
+    <li><a href="index.html#selection" onclick="toggleMenu()">Sélection</a></li>
+    <li><a href="index.html#apropos" onclick="toggleMenu()">À propos</a></li>
+    <li><a href="articles.html" onclick="toggleMenu()">Actualités</a></li>
+    <li><a href="index.html#contact" onclick="toggleMenu()">Contact</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<div class="article-hero" id="articleHero">
+  <img class="article-hero-img" id="heroImg" src="" alt="" style="display:none;">
+  <div class="article-hero-gradient"></div>
+  <div class="article-hero-content">
+    <div class="article-hero-content-wrap">
+      <div class="article-breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>›</span>
+        <a href="articles.html">Actualités</a>
+        <span>›</span>
+        <span id="heroBreadcrumbCat"></span>
+      </div>
+      <div class="article-hero-badge" id="heroBadge"></div>
+      <h1 class="article-hero-title" id="heroTitle"></h1>
+      <div class="article-hero-meta">
+        <span class="article-hero-chip">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span id="heroAuthor"></span>
+        </span>
+        <span class="article-hero-chip">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span id="heroDate"></span>
+        </span>
+        <span class="article-hero-chip">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <span id="heroRead"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENU -->
+<div class="article-page">
+  <main>
+    <a href="articles.html" class="back-link">← Retour aux articles</a>
+
+    <div class="article-author-strip">
+      <div class="article-author-av" id="authorAv"></div>
+      <div>
+        <div class="article-author-name" id="authorName"></div>
+        <div class="article-author-role" id="authorRole"></div>
+      </div>
+    </div>
+
+    <p class="article-lead" id="articleLead"></p>
+
+    <div class="article-ornament">
+      <div class="article-orn-bar"></div>
+      <div class="article-orn-diamond"></div>
+      <div class="article-orn-line"></div>
+    </div>
+
+    <div class="article-prose" id="articleBody"></div>
+
+    <div class="article-tags" id="articleTags">
+      <span class="article-tags-lbl">Tags</span>
+    </div>
+
+    <div class="share-bar">
+      <span class="share-label">Partager</span>
+      <button class="share-btn share-fb" onclick="shareOn('facebook')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        Facebook
+      </button>
+      <button class="share-btn share-wa" onclick="shareOn('whatsapp')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+      </button>
+      <button class="share-btn share-copy" id="shareCopyBtn" onclick="shareOn('copy')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span id="shareCopyLabel">Copier le lien</span>
+      </button>
+    </div>
+
+    <!-- Navigation prev/next -->
+    <div class="article-nav">
+      <a href="#" class="article-nav-btn article-nav-prev disabled" id="navPrev">
+        <span class="arrow">←</span> Article précédent
+      </a>
+      <a href="#" class="article-nav-btn article-nav-next disabled" id="navNext">
+        Article suivant <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <!-- Commentaires -->
+    <section class="comments-section">
+      <div class="comments-heading">
+        <span class="comments-heading-text">Commentaires</span>
+        <span class="comments-count-badge" id="commentsCountBadge">0</span>
+        <div class="comments-line"></div>
+      </div>
+      <div class="comment-form">
+        <div class="comment-form-row">
+          <input class="comment-input" id="commentName" type="text" placeholder="Votre prénom *" maxlength="60">
+          <input class="comment-input" id="commentEmail" type="email" placeholder="Votre e-mail (non publié)">
+        </div>
+        <textarea class="comment-textarea" id="commentText" placeholder="Votre commentaire *" maxlength="1000"></textarea>
+        <div class="comment-error" id="commentError">Merci de renseigner votre prénom et votre commentaire.</div>
+        <button class="comment-submit" onclick="submitComment()">Publier le commentaire</button>
+      </div>
+      <div class="comments-list" id="commentsList"></div>
+    </section>
+  </main>
+
+  <!-- Sidebar -->
+  <aside class="article-sidebar">
+    <div class="sb-card">
+      <span class="sb-lbl">À propos de l'auteur</span>
+      <div class="sb-author-row">
+        <div class="sb-av" id="sbAv"></div>
+        <div>
+          <div class="sb-author-name" id="sbAuthorName"></div>
+          <div class="sb-author-role" id="sbAuthorRole"></div>
+        </div>
+      </div>
+      <p class="sb-bio" id="sbBio"></p>
+    </div>
+    <div class="sb-card" id="sbBookCard">
+      <span class="sb-lbl">Livre mentionné</span>
+      <div class="sb-book-visual">
+        <div class="sb-spine" id="sbSpine">
+          <div class="sb-spine-bar" id="sbSpineBar"></div>
+          <div class="sb-spine-title" id="sbSpineTitle"></div>
+          <div class="sb-spine-auth" id="sbSpineAuth"></div>
+        </div>
+      </div>
+      <div class="sb-book-info">
+        <div class="sb-book-title" id="sbBookTitle"></div>
+        <div class="sb-book-auth" id="sbBookAuth"></div>
+        <a href="catalogue.html" class="sb-book-cta">Voir dans le catalogue →</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/170f5283-46f0-438d-9eee-7defcfbef546.png" alt="Flèche Rose Éditions" class="footer-logo">
+  </div>
+  <p class="footer-copy">© 2026 Flèche Rose Éditions — Tous droits réservés</p>
+  <ul class="footer-links">
+    <li><a href="index.html#catalogue">Catalogue</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="soumettre_manuscrit.html">Manuscrits</a></li>
+  </ul>
+</footer>
+
+<script src="articles.js"></script>
+<script>
+  // helper : accès sécurisé aux éléments DOM
+  function el(id) { return document.getElementById(id); }
+  function setText(id, val)  { const e = el(id); if (e) e.textContent = val; }
+  function setHTML(id, val)  { const e = el(id); if (e) e.innerHTML  = val; }
+  function setBg(id, val)    { const e = el(id); if (e) e.style.background = val; }
+
+  // ── BARRE DE PROGRESSION ──
+  window.addEventListener('scroll', () => {
+    const bar = el('scrollProgress');
+    if (!bar) return;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? window.scrollY / max * 100 : 0) + '%';
+  }, { passive: true });
+
+  // ── HAMBURGER ──
+  function toggleMenu() {
+    const btn = el('hamburger'), drawer = el('navDrawer');
+    if (!btn || !drawer) return;
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  }
+  document.addEventListener('click', e => {
+    const drawer = el('navDrawer'), btn = el('hamburger');
+    if (drawer && drawer.classList.contains('open') && !drawer.contains(e.target) && btn && !btn.contains(e.target)) {
+      btn.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = '';
+    }
+  });
+
+  // ── COMMENTAIRES (déclarés tôt pour être disponibles partout) ──
+  const commentsStore = {};
+  let currentIdx = 0;
+
+  function renderComments() {
+    const list = commentsStore[currentIdx] || [];
+    const listEl = el('commentsList');
+    const badge  = el('commentsCountBadge');
+    if (badge) badge.textContent = list.length;
+    if (!listEl) return;
+    if (list.length === 0) {
+      listEl.innerHTML = '<p class="comments-empty">Aucun commentaire pour l\'instant. Soyez le premier !</p>';
+      return;
+    }
+    listEl.innerHTML = list.map(c => {
+      const ini = c.name.trim().split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
+      return `<div class="comment-item">
+        <div class="comment-avatar">${ini}</div>
+        <div class="comment-bubble">
+          <div class="comment-meta">
+            <span class="comment-author-name">${c.name}</span>
+            <span class="comment-date">${c.date}</span>
+          </div>
+          <p class="comment-text">${c.text}</p>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function submitComment() {
+    const name = el('commentName')  ? el('commentName').value.trim()  : '';
+    const text = el('commentText')  ? el('commentText').value.trim()  : '';
+    const errEl = el('commentError');
+    if (!name || !text) { if (errEl) errEl.style.display = 'block'; return; }
+    if (errEl) errEl.style.display = 'none';
+    if (!commentsStore[currentIdx]) commentsStore[currentIdx] = [];
+    commentsStore[currentIdx].push({
+      name, text,
+      date: new Date().toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' })
+    });
+    ['commentName','commentEmail','commentText'].forEach(id => { const e = el(id); if (e) e.value = ''; });
+    renderComments();
+    el('commentsList') && el('commentsList').scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }
+
+  // ── PARTAGE ──
+  function shareOn(platform) {
+    const url   = window.location.href;
+    const aData = (typeof articles !== 'undefined' && articles[currentIdx]) ? articles[currentIdx] : null;
+    const title = (aData ? aData.titre.replace(/<[^>]+>/g,'') : '') + ' — Flèche Rose Éditions';
+    if (platform === 'facebook') {
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank', 'width=600,height=400');
+    } else if (platform === 'whatsapp') {
+      window.open('https://wa.me/?text=' + encodeURIComponent(title + '\n' + url), '_blank');
+    } else if (platform === 'copy') {
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = el('shareCopyBtn'), lbl = el('shareCopyLabel');
+        if (btn) btn.classList.add('copied');
+        if (lbl) lbl.textContent = 'Lien copié !';
+        setTimeout(() => { if (btn) btn.classList.remove('copied'); if (lbl) lbl.textContent = 'Copier le lien'; }, 2500);
+      });
+    }
+  }
+
+  // ── INITIALISATION ──
+  document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    currentIdx = parseInt(params.get('id') || '0', 10);
+
+    const articlesOk = typeof articles !== 'undefined' && Array.isArray(articles) && articles.length > 0;
+    const a = articlesOk ? articles[currentIdx] : null;
+
+    if (!a) {
+      const hero = el('articleHero');
+      const page = document.querySelector('.article-page');
+      if (hero) hero.style.display = 'none';
+      if (page) page.innerHTML =
+        '<div style="grid-column:1/-1;padding:6rem 0;text-align:center;font-family:\'DM Serif Display\',serif;font-style:italic;font-size:1.4rem;color:#9a9189;">' +
+        'Article introuvable. <a href="articles.html" style="color:#8a1535;">Retour aux articles</a></div>';
+      return;
+    }
+
+    // Titre de l'onglet
+    const titleTag = document.getElementById('pageTitle');
+    if (titleTag) titleTag.textContent = a.titre.replace(/<[^>]+>/g,'') + ' — Flèche Rose Éditions';
+
+    // Hero
+    const hero = el('articleHero');
+    if (hero) hero.style.background = a.gradient;
+    if (a.image) {
+      const img = el('heroImg');
+      if (img) { img.src = a.image; img.alt = a.titre.replace(/<[^>]+>/g,''); img.style.display = 'block'; }
+    }
+    setText('heroBreadcrumbCat', a.categorie);
+    setText('heroBadge',         a.categorie);
+    setHTML('heroTitle',         a.titre);
+    setText('heroAuthor',        a.auteur.replace(/^Par\s+/i,''));
+    setText('heroDate',          a.date);
+    setText('heroRead',          (a.readTime || '4 min') + ' de lecture');
+
+    // Corps
+    const authorRaw = a.auteur.replace(/^Par\s+/i,'');
+    const initials  = authorRaw.split(' ').map(w => w[0]).slice(0,2).join('');
+    setText('authorAv',   initials);
+    setText('authorName', authorRaw);
+    setText('authorRole', a.auteurRole || a.categorie);
+    setHTML('articleLead', a.lead  || '');
+    setHTML('articleBody', a.corps || '');
+
+    // Tags
+    const tagsEl = el('articleTags');
+    if (tagsEl) {
+      (a.tags || [a.categorie]).forEach(tag => {
+        const t = document.createElement('span');
+        t.className = 'article-tag';
+        t.textContent = tag;
+        tagsEl.appendChild(t);
+      });
+    }
+
+    // Sidebar auteur
+    setText('sbAv',         initials);
+    setText('sbAuthorName', authorRaw);
+    setText('sbAuthorRole', a.auteurRole || a.categorie);
+    setText('sbBio',        a.auteurBio  || '');
+
+    // Sidebar livre
+    setBg('sbSpine',    a.gradient);
+    setBg('sbSpineBar', a.coverAccent);
+    setText('sbSpineTitle', a.coverTitle);
+    setText('sbSpineAuth',  a.coverAuthor);
+    setText('sbBookTitle',  a.coverTitle);
+    setText('sbBookAuth',   a.coverAuthor);
+
+    // Navigation prev/next
+    const prevBtn = el('navPrev');
+    const nextBtn = el('navNext');
+    if (prevBtn && currentIdx > 0) {
+      prevBtn.classList.remove('disabled');
+      prevBtn.href = 'article.html?id=' + (currentIdx - 1);
+    }
+    if (nextBtn && currentIdx < articles.length - 1) {
+      nextBtn.classList.remove('disabled');
+      nextBtn.href = 'article.html?id=' + (currentIdx + 1);
+    }
+
+    renderComments();
+  });
+</script>
+</body>
+</html>
