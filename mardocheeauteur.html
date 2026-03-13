@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mardochée Gay — Flèche Rose Éditions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Epilogue:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white:   #faf9f7;
+      --off:     #f2efeb;
+      --cream:   #f5f0e8;
+      --parch:   #ede6d6;
+      --border:  #e5e0d8;
+      --text:    #1c1916;
+      --muted:   #9a9189;
+      --rose:    #8a1535;
+      --rose-lt: #f0d8de;
+      --rose-dk: #6b0f28;
+      --ink:     #2a2218;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── PROGRESS ── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 999;
+      height: 2px; background: var(--rose);
+      width: 0%; transition: width 0.1s linear;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 3rem; height: 68px;
+      background: rgba(250,249,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-brand img { height: 52px; width: auto; object-fit: contain; }
+    .nav-brand-divider {
+      width: 1px; height: 28px; background: var(--border);
+    }
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem; color: var(--text); letter-spacing: 0.01em;
+    }
+    .nav-name small {
+      display: block; font-family: 'DM Sans', sans-serif;
+      font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); margin-top: -2px;
+    }
+    .nav-links {
+      display: flex; align-items: center;
+      gap: 0; list-style: none;
+    }
+    .nav-links li { position: relative; }
+    .nav-links a {
+      display: block;
+      padding: 0 1.4rem;
+      font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s; position: relative;
+      line-height: 68px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute;
+      bottom: -3px; left: 1.4rem; right: 1.4rem;
+      height: 1px;
+      background: var(--rose); transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links li:not(:last-child)::after {
+      content: ''; position: absolute;
+      right: 0; top: 50%; transform: translateY(-50%);
+      width: 1px; height: 12px; background: var(--border);
+    }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; justify-content: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; height: 1.5px; width: 100%;
+      background: var(--text);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-drawer {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: rgba(250,249,247,0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 2rem 2.5rem; z-index: 190;
+      transform: translateY(-110%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-drawer.open { transform: translateY(0); }
+    .nav-drawer ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .nav-drawer ul li a {
+      display: block; padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      text-decoration: none; transition: color 0.2s, padding-left 0.2s;
+    }
+    .nav-drawer ul li a:hover { color: var(--rose); padding-left: 0.5rem; }
+
+    /* ════ HERO OPTION F ════ */
+    .page-hero {
+      padding-top: 68px;
+      background: var(--off);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      position: relative;
+      min-height: 88vh;
+    }
+    /* Signet vertical rose bordeaux */
+    .hero-signet {
+      width: 6px;
+      background: var(--rose);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .hero-signet::after {
+      content: '';
+      position: absolute; bottom: -12px; left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-top: 12px solid var(--rose);
+    }
+    .hero-body {
+      flex: 1;
+      padding: 4rem 4rem 4rem 3.5rem;
+      display: flex; flex-direction: column;
+    }
+    /* Fil d'Ariane */
+    .hero-breadcrumb {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.58rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 3rem;
+      opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+    }
+    .hero-breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .hero-breadcrumb a:hover { color: var(--rose); }
+    .hero-breadcrumb span { color: var(--border); }
+    /* Contenu principal */
+    .hero-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Colonne gauche : photo + nom */
+    .hero-identity {
+      padding-right: 0;
+      opacity: 0; animation: fadeUp 0.8s 0.25s forwards;
+      display: flex; flex-direction: column; align-items: flex-start;
+    }    .hero-photo-placeholder {
+      width: 200px; height: 250px;
+      border: 1px dashed var(--border);
+      background: var(--white);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.8rem;
+      margin-bottom: 2rem;
+      /* Remplacer par <img src="photo.jpg" style="width:200px;height:250px;object-fit:cover;"> */
+    }
+    .hero-photo-placeholder span {
+      font-size: 0.52rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      text-align: center;
+    }
+    .hero-genre-tag {
+      font-size: 0.58rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--rose);
+      margin-bottom: 0.7rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .hero-genre-tag::before {
+      content: ''; display: block;
+      width: 18px; height: 1px; background: var(--rose);
+    }
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+      font-weight: 400; line-height: 1.05;
+      letter-spacing: -0.02em; color: var(--text);
+    }
+    .hero-name em { font-style: italic; color: var(--rose); }
+    /* Séparateur vertical — masqué */
+    .hero-divider { display: none; }
+    /* Colonne droite — masquée */
+    .hero-detail { display: none; }
+
+    /* ════ CHAPITRES ════ */
+    .chapter { position: relative; overflow: hidden; }
+    .chapter-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(6rem, 14vw, 14rem);
+      font-weight: 700; font-style: italic;
+      line-height: 1; letter-spacing: -0.04em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(138,21,53,0.1);
+      position: absolute; top: 2rem; right: -1rem;
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+    .chapter-label {
+      font-size: 0.55rem; letter-spacing: 0.38em;
+      text-transform: uppercase; color: var(--rose);
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 4rem; position: relative; z-index: 1;
+    }
+    .chapter-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* CHAPITRE I — Biographie */
+    .ch1 { padding: 8rem 0; background: var(--white); }
+    .ch1-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8rem; align-items: start;
+    }
+    .ch1-left, .ch1-right { position: relative; z-index: 1; }
+    .ch1-right { padding-top: 2rem; }
+    .ch1-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400; line-height: 1.15; margin-bottom: 3rem;
+    }
+    .ch1-title em { font-style: italic; color: var(--rose); }
+    .ch1-body {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 1rem; font-weight: 300;
+      line-height: 2; color: #4a4238;
+    }
+    .ch1-body p + p { margin-top: 1.6rem; }
+    .ch1-body p:first-child::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem; font-weight: 700;
+      color: var(--rose); float: left;
+      line-height: 0.75; margin: 0.15em 0.1em 0 0;
+    }
+    /* Mots surlignés */
+    .ch1-body mark {
+      background: linear-gradient(120deg, rgba(138,21,53,0.12) 0%, rgba(138,21,53,0.08) 100%);
+      color: var(--rose-dk);
+      padding: 0.05em 0.25em;
+      border-radius: 2px;
+      font-style: normal;
+      -webkit-box-decoration-break: clone;
+    }
+    /* Texte en italique important */
+    .ch1-body strong {
+      font-weight: 500;
+      color: var(--text);
+      font-style: normal;
+    }
+    /* Citation mise en avant (pull quote) */
+    .pull-quote {
+      margin: 2rem 0;
+      padding: 1.5rem 2rem;
+      border-left: 3px solid var(--rose);
+      background: var(--cream);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-style: italic;
+      font-weight: 400; line-height: 1.7;
+      color: var(--text);
+      clear: both;
+    }
+    .pull-quote::before { content: '"'; color: var(--rose); font-size: 1.5rem; line-height: 0; vertical-align: -0.4em; margin-right: 0.2em; }
+    .pull-quote::after  { content: '"'; color: var(--rose); font-size: 1.5rem; line-height: 0; vertical-align: -0.4em; margin-left: 0.2em; }
+    /* Image flottante style journal */
+    .ch1-body figure {
+      float: right;
+      margin: 0.5rem 0 1.5rem 2.5rem;
+      width: 220px;
+    }
+    .ch1-body figure img {
+      width: 100%; display: block;
+      border: 1px solid var(--border);
+      box-shadow: 4px 4px 20px rgba(0,0,0,0.08);
+    }
+    .ch1-body figure figcaption {
+      font-size: 0.52rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 0.5rem; text-align: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .identity-card {
+      background: var(--cream); border: 1px solid var(--border);
+      padding: 2.5rem; position: relative;
+    }
+    .identity-card::before {
+      content: '';
+      position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px;
+      border: 1px solid var(--border); z-index: -1;
+    }
+    .ic-header {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin-bottom: 2rem; padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .ic-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, #2c1a2e 0%, #8a1535 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-style: italic; color: var(--white); flex-shrink: 0;
+    }
+    .ic-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-style: italic; color: var(--text); line-height: 1.2;
+    }
+    .ic-role {
+      font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted); margin-top: 0.3rem;
+    }
+    .ic-rows { display: flex; flex-direction: column; gap: 1rem; }
+    .ic-row {
+      display: flex; align-items: baseline; gap: 1rem;
+      padding-bottom: 1rem; border-bottom: 1px dashed rgba(221,213,192,0.7);
+    }
+    .ic-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .ic-key {
+      font-size: 0.52rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted); min-width: 100px; flex-shrink: 0;
+    }
+    .ic-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem; font-style: italic; color: var(--text);
+    }
+    .ic-tags {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .ic-tag {
+      font-size: 0.52rem; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border); color: var(--muted); background: var(--white);
+    }
+
+    /* CHAPITRE II — Œuvres */
+    .ch2 {
+      padding: 8rem 0;
+      background: var(--cream);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .ch2-inner { max-width: 1200px; margin: 0 auto; padding: 0 5rem; }
+    .oeuvre-feature {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border: 1px solid var(--border); margin-bottom: 1px;
+    }
+    .of-visual {
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 420px;
+    }
+    .of-visual-bg { position: absolute; inset: 0; }
+    .of-book-wrap {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    }
+    .of-book {
+      width: 130px; aspect-ratio: 5/8;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 1.1rem;
+      box-shadow: 12px 20px 50px rgba(0,0,0,0.35);
+      transition: transform 0.4s ease;
+    }
+    .oeuvre-feature:hover .of-book { transform: translateY(-8px) rotate(-1.5deg); }
+    .ofb-bar { width: 20px; height: 2px; margin-bottom: 0.55rem; }
+    .ofb-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.72rem; font-style: italic; color: #fff; line-height: 1.3; margin-bottom: 0.3rem;
+    }
+    .ofb-author {
+      font-size: 0.4rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.38);
+    }
+    .of-annee-badge {
+      font-size: 0.52rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.15); padding: 0.3rem 0.8rem;
+    }
+    .of-text {
+      padding: 4rem; display: flex; flex-direction: column;
+      justify-content: center; background: var(--white);
+    }
+    .of-num {
+      font-family: 'Playfair Display', serif; font-size: 0.7rem;
+      font-style: italic; color: var(--rose); margin-bottom: 0.8rem;
+    }
+    .of-genre {
+      font-size: 0.55rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem;
+    }
+    .of-titre {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-style: italic; font-weight: 400; color: var(--text);
+      line-height: 1.15; margin-bottom: 0.5rem;
+    }
+    .of-annee-label {
+      font-size: 0.58rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 2rem;
+    }
+    .of-desc {
+      font-family: 'Epilogue', sans-serif; font-size: 0.92rem;
+      font-weight: 300; line-height: 1.8; color: #6a6058; margin-bottom: 2rem;
+    }
+    .of-ornament {
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem;
+    }
+    .of-orn-bar { width: 24px; height: 1px; background: var(--rose); }
+    .of-orn-dot { width: 4px; height: 4px; background: var(--rose); transform: rotate(45deg); }
+    .of-orn-long { flex: 1; height: 1px; background: var(--border); }
+    .of-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--rose); text-decoration: none;
+      border-bottom: 1px solid rgba(138,21,53,0.25); padding-bottom: 2px;
+      transition: gap 0.2s, border-color 0.2s; align-self: flex-start;
+    }
+    .oeuvre-feature:hover .of-cta { gap: 0.75rem; border-color: var(--rose); }
+    .oeuvre-feature.reverse { direction: rtl; }
+    .oeuvre-feature.reverse > * { direction: ltr; }
+
+    /* CHAPITRE III — Citations */
+    .ch3 {
+      padding: 8rem 0; background: var(--ink);
+      position: relative; overflow: hidden;
+    }
+    .ch3-inner { max-width: 1100px; margin: 0 auto; padding: 0 5rem; position: relative; z-index: 1; }
+    .ch3 .chapter-label { color: var(--rose-lt); }
+    .ch3 .chapter-label::after { background: rgba(255,255,255,0.08); }
+    .ch3 .chapter-num { -webkit-text-stroke: 1px rgba(255,255,255,0.04); }
+    .citations-stack { display: flex; flex-direction: column; gap: 0; }
+    .cit-item {
+      padding: 4rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: grid; grid-template-columns: 80px 1fr; gap: 3rem; align-items: start;
+    }
+    .cit-item:last-child { border-bottom: none; }
+    .cit-num {
+      font-family: 'Playfair Display', serif; font-size: 4rem;
+      font-style: italic; font-weight: 700;
+      color: var(--rose); opacity: 0.35; line-height: 1; text-align: right; padding-top: 0.3rem;
+    }
+    .cit-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-style: italic; font-weight: 400;
+      line-height: 1.6; color: rgba(255,255,255,0.82); margin-bottom: 1.5rem;
+    }
+    .cit-text::before { content: '“'; color: var(--rose); margin-right: 0.1em; }
+    .cit-text::after  { content: '”'; color: var(--rose); margin-left: 0.1em; }
+    .cit-source {
+      font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.22); display: flex; align-items: center; gap: 0.8rem;
+    }
+    .cit-source::before { content: ''; width: 20px; height: 1px; background: var(--rose); opacity: 0.5; }
+    .cit-source em {
+      font-style: italic; color: rgba(255,255,255,0.35);
+      font-size: 0.72rem; letter-spacing: 0; text-transform: none;
+    }
+
+    /* ════ COLOPHON ════ */
+    .colophon {
+      background: var(--cream); border-top: 1px solid var(--border);
+      padding: 5rem 5rem 3rem;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: start; gap: 4rem;
+    }
+    .colophon-label {
+      font-size: 0.52rem; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--rose); margin-bottom: 0.8rem; display: block;
+    }
+    .colophon-text {
+      font-family: 'Playfair Display', serif; font-size: 0.95rem;
+      font-style: italic; color: var(--muted); line-height: 1.6;
+    }
+    .colophon-center { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
+    .col-orn-diamond { width: 10px; height: 10px; background: var(--rose); transform: rotate(45deg); opacity: 0.5; }
+    .col-orn-line { width: 1px; height: 30px; background: var(--border); }
+    .colophon-nav { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; }
+    .colophon-nav a {
+      font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .colophon-nav a:hover { color: var(--rose); }
+    .colophon-bottom {
+      grid-column: 1 / -1; padding-top: 2rem; margin-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .colophon-copy {
+      font-size: 0.58rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(100,90,80,0.4);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1),
+                  transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal.slide-right { transform: translateX(28px); }
+    .reveal.scale-in { transform: scale(0.97); }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .ch1-inner, .ch2-inner, .ch3-inner { padding: 0 3rem; }
+      .ch1-inner { gap: 4rem; }
+      .of-text { padding: 3rem; }
+      .colophon { padding: 3rem; }
+      .hero-body { padding: 3rem 2rem; }
+    }
+    @media (max-width: 900px) {
+      .ch1-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .oeuvre-feature { grid-template-columns: 1fr; }
+      .oeuvre-feature.reverse { direction: ltr; }
+      .of-visual { min-height: 280px; }
+      .colophon { grid-template-columns: 1fr; text-align: center; }
+      .colophon-nav { align-items: center; }
+      .colophon-center { display: none; }
+      .cit-item { grid-template-columns: 50px 1fr; gap: 1.5rem; }
+      .page-hero { min-height: auto; }
+    }
+    @media (max-width: 960px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-drawer { display: block; }
+      .ch1, .ch2, .ch3 { padding: 5rem 0; }
+      .ch1-inner, .ch2-inner, .ch3-inner { padding: 0 1.5rem; }
+      .colophon { padding: 3rem 1.5rem 2rem; }
+      .hero-body { padding: 2rem 1.5rem; }
+      .hero-breadcrumb { margin-bottom: 2rem; }
+      .hero-name { font-size: 2.5rem; }
+      .of-text { padding: 2rem 1.5rem; }
+      .ch2-inner { padding: 0 1rem; }
+    }
+    @media (max-width: 480px) {
+      .cit-item { grid-template-columns: 1fr; }
+      .cit-num { font-size: 2.5rem; text-align: left; }
+      .hero-name { font-size: 2rem; }
+      .of-titre { font-size: 1.4rem; }
+      .ch1-title { font-size: 1.8rem; }
+    }
+
+    /* ── PARTAGE & COMMENTAIRES ── */
+    .share-section {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 4rem 5rem;
+      text-align: center;
+    }
+    .share-label {
+      font-size: 0.52rem; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 1.5rem; display: block;
+    }
+    .share-buttons {
+      display: flex; justify-content: center;
+      flex-wrap: wrap; gap: 0.75rem;
+    }
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.65rem 1.4rem;
+      border: 1px solid var(--border);
+      background: var(--white); color: var(--text);
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .share-btn:hover { background: var(--rose); color: #fff; border-color: var(--rose); }
+    .comments-section {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      padding: 5rem 5rem 4rem;
+    }
+    .comments-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem; font-weight: 400;
+      color: var(--text); margin-bottom: 0.4rem;
+    }
+    .comments-sub {
+      font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+    .comment-form { max-width: 680px; }
+    .comment-form input,
+    .comment-form textarea {
+      width: 100%; padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--white); color: var(--text);
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+      margin-bottom: 0.75rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .comment-form input:focus,
+    .comment-form textarea:focus { border-color: var(--rose); }
+    .comment-form textarea { min-height: 120px; resize: vertical; }
+    .comment-submit {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 0.75rem 2rem;
+      background: var(--rose); color: #fff; border: none;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .comment-submit:hover { background: var(--rose-dk); }
+    .comments-list { max-width: 680px; margin-top: 3rem; }
+    .comment-item {
+      padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+    }
+    .comment-item:last-child { border-bottom: none; }
+    .comment-meta {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .comment-author {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.9rem; font-style: italic; color: var(--text);
+    }
+    .comment-date {
+      font-size: 0.52rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .comment-body {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.9rem; font-weight: 300;
+      line-height: 1.7; color: #5a524a;
+    }
+    @media (max-width: 768px) {
+      .share-section { padding: 3rem 1.5rem; }
+      .comments-section { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="data:image/webp;base64,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" alt="Flèche Rose Éditions" style="height:44px;width:auto;object-fit:contain;">
+    <div class="nav-brand-divider"></div>
+    <div class="nav-name">Flèche Rose Éditions<small>Maison d'édition</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="catalogue.html">Catalogue</a></li>
+    <li><a href="auteurs.html">Auteurs</a></li>
+    <li><a href="articles.html">Actualités</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="catalogue.html" onclick="toggleMenu()">Catalogue</a></li>
+    <li><a href="auteurs.html" onclick="toggleMenu()">Auteurs</a></li>
+    <li><a href="articles.html" onclick="toggleMenu()">Actualités</a></li>
+    <li><a href="index.html#contact" onclick="toggleMenu()">Contact</a></li>
+  </ul>
+</div>
+
+<!-- ════ HERO OPTION F ════ -->
+<header class="page-hero">
+  <!-- Signet vertical rose -->
+  <div class="hero-signet"></div>
+
+  <div class="hero-body">
+    <!-- Fil d'Ariane -->
+    <div class="hero-breadcrumb">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <a href="auteurs.html">Auteurs</a>
+      <span>/</span>
+      Mardochée Gay
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="hero-content">
+      <!-- Colonne gauche : photo + nom -->
+      <div class="hero-identity">
+        <img src="https://i.imgur.com/b36BDgX.jpg" alt="Photo de Mardochée Gay" style="width:200px;height:250px;object-fit:cover;display:block;margin-bottom:2rem;">
+        <div class="hero-genre-tag">Poète · Romancier · Éditeur</div>
+        <h1 class="hero-name"><em>Mardochée</em><br>Gay</h1>
+      </div>
+
+      <!-- Séparateur vertical -->
+      <div class="hero-divider"></div>
+
+      <!-- Colonne droite : bio courte + méta -->
+      <div class="hero-detail">
+        <p class="hero-desc">Poète, romancier et co-fondateur de Flèche Rose Club Littéraire (2021) et de Flèche Rose Éditions (2023). Sa plume mêle spleen et érotisme pour porter un message de courage et d'espoir pour Haïti.</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hmi-label">Origine</span>
+            <span class="hmi-val">Haïti</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hmi-label">Titres publiés</span>
+            <span class="hmi-val">3 ouvrages</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hmi-label">Co-fondateur</span>
+            <span class="hmi-val">2025</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hmi-label">Genre</span>
+            <span class="hmi-val">Poésie</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════ CHAPITRE I — BIOGRAPHIE ════ -->
+<section class="chapter ch1">
+  <div class="ch1-inner">
+    <div class="chapter-num" aria-hidden="true">I</div>
+    <div class="ch1-left">
+      <div class="chapter-label reveal">Chapitre Premier · Biographie</div>
+      <h2 class="ch1-title reveal">Une voix venue<br>des <em>marges</em><br>et des silences</h2>
+      <div class="ch1-body reveal">
+        <p><strong>Mardoché Gay</strong> est <mark>poète, romancier</mark> et fondateur de <mark>Flèche Rose Club Littéraire</mark>. Né à Carrefour (zone de Bertin), il est étudiant en psychologie à la <strong>Faculté des Sciences Humaines de l'Université d'État d'Haïti</strong> (FASCH-UEH).</p>
+        <p>Son écriture mêle <mark>spleen et érotisme</mark>, ancrant la littérature dans un contexte profondément haïtien. Convaincu que <strong>l'écrivain a le devoir de faire une radiographie de la société</strong>, il porte par ses mots un message de courage, d'espoir et de bienveillance dans un pays traversé par la crise. Co-fondateur de <mark>Flèche Rose Club Littéraire (2021)</mark> et de <mark>Flèche Rose Éditions (2023)</mark>, il œuvre à promouvoir la littérature haïtienne et à offrir une plateforme aux voix émergentes.</p>
+        <figure>
+          <img src="https://i.imgur.com/EexYt8O.jpg" alt="Mardochée Gay">
+          <figcaption>Mardochée Gay — Carrefour, Haïti</figcaption>
+        </figure>
+        <p>Il est l'auteur de <mark><em>La douce qui vient</em> (2021)</mark>, son premier recueil de poèmes lancé à Carrefour, et de <mark><em>Vergétures</em></mark>, un roman ancré dans la réalité haïtienne.</p>
+        <div class="pull-quote">La poésie me donne la possibilité de sublimer l'adversité, mon impuissance, mes incertitudes et surtout le chaos.</div>
+        <p>Inspiré par <strong>Dany Laferrière, Camus, Coelho</strong> et <strong>Lyonel Trouillot</strong>, il croit que la poésie permet de sublimer l'adversité et de <mark>vivre pleinement même dans le chaos</mark>.</p>
+      </div>
+    </div>
+    <div class="ch1-right">
+      <div class="identity-card reveal slide-right">
+        <div class="ic-header">
+          <div class="ic-avatar" style="overflow:hidden;padding:0;"><img src="https://i.imgur.com/b36BDgX.jpg" alt="Mardochée Gay" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+          <div>
+            <div class="ic-name">Mardochée Gay</div>
+            <div class="ic-role">Poète · Romancier</div>
+          </div>
+        </div>
+        <div class="ic-rows">
+          <div class="ic-row"><span class="ic-key">Nationalité</span><span class="ic-val">Haïtienne</span></div>
+          <div class="ic-row"><span class="ic-key">Résidence</span><span class="ic-val">Haïti</span></div>
+          <div class="ic-row"><span class="ic-key">Langue</span><span class="ic-val">Français · Créole</span></div>
+          <div class="ic-row"><span class="ic-key">Genre</span><span class="ic-val">Poésie · Roman</span></div>
+          <div class="ic-row"><span class="ic-key">Chez FRÉ depuis</span><span class="ic-val">2023</span></div>
+        </div>
+        <div class="ic-tags">
+          <span class="ic-tag">Poésie</span>
+          <span class="ic-tag">Roman</span>
+          <span class="ic-tag">Haïti</span>
+          <span class="ic-tag">FRC 2021</span>
+          <span class="ic-tag">FRÉ 2023</span>
+          <span class="ic-tag">Carrefour</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CHAPITRE II — ŒUVRES ════ -->
+<section class="chapter ch2">
+  <div class="ch2-inner">
+    <div class="chapter-num" aria-hidden="true">II</div>
+    <div class="chapter-label reveal">Chapitre Second · Œuvres publiées</div>
+
+    <div class="oeuvre-feature reveal scale-in">
+      <div class="of-visual">
+        <div class="of-visual-bg" style="background:linear-gradient(160deg,#2c1a2e 0%,#6b0f28 100%);"></div>
+        <div class="of-book-wrap">
+          <img src="https://i.imgur.com/utb9POw.png" alt="La douce qui vient" style="width:130px;aspect-ratio:5/8;object-fit:cover;box-shadow:12px 20px 50px rgba(0,0,0,0.35);">
+          <div class="of-annee-badge">2021</div>
+        </div>
+      </div>
+      <div class="of-text">
+        <div class="of-num">Œuvre I</div>
+        <div class="of-genre">Recueil de poésies · Premier ouvrage</div>
+        <div class="of-titre">La douce qui vient</div>
+        <div class="of-annee-label">Flèche Rose Club Littéraire · 2021</div>
+        <div class="of-ornament">
+          <div class="of-orn-bar"></div><div class="of-orn-dot"></div><div class="of-orn-long"></div>
+        </div>
+        <p class="of-desc">Premier recueil lancé le 5 décembre 2021 à Carrefour (zone de Bertin). Un voyage dans l'univers de l'auteur où se mêlent spleen et érotisme, ancrant la littérature dans un contexte profondément haïtien.</p>
+        <a href="catalogue.html" class="of-cta">Voir dans le catalogue →</a>
+      </div>
+    </div>
+
+    <div class="oeuvre-feature reverse reveal scale-in">
+      <div class="of-visual">
+        <div class="of-visual-bg" style="background:linear-gradient(160deg,#1a1a2e 0%,#3a3a7d 100%);"></div>
+        <div class="of-book-wrap">
+          <img src="https://i.imgur.com/gzemgwz.jpg" alt="Send Nudes" style="width:130px;aspect-ratio:5/8;object-fit:cover;box-shadow:12px 20px 50px rgba(0,0,0,0.35);">
+          <div class="of-annee-badge">2022</div>
+        </div>
+      </div>
+      <div class="of-text">
+        <div class="of-num">Œuvre II</div>
+        <div class="of-genre">Recueil de poésies · Co-écrit</div>
+        <div class="of-titre">Send Nudes</div>
+        <div class="of-annee-label">Décembre 2022</div>
+        <div class="of-ornament">
+          <div class="of-orn-bar"></div><div class="of-orn-dot"></div><div class="of-orn-long"></div>
+        </div>
+        <p class="of-desc">Recueil de poésies co-écrit avec Jean Michelot Polynice et Lefranc Dorelus. Une œuvre collective à trois voix, parue en décembre 2022.</p>
+        <a href="catalogue.html" class="of-cta">Voir dans le catalogue →</a>
+      </div>
+    </div>
+
+    <div class="oeuvre-feature reveal scale-in">
+      <div class="of-visual">
+        <div class="of-visual-bg" style="background:linear-gradient(160deg,#1e2a1a 0%,#3a7d44 100%);"></div>
+        <div class="of-book-wrap">
+          <img src="https://i.imgur.com/JPO6tE7.jpg" alt="Vergétures" style="width:130px;aspect-ratio:5/8;object-fit:cover;box-shadow:12px 20px 50px rgba(0,0,0,0.35);">
+          <div class="of-annee-badge">2024</div>
+        </div>
+      </div>
+      <div class="of-text">
+        <div class="of-num">Œuvre III</div>
+        <div class="of-genre">Roman · Deuxième ouvrage</div>
+        <div class="of-titre">Vergétures</div>
+        <div class="of-annee-label">Flèche Rose Éditions · 2024</div>
+        <div class="of-ornament">
+          <div class="of-orn-bar"></div><div class="of-orn-dot"></div><div class="of-orn-long"></div>
+        </div>
+        <p class="of-desc">La peinture d'une famille pastorale confrontée à la tension entre un père pasteur et une mère commerçante. À travers Célestin, leur fils, Gay plonge le lecteur dans une Haïti marquée par la corruption, l'insécurité et l'État démissionnaire. Une articulation entre critique sociale et drame personnel.</p>
+        <a href="catalogue.html" class="of-cta">Voir dans le catalogue →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CHAPITRE III — CITATIONS ════ -->
+<section class="chapter ch3">
+  <div class="ch3-inner">
+    <div class="chapter-num" aria-hidden="true">III</div>
+    <div class="chapter-label reveal">Chapitre Troisième · Citations &amp; extraits</div>
+    <div class="citations-stack">
+      <div class="cit-item reveal">
+        <div class="cit-num">01</div>
+        <div>
+          <p class="cit-text">J'ai le devoir de porter un message de courage. D'espoir. De tendresse. De bienveillance. J'ai le devoir de porter un message qui permet de renouer avec soi-même et avec les autres.</p>
+          <div class="cit-source">Mardoché Gay <em>— Entretien, Kafou News, Mars 2025</em></div>
+        </div>
+      </div>
+      <div class="cit-item reveal">
+        <div class="cit-num">02</div>
+        <div>
+          <p class="cit-text">Par la poésie, je peux embrasser la vie. Je peux vivre aux éclats. J'évolue dans un pays en crise et il faut vivre. La poésie me donne cette possibilité de sublimer l'adversité, mon impuissance, mes incertitudes et surtout le chaos.</p>
+          <div class="cit-source">Extrait de <em>Vergétures</em> (2024)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ CHAPITRE IV — PROJETS À VENIR ════ -->
+<section class="chapter" style="padding: 8rem 0; background: var(--cream); border-top: 1px solid var(--border);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 5rem; position:relative;">
+    <div class="chapter-num" aria-hidden="true" style="font-family:'Playfair Display',serif;font-size:clamp(6rem,14vw,14rem);font-weight:700;font-style:italic;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(138,21,53,0.1);position:absolute;top:2rem;right:-1rem;pointer-events:none;user-select:none;">IV</div>
+    <div class="chapter-label reveal">Chapitre Quatrième · Projets à venir</div>
+
+    <div class="reveal" style="display:flex; align-items:stretch; gap:0; border:1px solid var(--border); max-width:600px;">
+      <!-- Signet latéral -->
+      <div style="width:6px; background:var(--rose); flex-shrink:0;"></div>
+      <!-- Contenu -->
+      <div style="padding:3rem 3.5rem; background:var(--white); flex:1;">
+        <div style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:1rem;">Prochain ouvrage</div>
+        <div style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-style:italic;font-weight:400;color:var(--text);line-height:1.15;margin-bottom:0.6rem;">Lune et miel</div>
+        <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;">Roman · À paraître 2026</div>
+        <div style="display:flex;align-items:center;gap:0.8rem;">
+          <div style="width:24px;height:1px;background:var(--rose);"></div>
+          <div style="width:4px;height:4px;background:var(--rose);transform:rotate(45deg);"></div>
+          <div style="flex:1;height:1px;background:var(--border);"></div>
+        </div>
+        <div style="margin-top:2rem;display:inline-flex;align-items:center;gap:0.5rem;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:0.4rem 1rem;">
+          ⏳ Bientôt disponible
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════ PARTAGE ════ -->
+<section class="share-section reveal">
+  <span class="share-label">Partager cette page</span>
+  <div class="share-buttons">
+    <a class="share-btn" onclick="shareWhatsApp()" href="#">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.528 5.837L.057 23.882l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.004-1.368l-.36-.213-3.7.97.987-3.608-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+      WhatsApp
+    </a>
+    <a class="share-btn" onclick="shareFacebook()" href="#">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Facebook
+    </a>
+    <a class="share-btn" onclick="shareTwitter()" href="#">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      X / Twitter
+    </a>
+    <a class="share-btn" onclick="copyLink()" href="#">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      Copier le lien
+    </a>
+  </div>
+</section>
+
+<!-- ════ COMMENTAIRES ════ -->
+<section class="comments-section">
+  <div style="max-width:680px;">
+    <h3 class="comments-title">Laissez un commentaire</h3>
+    <p class="comments-sub">Partagez votre avis sur l'auteur ou ses œuvres</p>
+    <div class="comment-form">
+      <input type="text" id="commentName" placeholder="Votre nom">
+      <textarea id="commentText" placeholder="Votre commentaire…"></textarea>
+      <button class="comment-submit" onclick="submitComment()">Publier →</button>
+    </div>
+    <div class="comments-list" id="commentsList"></div>
+  </div>
+</section>
+
+<!-- ════ COLOPHON ════ -->
+<footer class="colophon">
+  <div class="reveal">
+    <span class="colophon-label">Page de l'auteur</span>
+    <p class="colophon-text">Mardochée Gay<br>Poète &amp; Romancier<br>Co-fondateur FRC (2021) · FRÉ (2023)</p>
+  </div>
+  <div class="colophon-center">
+    <div class="col-orn-diamond"></div>
+    <div class="col-orn-line"></div>
+    <img src="data:image/webp;base64,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" alt="Flèche Rose Éditions" style="height:52px;width:auto;object-fit:contain;opacity:0.6;">
+    <div class="col-orn-line"></div>
+    <div class="col-orn-diamond"></div>
+  </div>
+  <div class="reveal slide-right">
+    <nav class="colophon-nav">
+      <a href="auteurs.html">← Tous les auteurs</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="articles.html">Actualités</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="colophon-bottom">
+    <a href="index.html" style="text-decoration:none;">
+      <img src="data:image/webp;base64,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" alt="Flèche Rose Éditions" style="height:36px;width:auto;object-fit:contain;">
+    </a>
+    <span class="colophon-copy">© 2025 Flèche Rose Éditions — Tous droits réservés</span>
+  </div>
+</footer>
+
+<script>
+  // ── BARRE DE PROGRESSION ──
+  const progressBar = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (maxScroll > 0 ? (scrolled / maxScroll) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // ── SCROLL REVEAL ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // ── MENU HAMBURGER ──
+  function toggleMenu() {
+    const btn = document.getElementById('hamburger');
+    const drawer = document.getElementById('navDrawer');
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  }
+  document.addEventListener('click', (e) => {
+    const drawer = document.getElementById('navDrawer');
+    const btn = document.getElementById('hamburger');
+    if (drawer && btn && drawer.classList.contains('open') && !drawer.contains(e.target) && !btn.contains(e.target)) {
+      btn.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  function shareWhatsApp() { window.open('https://wa.me/?text=' + encodeURIComponent(document.title + ' — ' + window.location.href), '_blank'); }
+  function shareFacebook() { window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); }
+  function shareTwitter() { window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&url=' + encodeURIComponent(window.location.href), '_blank'); }
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert('Lien copié !');
+    });
+  }
+
+  const comments = [];
+  function submitComment() {
+    const name = document.getElementById('commentName').value.trim();
+    const text = document.getElementById('commentText').value.trim();
+    if (!name || !text) { alert('Veuillez remplir tous les champs.'); return; }
+    comments.unshift({ name, text, date: new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }) });
+    document.getElementById('commentName').value = '';
+    document.getElementById('commentText').value = '';
+    renderComments();
+  }
+  function renderComments() {
+    const list = document.getElementById('commentsList');
+    if (comments.length === 0) { list.innerHTML = ''; return; }
+    list.innerHTML = comments.map(c => `
+      <div class="comment-item">
+        <div class="comment-meta">
+          <span class="comment-author">${c.name}</span>
+          <span class="comment-date">${c.date}</span>
+        </div>
+        <p class="comment-body">${c.text}</p>
+      </div>
+    `).join('');
+  }
+</script>
+</body>
+</html>

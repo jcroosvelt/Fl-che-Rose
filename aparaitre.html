@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>À paraître — Flèche Rose Éditions</title>
+  <meta name="description" content="Découvrez les prochaines parutions de Flèche Rose Éditions — romans, poésie et essais à venir en 2026.">
+  <meta property="og:title" content="À paraître — Flèche Rose Éditions">
+  <meta property="og:description" content="Les prochains titres de Flèche Rose Éditions.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_HT">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Epilogue:wght@300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white:   #faf9f7;
+      --off:     #f2efeb;
+      --border:  #e5e0d8;
+      --text:    #1c1916;
+      --muted:   #9a9189;
+      --rose:    #8a1535;
+      --rose-lt: #f0d8de;
+      --rose-dk: #6b0f28;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLL PROGRESS ─── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 999;
+      height: 2px; width: 0%;
+      background: var(--rose);
+      transition: width 0.1s linear;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 3rem;
+      height: 68px;
+      background: rgba(250,249,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-name small {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: -2px;
+    }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a.active { color: var(--rose); }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 1px;
+      background: var(--rose);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+    .search-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); padding: 0.4rem;
+      display: flex; align-items: center;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+    .search-btn:hover { color: var(--rose); }
+
+    /* ─── HAMBURGER ─── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; justify-content: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; height: 1.5px; width: 100%;
+      background: var(--text);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ─── DRAWER ─── */
+    .nav-drawer {
+      position: fixed; top: 68px; left: 0; right: 0;
+      background: rgba(250,249,247,0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 190;
+      transform: translateY(-110%);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+      padding: 2rem 2rem 2.5rem;
+    }
+    .nav-drawer.open { transform: translateY(0); }
+    .nav-drawer ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .nav-drawer ul li a {
+      display: block; padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .nav-drawer ul li a:hover { color: var(--rose); padding-left: 0.5rem; }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding-top: 68px;
+      background: var(--text);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: var(--rose);
+      opacity: 0.07;
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 10%;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      background: var(--rose-lt);
+      opacity: 0.04;
+    }
+
+    .page-header-inner {
+      padding: 5rem 3rem 4rem;
+      position: relative; z-index: 1;
+      max-width: 700px;
+    }
+
+    .page-header-tag {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.62rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--rose);
+      margin-bottom: 2rem;
+    }
+
+    .page-header-tag::before {
+      content: '';
+      display: block; width: 24px; height: 1px;
+      background: var(--rose);
+    }
+
+    .page-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 4vw, 4.5rem);
+      font-weight: 400; line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+
+    .page-header h1 em { font-style: italic; color: var(--rose); }
+
+    .page-header-desc {
+      margin-top: 1.5rem;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 1rem; font-weight: 300;
+      line-height: 1.75; color: rgba(250,249,247,0.5);
+      max-width: 44ch;
+    }
+
+    .page-header-strip {
+      display: flex;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 3rem;
+    }
+
+    .phs-item {
+      flex: 1; padding: 1.5rem 3rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .phs-item:last-child { border-right: none; }
+
+    .phs-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem; color: var(--white);
+    }
+
+    .phs-label {
+      font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.3);
+      margin-top: 0.2rem;
+    }
+
+    /* ─── MAIN SECTION ─── */
+    .aparaitre-section {
+      padding: 5rem 3rem 7rem;
+    }
+
+    /* ─── YEAR SEPARATOR ─── */
+    .year-separator {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin-bottom: 3rem;
+      margin-top: 4rem;
+    }
+    .year-separator:first-of-type { margin-top: 0; }
+
+    .year-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.72rem; letter-spacing: 0.3em;
+      color: var(--rose);
+      white-space: nowrap;
+    }
+
+    .year-line {
+      flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ─── BOOKS GRID ─── */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem 2rem;
+    }
+
+    .book-card {
+      cursor: default;
+    }
+
+    .book-cover-wrap {
+      width: 100%; aspect-ratio: 5/8;
+      margin-bottom: 1.2rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .book-cover-art {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bc-deco {
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      opacity: 0.12;
+    }
+
+    .bc-year-tag {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      font-size: 0.48rem; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .bc-line {
+      width: 28px; height: 2px;
+      background: var(--rose);
+      margin-bottom: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .bc-genre {
+      font-size: 0.48rem; letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.35);
+      margin-bottom: 0.5rem;
+    }
+
+    .bc-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.95rem; font-style: italic;
+      color: rgba(250,249,247,0.92);
+      line-height: 1.25; margin-bottom: 0.5rem;
+    }
+
+    .bc-author {
+      font-size: 0.5rem; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.35);
+    }
+
+    /* Hover lift uniquement pour les pré-commandes */
+    .book-card.preorder {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .book-card.preorder:hover { transform: translateY(-6px); }
+    .book-card.preorder .book-cover-wrap {
+      transition: box-shadow 0.3s ease;
+    }
+    .book-card.preorder:hover .book-cover-wrap {
+      box-shadow: 0 20px 50px rgba(28,25,22,0.18);
+    }
+
+    /* Badge pré-commande */
+    .book-preorder-badge {
+      position: absolute; top: 0.65rem; left: 0.65rem;
+      font-size: 0.4rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #fff; background: var(--rose);
+      padding: 0.2rem 0.6rem;
+      pointer-events: none;
+    }
+
+    /* Badge "à venir" */
+    .book-coming-badge {
+      position: absolute; top: 0.65rem; left: 0.65rem;
+      font-size: 0.4rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.2rem 0.6rem;
+      pointer-events: none;
+    }
+
+    .book-meta {
+      display: flex; flex-direction: column; gap: 0.15rem;
+    }
+
+    .book-meta-badge {
+      display: inline-block;
+      font-size: 0.52rem; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.3rem;
+    }
+
+    .book-meta-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem; font-weight: 400;
+      color: var(--text);
+    }
+
+    .book-meta-author {
+      font-size: 0.68rem; color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .book-meta-date {
+      font-size: 0.6rem; letter-spacing: 0.1em;
+      color: var(--border);
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+
+    /* ─── NEWSLETTER BAND ─── */
+    .newsletter-band {
+      background: var(--text);
+      padding: 5rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter-band::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: var(--rose);
+      opacity: 0.04;
+      top: -200px; right: -100px;
+      pointer-events: none;
+    }
+
+    .newsletter-inner {
+      max-width: 560px; margin: 0 auto;
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+
+    .newsletter-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--rose);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .newsletter-title em { font-style: italic; color: var(--rose); }
+
+    .newsletter-desc {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(250,249,247,0.45);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .newsletter-form {
+      display: flex; gap: 0;
+      max-width: 420px; margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      background: rgba(250,249,247,0.06);
+      border: 1px solid rgba(250,249,247,0.12);
+      border-right: none;
+      color: var(--white);
+      padding: 0.85rem 1.2rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .newsletter-form input::placeholder { color: rgba(250,249,247,0.3); }
+    .newsletter-form input:focus {
+      border-color: var(--rose);
+      background: rgba(250,249,247,0.09);
+    }
+
+    .newsletter-form button {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--rose); color: var(--white);
+      border: 1px solid var(--rose);
+      padding: 0 1.6rem; cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.25s;
+    }
+
+    .newsletter-form button:hover { background: var(--rose-dk); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--text);
+      color: var(--white);
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 2rem;
+      border-top: 3px solid var(--rose);
+    }
+
+    .footer-brand { display: flex; align-items: center; gap: 0.75rem; }
+
+    .footer-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.95rem; color: var(--white);
+    }
+
+    .footer-copy {
+      text-align: center;
+      font-size: 0.62rem; letter-spacing: 0.1em;
+      color: rgba(250,249,247,0.3);
+    }
+
+    .footer-links {
+      display: flex; justify-content: flex-end;
+      gap: 2rem; list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.4);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--rose); }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal {
+      opacity: 1; transform: none;
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1),
+                  transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal.hidden { opacity: 0; transform: translateY(28px); }
+
+    /* ─── MODAL LIVRE ─── */
+    #bookModal { display:none; position:fixed; inset:0; z-index:600; background:rgba(26,21,16,0.72); backdrop-filter:blur(6px); overflow-y:auto; padding:2rem 1rem; }
+    #bookModal.open { display:block; }
+    .am-inner { max-width:860px; margin:3rem auto; background:#faf7f2; border:1px solid #ddd5c5; box-shadow:0 40px 100px rgba(26,21,16,0.28); position:relative; overflow:hidden; }
+    .am-hero { width:100%; height:280px; overflow:hidden; position:relative; }
+    .am-hero-bg { width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+    .am-hero-book { width:84px; aspect-ratio:5/8; background:rgba(255,255,255,0.09); border:1px solid rgba(255,255,255,0.2); display:flex; flex-direction:column; justify-content:flex-end; padding:0.8rem; box-shadow:0 10px 36px rgba(0,0,0,0.3); }
+    .am-hero-bar { width:15px; height:2px; margin-bottom:0.4rem; }
+    .am-hero-title { font-family:'DM Serif Display',serif; font-size:0.52rem; font-style:italic; color:#fff; line-height:1.3; }
+    .am-hero-author { font-size:0.34rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.38); margin-top:3px; }
+    .am-controls { position:absolute; top:0; left:0; right:0; display:flex; align-items:flex-start; justify-content:flex-end; padding:1rem; pointer-events:none; }
+    .am-close { background:rgba(26,21,16,0.55); border:1px solid rgba(255,255,255,0.18); color:#fff; width:34px; height:34px; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; pointer-events:all; }
+    .am-close:hover { background:#8a1535; border-color:#8a1535; }
+    .am-meta-band { background:#1a1510; border-bottom:3px solid #8a1535; display:flex; align-items:center; min-height:54px; padding:0 2rem; overflow-x:auto; }
+    .am-meta-band::-webkit-scrollbar { display:none; }
+    .am-pill { display:flex; align-items:center; gap:0.5rem; padding:0.8rem 1.8rem 0.8rem 0; margin-right:1.8rem; border-right:1px solid rgba(255,255,255,0.07); flex-shrink:0; }
+    .am-pill:last-of-type { border-right:none; margin-right:0; }
+    .am-pill svg { color:rgba(255,255,255,0.28); flex-shrink:0; }
+    .am-pill-txt { display:flex; flex-direction:column; gap:2px; }
+    .am-pill-lbl { font-size:0.43rem; letter-spacing:0.24em; text-transform:uppercase; color:rgba(255,255,255,0.22); line-height:1; }
+    .am-pill-val { font-family:'DM Serif Display',serif; font-size:0.8rem; font-style:italic; color:rgba(255,255,255,0.84); line-height:1; }
+    .am-badge { display:inline-flex; padding:0.26rem 0.85rem; font-size:0.48rem; letter-spacing:0.24em; text-transform:uppercase; background:#8a1535; color:#fff; margin:1.5rem 0 0 2rem; }
+    .am-badge-avenir { background:rgba(138,21,53,0.15); color:#8a1535; border:1px solid rgba(138,21,53,0.3); }
+    .am-layout { display:grid; grid-template-columns:minmax(0,1fr) 210px; gap:2.5rem; padding:1.6rem 2rem 3rem; }
+    .am-title { font-family:'DM Serif Display',serif; font-size:clamp(1.25rem,2vw,1.65rem); font-weight:400; line-height:1.15; letter-spacing:-0.01em; color:#1a1510; margin-bottom:1.2rem; }
+    .am-lead { font-family:'DM Serif Display',serif; font-size:0.97rem; font-style:italic; line-height:1.68; color:#5c5045; padding-left:1rem; border-left:2px solid #8a1535; margin-bottom:1.6rem; }
+    .am-ornament { display:flex; align-items:center; gap:0.65rem; margin-bottom:1.6rem; }
+    .am-orn-bar { width:28px; height:1px; background:#8a1535; }
+    .am-orn-lozenge { width:5px; height:5px; background:#8a1535; transform:rotate(45deg); }
+    .am-orn-bar-long { flex:1; height:1px; background:#ddd5c5; }
+    .am-body { font-family:'Epilogue',sans-serif; font-size:0.92rem; font-weight:300; line-height:1.88; color:#4a443c; }
+    .am-body p { margin-bottom:1.25rem; }
+    .am-body p:last-child { margin-bottom:0; }
+    .am-body em { font-style:italic; color:#8a1535; }
+    .am-price-block { margin-top:1.8rem; padding:1rem 1.2rem; background:#f0ebe0; border:1px solid #ddd5c5; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+    .am-price-lbl { font-size:0.52rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
+    .am-price-val { font-family:'DM Serif Display',serif; font-size:1.1rem; font-style:italic; color:#8a1535; }
+    .am-cta-block { margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem; }
+    .am-cta-btn { display:inline-flex; align-items:center; gap:0.65rem; padding:0.8rem 1.4rem; font-family:'DM Sans',sans-serif; font-size:0.7rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; cursor:pointer; border:none; transition:all 0.22s; }
+    .am-cta-primary { background:#8a1535; color:#fff; }
+    .am-cta-primary:hover { background:#6b0f28; transform:translateY(-1px); }
+    .am-cta-wa { background:#25d366; color:#fff; }
+    .am-cta-wa:hover { background:#1aaf54; transform:translateY(-1px); }
+    .am-cta-outline { background:transparent; color:#1a1510; border:1px solid #ddd5c5; }
+    .am-cta-outline:hover { border-color:#8a1535; color:#8a1535; }
+    .am-sidebar { display:flex; flex-direction:column; gap:1.3rem; }
+    .am-sb-block { border:1px solid #ddd5c5; overflow:hidden; background:#fff; }
+    .am-sb-lbl { font-size:0.44rem; letter-spacing:0.24em; text-transform:uppercase; color:#8a1535; display:block; padding:0.9rem 1rem 0; margin-bottom:0.75rem; }
+    .am-author-row { display:flex; align-items:center; gap:0.7rem; padding:0 1rem; }
+    .am-author-av { width:40px; height:40px; border-radius:50%; flex-shrink:0; background:#f5e0e6; display:flex; align-items:center; justify-content:center; font-family:'DM Serif Display',serif; font-size:0.9rem; font-style:italic; color:#8a1535; }
+    .am-author-name { font-family:'DM Serif Display',serif; font-size:0.85rem; font-style:italic; color:#1a1510; }
+    .am-author-role { font-size:0.48rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-top:2px; }
+    .am-author-bio { font-size:0.72rem; font-weight:300; line-height:1.65; color:var(--muted); padding:0.7rem 1rem 1rem; border-top:1px solid #ddd5c5; margin-top:0.75rem; }
+    .am-book-cover-mini { height:86px; display:flex; align-items:center; justify-content:center; }
+    .am-book-spine { width:44px; aspect-ratio:5/8; display:flex; flex-direction:column; justify-content:flex-end; padding:0.42rem; box-shadow:0 6px 20px rgba(0,0,0,0.27); transition:transform 0.3s; }
+    .am-sb-block:hover .am-book-spine { transform:translateY(-4px) rotate(-1.5deg); }
+    .am-spine-bar { width:8px; height:2px; background:#8a1535; margin-bottom:0.22rem; }
+    .am-spine-title { font-family:'DM Serif Display',serif; font-size:0.36rem; font-style:italic; color:#fff; line-height:1.3; }
+    .am-spine-author { font-size:0.27rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.38); margin-top:2px; }
+    @media (max-width:680px) {
+      .am-layout { grid-template-columns:1fr; }
+      .am-sidebar { margin-top:1.8rem; }
+      .am-hero { height:200px; }
+    }
+
+    /* ─── POPUP PRÉCOMMANDE ─── */
+    .buy-popup-overlay {
+      position: fixed; inset: 0; z-index: 700;
+      background: rgba(28,25,22,0.6);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .buy-popup-overlay.open { opacity: 1; pointer-events: all; }
+    .buy-popup {
+      background: var(--white);
+      max-width: 480px; width: 100%;
+      padding: 2.5rem;
+      position: relative;
+      border-top: 3px solid var(--rose);
+      box-shadow: 0 30px 80px rgba(28,25,22,0.25);
+    }
+    .buy-popup-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 1.2rem;
+      transition: color 0.2s; padding: 0.2rem;
+    }
+    .buy-popup-close:hover { color: var(--rose); }
+    .buy-popup-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .buy-popup-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--text); margin-bottom: 0.75rem; line-height: 1.3;
+    }
+    .buy-popup-text {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.88rem; font-weight: 300;
+      line-height: 1.7; color: var(--muted); margin-bottom: 1.8rem;
+    }
+    .buy-popup-contacts { display: flex; flex-direction: column; gap: 0.6rem; }
+    .buy-popup-wa {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      text-decoration: none; color: var(--text);
+      transition: all 0.2s;
+    }
+    .buy-popup-wa:hover { border-color: #25d366; background: #f0fdf4; }
+    .buy-popup-wa svg { color: #25d366; flex-shrink: 0; }
+    .wa-region { display: block; font-size: 0.72rem; font-weight: 500; color: var(--text); }
+    .wa-number { display: block; font-size: 0.65rem; letter-spacing: 0.05em; color: var(--muted); margin-top: 2px; }
+
+    /* ─── POPUP PRÉCOMMANDE ─── */
+    .buy-popup-overlay {
+      position: fixed; inset: 0; z-index: 700;
+      background: rgba(28,25,22,0.6);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .buy-popup-overlay.open { opacity: 1; pointer-events: all; }
+    .buy-popup {
+      background: var(--white);
+      max-width: 480px; width: 100%;
+      padding: 2.5rem;
+      position: relative;
+      border-top: 3px solid var(--rose);
+      box-shadow: 0 30px 80px rgba(28,25,22,0.25);
+      animation: fadeUp 0.3s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .buy-popup-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 1.2rem;
+      transition: color 0.2s; padding: 0.2rem;
+    }
+    .buy-popup-close:hover { color: var(--rose); }
+    .buy-popup-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .buy-popup-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--text); margin-bottom: 0.75rem; line-height: 1.3;
+    }
+    .buy-popup-text {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.88rem; font-weight: 300;
+      line-height: 1.7; color: var(--muted); margin-bottom: 1.8rem;
+    }
+    .buy-popup-contacts { display: flex; flex-direction: column; gap: 0.6rem; }
+    .buy-popup-wa {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      text-decoration: none; color: var(--text); transition: all 0.2s;
+    }
+    .buy-popup-wa:hover { border-color: #25d366; background: #f0fdf4; }
+    .buy-popup-wa svg { color: #25d366; flex-shrink: 0; }
+    .wa-region { display: block; font-size: 0.72rem; font-weight: 500; color: var(--text); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links, .search-btn { display: none; }
+      .nav-hamburger { display: flex; }
+      .books-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { padding: 0 1.5rem; }
+      .aparaitre-section { padding: 3rem 1.5rem 5rem; }
+      .page-header-strip { flex-wrap: wrap; }
+      footer { grid-template-columns: 1fr; text-align: center; }
+      .footer-links { justify-content: center; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form input { border-right: 1px solid rgba(250,249,247,0.12); border-bottom: none; }
+      .newsletter-form button { padding: 0.85rem 1.2rem; }
+    }
+
+    @media (max-width: 560px) {
+      .books-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+      .page-header-inner { padding: 3.5rem 1.5rem 2.5rem; }
+      .phs-item { padding: 1.2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProg"></div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/2fb2d9e9-fb31-497a-b978-9e99ac0bb639.png" alt="Flèche Rose Éditions" style="height:52px; width:auto; object-fit:contain;">
+    <div class="nav-name">Flèche Rose Éditions<small>Maison d'édition</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="catalogue.html">Catalogue</a></li>
+    <li><a href="aparaitre.html" class="active">À paraître</a></li>
+    <li><a href="index.html#selection">Sélection</a></li>
+    <li><a href="auteur.html">Auteurs</a></li>
+    <li><a href="articles.html">Actualités</a></li>
+    <li><a href="galerie.html">Galerie</a></li>
+    <li><a href="presse.html">Presse</a></li>
+    <li><a href="soumettre_manuscrit.html">Manuscrits</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="search-btn" aria-label="Rechercher">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </button>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="catalogue.html">Catalogue</a></li>
+    <li><a href="aparaitre.html">À paraître</a></li>
+    <li><a href="index.html#selection">Sélection</a></li>
+    <li><a href="auteur.html">Auteurs</a></li>
+    <li><a href="articles.html">Actualités</a></li>
+    <li><a href="galerie.html">Galerie</a></li>
+    <li><a href="presse.html">Presse</a></li>
+    <li><a href="soumettre_manuscrit.html">Manuscrits</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</div>
+
+<!-- ─── PAGE HEADER ─── -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-tag">Prochaines parutions</div>
+    <h1>À <em>paraître</em></h1>
+    <p class="page-header-desc">Les titres qui arrivent bientôt chez Flèche Rose Éditions — romans, anthologies, poésie. Réservez en avance, soyez les premiers.</p>
+  </div>
+  <div class="page-header-strip">
+    <div class="phs-item">
+      <div class="phs-num">4</div>
+      <div class="phs-label">Titres annoncés</div>
+    </div>
+    <div class="phs-item">
+      <div class="phs-num">2026</div>
+      <div class="phs-label">Année de parution</div>
+    </div>
+    <div class="phs-item">
+      <div class="phs-num">1</div>
+      <div class="phs-label">En pré-commande</div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── LIVRES À PARAÎTRE ─── -->
+<section class="aparaitre-section">
+
+  <!-- Pré-commande disponible -->
+  <div class="year-separator">
+    <span class="year-num">Pré-commande disponible</span>
+    <div class="year-line"></div>
+  </div>
+
+  <div class="books-grid" style="margin-bottom: 0;">
+    <div class="book-card preorder reveal hidden" onclick="openBookModal(0)">
+      <div class="book-cover-wrap">
+        <div class="book-cover-art" style="background: linear-gradient(160deg, #2c1a2e 0%, #8a1535 100%);">
+          <div class="bc-deco" style="background:#d45f7a;"></div>
+          <div class="bc-year-tag">2026</div>
+          <div class="bc-line"></div>
+          <div class="bc-genre">Anthologie</div>
+          <div class="bc-title">Femme Mille Lieux</div>
+          <div class="bc-author">Anthologie collective</div>
+        </div>
+        <span class="book-preorder-badge">Pré-commande</span>
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Anthologie</span>
+        <div class="book-meta-title">Femme Mille Lieux</div>
+        <div class="book-meta-author">Anthologie collective</div>
+        <div class="book-meta-date">Parution prévue : avril 2026 · 1 500 G</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Annoncés -->
+  <div class="year-separator" style="margin-top: 5rem;">
+    <span class="year-num">Annoncés pour 2026</span>
+    <div class="year-line"></div>
+  </div>
+
+  <div class="books-grid">
+
+    <div class="book-card reveal hidden" style="cursor:pointer;" onclick="openBookModal(1)">
+      <div class="book-cover-wrap">
+        <div class="book-cover-art" style="background: linear-gradient(135deg, #1a2c1e 0%, #2e6b3a 100%);">
+          <div class="bc-deco" style="background:#6bc67e;"></div>
+          <div class="bc-year-tag">2026</div>
+          <div class="bc-line"></div>
+          <div class="bc-genre">Roman</div>
+          <div class="bc-title">Le chemin d'Ange-Heureux</div>
+          <div class="bc-author">Brice Bernard</div>
+        </div>
+        <span class="book-coming-badge">À venir</span>
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Roman</span>
+        <div class="book-meta-title">Le chemin d'Ange-Heureux</div>
+        <div class="book-meta-author">Brice Bernard</div>
+        <div class="book-meta-date">2026</div>
+      </div>
+    </div>
+
+    <div class="book-card reveal hidden" style="cursor:pointer;" onclick="openBookModal(2)">
+      <div class="book-cover-wrap">
+        <div class="book-cover-art" style="background: linear-gradient(135deg, #2a1a2e 0%, #7a3a8a 100%);">
+          <div class="bc-deco" style="background:#c67eb0;"></div>
+          <div class="bc-year-tag">2026</div>
+          <div class="bc-line"></div>
+          <div class="bc-genre">Roman</div>
+          <div class="bc-title">Lune et miel</div>
+          <div class="bc-author">Mardochée Gay</div>
+        </div>
+        <span class="book-coming-badge">À venir</span>
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Roman</span>
+        <div class="book-meta-title">Lune et miel</div>
+        <div class="book-meta-author">Mardochée Gay</div>
+        <div class="book-meta-date">2026</div>
+      </div>
+    </div>
+
+    <div class="book-card reveal hidden" style="cursor:pointer;" onclick="openBookModal(3)">
+      <div class="book-cover-wrap">
+        <div class="book-cover-art" style="background: linear-gradient(135deg, #1a2c2e 0%, #155a8a 100%);">
+          <div class="bc-deco" style="background:#7eb0c6;"></div>
+          <div class="bc-year-tag">2026</div>
+          <div class="bc-line"></div>
+          <div class="bc-genre">Roman</div>
+          <div class="bc-title">Granma</div>
+          <div class="bc-author">Jean Michelot Polynice</div>
+        </div>
+        <span class="book-coming-badge">À venir</span>
+      </div>
+      <div class="book-meta">
+        <span class="book-meta-badge">Roman</span>
+        <div class="book-meta-title">Granma</div>
+        <div class="book-meta-author">Jean Michelot Polynice</div>
+        <div class="book-meta-date">2026</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Note bas de page -->
+  <p style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); font-family: 'Epilogue', sans-serif; font-size: 0.82rem; font-weight: 300; color: var(--muted); font-style: italic;">
+    Les dates de parution sont susceptibles d'évoluer. Inscrivez-vous à notre newsletter pour être informés en premier des nouvelles sorties.
+  </p>
+
+</section>
+
+<!-- ─── MODAL LIVRE ─── -->
+<div id="bookModal" onclick="closeModalOutside(event)">
+  <div class="am-inner" id="bookModalInner">
+
+    <!-- Hero -->
+    <div class="am-hero">
+      <div class="am-hero-bg" id="bmHeroBg">
+        <div class="am-hero-book">
+          <div class="am-hero-bar" id="bmHeroBar"></div>
+          <div class="am-hero-title" id="bmHeroTitle"></div>
+          <div class="am-hero-author" id="bmHeroAuthor"></div>
+        </div>
+      </div>
+      <div class="am-controls">
+        <button class="am-close" onclick="closeBookModal()">✕</button>
+      </div>
+    </div>
+
+    <!-- Bande méta -->
+    <div class="am-meta-band">
+      <div class="am-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <div class="am-pill-txt">
+          <span class="am-pill-lbl">Genre</span>
+          <span class="am-pill-val" id="bmMetaGenre"></span>
+        </div>
+      </div>
+      <div class="am-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <div class="am-pill-txt">
+          <span class="am-pill-lbl">Auteur</span>
+          <span class="am-pill-val" id="bmMetaAuteur"></span>
+        </div>
+      </div>
+      <div class="am-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <div class="am-pill-txt">
+          <span class="am-pill-lbl">Parution prévue</span>
+          <span class="am-pill-val" id="bmMetaDate"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badge -->
+    <div><span class="am-badge" id="bmBadge"></span></div>
+
+    <!-- Layout -->
+    <div class="am-layout">
+      <main>
+        <h2 class="am-title" id="bmTitle"></h2>
+        <p class="am-lead" id="bmLead"></p>
+        <div class="am-ornament">
+          <div class="am-orn-bar"></div>
+          <div class="am-orn-lozenge"></div>
+          <div class="am-orn-bar-long"></div>
+        </div>
+        <div class="am-body" id="bmBody"></div>
+
+        <!-- Prix (affiché seulement si disponible) -->
+        <div class="am-price-block" id="bmPriceBlock" style="display:none;">
+          <span class="am-price-lbl">Prix</span>
+          <span class="am-price-val" id="bmPriceVal"></span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="am-cta-block" id="bmCtas"></div>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="am-sidebar">
+        <div class="am-sb-block">
+          <span class="am-sb-lbl">Auteur(s)</span>
+          <div class="am-author-row">
+            <div class="am-author-av" id="bmAuthorAv"></div>
+            <div>
+              <div class="am-author-name" id="bmAuthorName"></div>
+              <div class="am-author-role" id="bmAuthorRole"></div>
+            </div>
+          </div>
+          <p class="am-author-bio" id="bmAuthorBio"></p>
+        </div>
+        <div class="am-sb-block">
+          <div class="am-book-cover-mini" id="bmCoverMini">
+            <div class="am-book-spine" id="bmSpine">
+              <div class="am-spine-bar"></div>
+              <div class="am-spine-title" id="bmSpineTitle"></div>
+              <div class="am-spine-author" id="bmSpineAuthor"></div>
+            </div>
+          </div>
+          <div style="padding:0 1rem 1rem;">
+            <span class="am-sb-lbl" style="padding:0.6rem 0 0.5rem;display:block;">Maison d'édition</span>
+            <div style="font-family:'DM Serif Display',serif;font-size:0.85rem;font-style:italic;color:#1a1510;">Flèche Rose Éditions</div>
+            <div style="font-size:0.48rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:2px;">Carrefour, Haïti · 2023 –</div>
+            <a href="catalogue.html" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.75rem;font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:#8a1535;text-decoration:none;border-bottom:1px solid rgba(138,21,53,0.25);">Voir le catalogue →</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── POPUP PRÉCOMMANDE ─── -->
+<div class="buy-popup-overlay" id="preorderPopup" onclick="closePreorderPopup(event)">
+  <div class="buy-popup">
+    <button class="buy-popup-close" onclick="closePreorderPopup()">✕</button>
+    <div class="buy-popup-icon">📖</div>
+    <h3 class="buy-popup-title">Réservez votre exemplaire</h3>
+    <p class="buy-popup-text">Contactez-nous directement sur WhatsApp pour pré-commander votre exemplaire de <em>Femme Mille Lieux</em> et être parmi les premiers à le recevoir.</p>
+    <div class="buy-popup-contacts">
+      <a class="buy-popup-wa" href="https://wa.me/50932477739?text=Bonjour%2C%20je%20voudrais%20pr%C3%A9commander%20Femme%20Mille%20Lieux" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div>
+          <span class="wa-region">🇭🇹 Haïti</span>
+          <span class="wa-number">+509 32 47 7739</span>
+        </div>
+      </a>
+      <a class="buy-popup-wa" href="https://wa.me/33780757414?text=Bonjour%2C%20je%20voudrais%20pr%C3%A9commander%20Femme%20Mille%20Lieux" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div>
+          <span class="wa-region">🇫🇷 France / Europe</span>
+          <span class="wa-number">+33 7 80 75 74 14</span>
+        </div>
+      </a>
+      <a class="buy-popup-wa" href="https://wa.me/18294535256?text=Bonjour%2C%20je%20voudrais%20pr%C3%A9commander%20Femme%20Mille%20Lieux" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div>
+          <span class="wa-region">🇺🇸 USA / Amérique du Nord</span>
+          <span class="wa-number">+1 829 453 5256</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── POPUP PRÉCOMMANDE ─── -->
+<div class="buy-popup-overlay" id="preorderPopup" onclick="closePreorderPopup(event)">
+  <div class="buy-popup">
+    <button class="buy-popup-close" onclick="closePreorderPopup()">✕</button>
+    <div class="buy-popup-icon">📖</div>
+    <h3 class="buy-popup-title">Réserver votre exemplaire</h3>
+    <p class="buy-popup-text">Contactez-nous directement sur WhatsApp pour réserver votre exemplaire en pré-commande. Nous vous confirmerons votre réservation dans les plus brefs délais.</p>
+    <div class="buy-popup-contacts">
+      <a class="buy-popup-wa" href="https://wa.me/50932477739?text=Bonjour%2C%20je%20souhaite%20pr%C3%A9commander%20Femme%20Mille%20Lieux" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div><span class="wa-region">🇭🇹 Haïti</span></div>
+      </a>
+      <a class="buy-popup-wa" href="https://wa.me/33780757414?text=Bonjour%2C%20je%20souhaite%20pr%C3%A9commander%20Femme%20Mille%20Lieux" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div><span class="wa-region">🇫🇷 France / Europe</span></div>
+      </a>
+      <a class="buy-popup-wa" href="https://wa.me/18294535256?text=Bonjour%2C%20je%20souhaite%20pr%C3%A9commander%20Femme%20Mille%20Lieux" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div><span class="wa-region">🇺🇸 USA / Amérique du Nord</span></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── NEWSLETTER ─── -->
+<section class="newsletter-band">
+  <div class="newsletter-inner">
+    <span class="newsletter-label">Restez informés</span>
+    <h2 class="newsletter-title">Soyez les premiers<br>informés des <em>nouvelles parutions</em></h2>
+    <p class="newsletter-desc">Sorties, pré-commandes, événements — recevez l'essentiel de Flèche Rose Éditions dans votre boîte mail.</p>
+    <div class="newsletter-form">
+      <input type="email" id="nlEmail" placeholder="Votre adresse e-mail" autocomplete="email">
+      <button onclick="handleNewsletter()">S'inscrire</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-brand">
+    <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/2fb2d9e9-fb31-497a-b978-9e99ac0bb639.png" alt="Flèche Rose Éditions" style="height:36px; width:auto; filter:brightness(0) invert(1); opacity:0.85;">
+    <span class="footer-name">Flèche Rose Éditions<small style="display:block;font-family:'DM Sans',sans-serif;font-size:0.6rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,249,247,0.4);margin-top:-2px;">Maison d'édition indépendante</small></span>
+  </div>
+  <div class="footer-copy">© 2026 Flèche Rose Éditions — Tous droits réservés</div>
+  <ul class="footer-links">
+    <li><a href="#">Mentions légales</a></li>
+    <li><a href="presse.html">Presse</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  // ─── DATA ───
+  const livres = [
+    {
+      titre: "Femme Mille Lieux",
+      auteur: "Anthologie collective",
+      genre: "Anthologie",
+      date: "Avril 2026",
+      preorder: true,
+      prix: ["1 500 G", "20 €", "20 $"],
+      gradient: "linear-gradient(160deg, #2c1a2e 0%, #8a1535 100%)",
+      barColor: "#d45f7a",
+      lead: "Flèche Rose Éditions vous invite à découvrir un livre où les femmes prennent la parole, racontent leurs chemins, leurs forces et leurs rêves.",
+      desc: "<p>Chaque page est une voix, chaque texte est un voyage. <em>Femme Mille Lieux</em> réunit des voix féminines d'Haïti et de la diaspora autour d'une anthologie rare et nécessaire.</p><p>Soyez parmi les premiers à tenir ce livre entre vos mains. La pré-commande est ouverte dès aujourd'hui.</p>",
+      authorInitials: "FC",
+      authorName: "Anthologie collective",
+      authorRole: "Collectif · Flèche Rose Éditions",
+      authorBio: "Un rassemblement de voix féminines haïtiennes contemporaines, réunies autour du projet éditorial Femme Mille Lieux sous la direction de Flèche Rose Éditions.",
+      wa: "https://wa.me/50932477739?text=Bonjour%2C%20je%20voudrais%20pr%C3%A9commander%20Femme%20Mille%20Lieux"
+    },
+    {
+      titre: "Le chemin d'Ange-Heureux",
+      auteur: "Brice Bernard",
+      genre: "Roman",
+      date: "2026",
+      preorder: false,
+      prix: null,
+      gradient: "linear-gradient(135deg, #1a2c1e 0%, #2e6b3a 100%)",
+      barColor: "#6bc67e",
+      lead: "Un roman attendu de Brice Bernard, bientôt aux Éditions Flèche Rose.",
+      desc: "<p>Les détails de ce titre seront annoncés prochainement. Inscrivez-vous à notre newsletter pour être informés dès la parution.</p>",
+      authorInitials: "BB",
+      authorName: "Brice Bernard",
+      authorRole: "Auteur · Flèche Rose Éditions",
+      authorBio: "Brice Bernard est un auteur haïtien dont le premier roman est à paraître en 2026 chez Flèche Rose Éditions.",
+      wa: null
+    },
+    {
+      titre: "Lune et miel",
+      auteur: "Mardochée Gay",
+      genre: "Roman",
+      date: "2026",
+      preorder: false,
+      prix: null,
+      gradient: "linear-gradient(135deg, #2a1a2e 0%, #7a3a8a 100%)",
+      barColor: "#c67eb0",
+      lead: "Le nouveau roman de Mardochée Gay, auteur de Vergetures — à paraître en 2026 chez Flèche Rose Éditions.",
+      desc: "<p>Après le succès de <em>Vergetures</em>, Mardochée Gay revient avec un nouveau roman. Les détails de parution seront communiqués prochainement.</p>",
+      authorInitials: "MG",
+      authorName: "Mardochée Gay",
+      authorRole: "Auteur · Flèche Rose Éditions",
+      authorBio: "Mardochée Gay est poète et romancier haïtien, auteur de Vergetures (2023), La douce qui vient (2021) et co-auteur de Send Nudes (2022).",
+      wa: null
+    },
+    {
+      titre: "Granma",
+      auteur: "Jean Michelot Polynice",
+      genre: "Roman",
+      date: "2026",
+      preorder: false,
+      prix: null,
+      gradient: "linear-gradient(135deg, #1a2c2e 0%, #155a8a 100%)",
+      barColor: "#7eb0c6",
+      lead: "Le prochain roman de Jean Michelot Polynice, dit Le Cupidon — à paraître en 2026.",
+      desc: "<p>Jean Michelot Polynice, auteur de <em>Doigt d'honneur</em> et <em>Grès Kakawo</em>, prépare un nouveau roman pour 2026. Les détails seront annoncés prochainement.</p>",
+      authorInitials: "JP",
+      authorName: "Jean Michelot Polynice",
+      authorRole: "Auteur · Flèche Rose Éditions",
+      authorBio: "Jean Michelot Polynice, dit Le Cupidon, est auteur haïtien de poésie et de romans. Il a publié Grès Kakawo (2022), Send Nudes (2022), Doigt d'honneur (2023) et Zenglen boutèy (2022).",
+      wa: null
+    }
+  ];
+
+  // ─── MODAL ───
+  function openBookModal(idx) {
+    const b = livres[idx];
+
+    // Hero
+    document.getElementById('bmHeroBg').style.background = b.gradient;
+    document.getElementById('bmHeroBar').style.background = b.barColor;
+    document.getElementById('bmHeroTitle').textContent = b.titre;
+    document.getElementById('bmHeroAuthor').textContent = b.auteur;
+
+    // Méta band
+    document.getElementById('bmMetaGenre').textContent = b.genre;
+    document.getElementById('bmMetaAuteur').textContent = b.auteur.split(',')[0];
+    document.getElementById('bmMetaDate').textContent = b.date;
+
+    // Badge
+    const badge = document.getElementById('bmBadge');
+    badge.textContent = b.preorder ? 'Pré-commande ouverte' : 'À paraître · ' + b.date;
+    badge.className = 'am-badge' + (b.preorder ? '' : ' am-badge-avenir');
+
+    // Titre et texte
+    document.getElementById('bmTitle').textContent = b.titre;
+    document.getElementById('bmLead').textContent = b.lead;
+    document.getElementById('bmBody').innerHTML = b.desc;
+
+    // Prix
+    const priceBlock = document.getElementById('bmPriceBlock');
+    if (b.prix) {
+      priceBlock.style.display = 'flex';
+      document.getElementById('bmPriceVal').textContent = b.prix.join(' · ');
+    } else {
+      priceBlock.style.display = 'none';
+    }
+
+    // CTAs
+    const ctasEl = document.getElementById('bmCtas');
+    ctasEl.innerHTML = '';
+    if (b.preorder) {
+      ctasEl.innerHTML = `
+        <button onclick="showPreorderPopup()" style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.8rem 1.8rem;background:var(--rose);color:#fff;border:1px solid var(--rose);font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.22s;" onmouseover="this.style.background='var(--rose-dk)';this.style.borderColor='var(--rose-dk)';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--rose)';this.style.borderColor='var(--rose)';this.style.transform=''">
+          Pré-commander
+        </button>`;
+    } else {
+      ctasEl.innerHTML = `
+        <button class="am-cta-btn am-cta-outline" style="cursor:default;opacity:0.6;" disabled>
+          Pré-commande bientôt disponible
+        </button>
+        <a class="am-cta-btn am-cta-outline" href="index.html#contact">Nous contacter →</a>`;
+    }
+
+    // Sidebar auteur
+    document.getElementById('bmAuthorAv').textContent = b.authorInitials;
+    document.getElementById('bmAuthorName').textContent = b.authorName;
+    document.getElementById('bmAuthorRole').textContent = b.authorRole;
+    document.getElementById('bmAuthorBio').textContent = b.authorBio;
+
+    // Sidebar couverture
+    document.getElementById('bmSpine').style.background = b.gradient;
+    document.getElementById('bmSpineTitle').textContent = b.titre;
+    document.getElementById('bmSpineAuthor').textContent = b.auteur.split(',')[0];
+
+    // Ouvrir
+    const modal = document.getElementById('bookModal');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('bookModalInner').scrollTop = 0;
+  }
+
+  function closeBookModal() {
+    document.getElementById('bookModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('bookModal')) closeBookModal();
+  }
+
+  function showPreorderPopup() {
+    document.getElementById('preorderPopup').classList.add('open');
+  }
+
+  function closePreorderPopup(e) {
+    if (!e || e.target === document.getElementById('preorderPopup')) {
+      document.getElementById('preorderPopup').classList.remove('open');
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeBookModal();
+      closePreorderPopup();
+    }
+  });
+
+  // ─── HAMBURGER ───
+  document.getElementById('hamburger').addEventListener('click', function () {
+    this.classList.toggle('open');
+    document.getElementById('navDrawer').classList.toggle('open');
+  });
+
+  // Fermer le drawer en cliquant à l'extérieur
+  document.addEventListener('click', (e) => {
+    const drawer = document.getElementById('navDrawer');
+    const btn = document.getElementById('hamburger');
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !btn.contains(e.target)) {
+      btn.classList.remove('open');
+      drawer.classList.remove('open');
+    }
+  });
+
+  // ─── SCROLL PROGRESS ───
+  window.addEventListener('scroll', () => {
+    const prog = document.getElementById('scrollProg');
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (window.scrollY / max * 100) + '%';
+  });
+
+  // ─── REVEAL ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.remove('hidden'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 0.08 + 's';
+    observer.observe(el);
+  });
+
+  // ─── NEWSLETTER ───
+  function handleNewsletter() {
+    const input = document.getElementById('nlEmail');
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) {
+      input.style.borderColor = '#e05';
+      input.focus();
+      setTimeout(() => input.style.borderColor = '', 1500);
+      return;
+    }
+    const btn = input.nextElementSibling;
+    btn.textContent = 'Merci !';
+    btn.style.background = '#2a6b3a';
+    input.value = '';
+    input.disabled = true;
+    setTimeout(() => {
+      btn.textContent = "S'inscrire";
+      btn.style.background = '';
+      input.disabled = false;
+    }, 3000);
+  }
+
+  document.getElementById('nlEmail').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleNewsletter();
+  });
+</script>
+</body>
+</html>
