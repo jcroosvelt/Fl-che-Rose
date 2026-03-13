@@ -2332,6 +2332,11 @@
 <script src="articles.js"></script>
 <script>
   renderIndexArticles();
+  // La grille a la classe "reveal" qui la garde invisible (opacity:0)
+  // jusqu'à détection par l'IntersectionObserver. Comme le contenu est
+  // injecté dynamiquement après l'observer, on force la visibilité ici.
+  const grid = document.getElementById('indexArticlesGrid');
+  if (grid) grid.classList.add('visible');
 </script>
 </body>
 </html>
