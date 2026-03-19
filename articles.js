@@ -65,6 +65,43 @@ const articles = [
 <blockquote><p>Car créer chez nous, c'est marcher sur une ligne fine entre douleur et espérance, et choisir malgré tout de laisser une trace.</p></blockquote>`
   },
 
+  {
+    titre:      "Dorothée Polynice : Une plume pour graver l'éternité",
+    date:       "19 mars 2026",
+    auteur:     "Par Mardochée Gay",
+    auteurRole: "Écrivain-poète — Flèche Rose Éditions",
+    auteurBio:  "Cofondateur de Flèche Rose Éditions, Mardochée Gay est écrivain-poète, étudiant finissant en psychologie à l'Université d'État d'Haïti. Il consacre sa plume aux voix et aux récits qui façonnent la littérature haïtienne contemporaine.",
+    readTime:   "5 min",
+    categorie:  "Entretien",
+    tags:       ["Entretien", "Portrait", "Femme", "Poésie", "Haïti"],
+    gradient:   "linear-gradient(135deg, #0d1a2e 0%, #1a3a5c 60%, #2a5080 100%)",
+    coverAccent:"#5b8fc2",
+    coverTitle: "Femme Mille Lieux",
+    coverAuthor:"Anthologie · 2026",
+    lead:       "L'écriture permet à l'homme d'habiter l'infini tout en étant conscient de sa finitude. Dorothée Polynice, plume discrète et déterminée, a fait de ce geste une voie de reconstruction — et une main tendue vers l'éternité.",
+    corps:      `<p><em>L'écriture permet à l'homme d'habiter l'infini tout en étant conscient de sa finitude. La part de divin qui sommeille en lui le conduit à la création, et cette création devient une main tendue vers l'intemporalité. L'écrivain, plus que tout autre être, est celui qui s'approche le plus de l'intelligence infinie : il sait manier le verbe. Or, le Verbe était, est et sera. D'ailleurs, Dorothée Polynice le déclare elle-même : « Tout ce que l'on couche sur le papier a plus de chances de perdurer que nous-mêmes. » Cette révélation accroche au mur de l'existence l'un des rôles les plus cruciaux de l'écrivain : inscrire, dans la durée, ce qui nous rend vivants.</em></p>
+
+<p>Férue de littérature, Dorothée Polynice a d'abord puisé à l'eau du savoir académique à l'école Saint François de Sales de Rivière Froide, avant de poursuivre des études universitaires en Administration des Affaires à l'Université Notre Dame d'Haïti. En 2022, elle a entamé sa carrière professionnelle à la Banque de l'Union Haïtienne (BUH). Entre une solide formation académique et un parcours universitaire brillant, Dorothée se laisse traverser par la pulsation de la vie en étant une pièce maîtresse du groupe socio-culturel Le Classique Haïti, du Flèche Rose Club, ainsi que des Éditions Flèche Rose.</p>
+
+<p>Pour beaucoup d'écrivains, l'écriture est un moyen d'extérioriser les traumatismes vécus. Dorothée, quant à elle, a fait de sa plume un outil pour tracer un chemin vers la reconstruction de soi. L'acte d'écrire lui a permis de recoudre ses fractures. Dorothée a pu transformer ses cassures en matrice de créations capables de vivre à travers les âges et de se faire semence dans la vie des autres. Elle a expérimenté cette force de l'écriture face à la perte de sa mère. Originaire de Carrefour, Dorothée témoigne en ces termes :</p>
+
+<blockquote><p>Je me souviens que la première véritable source d'inspiration pour mon écriture a été la perte de ma mère. C'est ce drame qui m'a poussée à commencer mon journal intime, le seul moyen pour moi d'exprimer pleinement mes émotions tout en affinant mon style.</p></blockquote>
+
+<p>En août 2022, Dorothée a participé à la rédaction de l'anthologie poétique <strong>« Zenglen Boutèy »</strong> du Club Littéraire Flèche Rose. Son écriture porte le stigmate de son quotidien, le flux de ses aspirations et l'empreinte de ses lectures. Vénus se baigne dans la sève de ses expériences, qui continuent de nourrir et de faire évoluer son inspiration. Elle travaille ainsi sur divers projets littéraires, qu'elle laisse mûrir avec le temps et la discrétion.</p>
+
+<p>N'est-il pas temps de donner la parole au silence ? De laisser émerger davantage les voix féminines ? Dorothée y croit fermement. Elle déclare :</p>
+
+<blockquote><p>Pour nous, les femmes, il existe une véritable urgence à écrire. Nous portons en nous des idées précieuses à partager, des histoires riches à raconter, capables d'inspirer et d'impacter de nombreuses personnes, qu'il s'agisse de questions sociales, de développement personnel ou de relations humaines.</p></blockquote>
+
+<p>Un avis que beaucoup partageront, au vu des prestigieux prix littéraires remportés par des femmes haïtiennes ces dernières années.</p>
+
+<p>Aujourd'hui, Dorothée vit à New York. Loin de sa terre natale, elle participe à l'anthologie de nouvelles <strong>« Femme-mille-lieux »</strong>, dirigée par les Éditions Flèche Rose. Ce projet ambitieux réunit exclusivement des plumes féminines, des voix qui ont leurs mots à dire, qui portent leur vision du monde et possèdent un imaginaire riche et poétique.</p>
+
+<p>Il y a, au-delà de la créativité, ce désir d'être entendue et de se faire entendre. La plume de Dorothée se vêt de ce désir de créer, d'apporter une contribution positive à la société et de participer au changement auquel aspirent les Haïtiens.</p>
+
+<p>Au-delà du rapport intime qu'elle entretient avec l'écriture, Dorothée se veut responsable et utile. Par le pouvoir conscientisant de ses écrits, elle répond, à travers sa nouvelle dans l'anthologie, à un appel lancé aux écrivains de l'âge classique (1650‑1700) : former l'esprit du public. Une mission brillamment accomplie.</p>`
+  },
+
   // ➕  AJOUTER UN ARTICLE ICI
   //
   // Exemple :
