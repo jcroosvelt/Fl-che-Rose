@@ -78,6 +78,7 @@ const articles = [
     coverAccent:"#5b8fc2",
     coverTitle: "Femme Mille Lieux",
     coverAuthor:"Anthologie · 2026",
+    image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/09ac30d3-2269-4236-813e-fbda18c1e71c.jpg",
     lead:       "L'écriture permet à l'homme d'habiter l'infini tout en étant conscient de sa finitude. Dorothée Polynice, plume discrète et déterminée, a fait de ce geste une voie de reconstruction — et une main tendue vers l'éternité.",
     corps:      `<p><em>L'écriture permet à l'homme d'habiter l'infini tout en étant conscient de sa finitude. La part de divin qui sommeille en lui le conduit à la création, et cette création devient une main tendue vers l'intemporalité. L'écrivain, plus que tout autre être, est celui qui s'approche le plus de l'intelligence infinie : il sait manier le verbe. Or, le Verbe était, est et sera. D'ailleurs, Dorothée Polynice le déclare elle-même : « Tout ce que l'on couche sur le papier a plus de chances de perdurer que nous-mêmes. » Cette révélation accroche au mur de l'existence l'un des rôles les plus cruciaux de l'écrivain : inscrire, dans la durée, ce qui nous rend vivants.</em></p>
 
