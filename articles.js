@@ -316,7 +316,7 @@ function renderPage() {
         if (!afImg) {
           afImg = document.createElement('img');
           afImg.className = 'af-photo';
-          afImg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0.75;';
+        afImg.style.cssText = 'position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0.88;';
           afVisual.prepend(afImg);
         }
         afImg.src = vedette.image;
