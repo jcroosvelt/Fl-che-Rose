@@ -103,6 +103,42 @@ const articles = [
 <p>Au-delà du rapport intime qu'elle entretient avec l'écriture, Dorothée se veut responsable et utile. Par le pouvoir conscientisant de ses écrits, elle répond, à travers sa nouvelle dans l'anthologie, à un appel lancé aux écrivains de l'âge classique (1650‑1700) : former l'esprit du public. Une mission brillamment accomplie.</p>`
   },
 
+  {
+    titre:      "Alande Caelle Cacéus : Quand les mots traduisent le silence !",
+    date:       "21 mars 2026",
+    auteur:     "Par Christophe Pierre",
+    auteurRole: "Poète, journaliste-rédacteur",
+    auteurBio:  "Christophe Pierre est poète et journaliste-rédacteur. Sa plume s'attache à mettre en lumière les voix émergentes de la littérature haïtienne contemporaine.",
+    readTime:   "4 min",
+    categorie:  "Entretien",
+    tags:       ["Entretien", "Portrait", "Femme", "Poésie", "Haïti"],
+    gradient:   "linear-gradient(135deg, #1a0a12 0%, #6b2040 60%, #8a1535 100%)",
+    coverAccent:"#c0506a",
+    coverTitle: "Femme Mille Lieux",
+    coverAuthor:"Anthologie · 2026",
+    image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/65227904-08cd-41ad-8d46-5e7fa7089f19.jpg",
+    lead:       "Dans les fêlures d'un quotidien qui saigne, il est des voix qui refusent de s'éteindre. Alande Caelle Cacéus appartient à cette génération de jeunes femmes pour qui l'écriture n'est pas un simple exercice de style, mais une nécessité intérieure : celle de dire, de témoigner et de transformer les silences en mots.",
+    corps:      `<p>Née le 16 octobre dans une famille chrétienne, Caëlle est originaire de Carrefour et y habite toujours. Actuellement, elle est en première année de médecine à la Faculté de médecine de Port-au-Prince de l'Université d'État d'Haïti (UEH). Au carrefour d'une ville qui pleure, comme l'a écrit Lefranc Dorélus dans son recueil de poésie <em>« Encre Rose »</em>, écrire devient pour les femmes une urgence pour conjurer la menace du silence et se donner la peine de briser le cycle de la vie pasticheuse.</p>
+
+<p>Ainsi déclare Caelle :</p>
+
+<blockquote><p>Je pense qu'il y a une urgence d'écrire aujourd'hui, surtout pour les femmes. Le silence est lourd et dangereux. Écrire permet de s'exprimer, surtout pour les autres qui ne peuvent pas.</p></blockquote>
+
+<p>Alande Caëlle Cacéus ne fuit pas la réalité de sa communauté ; elle garde sa plume consciente. Car elle n'écrit pas pour écrire, mais se fait la porte-parole des autres tout en extériorisant sa peur, ses rages et ses désirs. Aussi nous dévoile-t-elle :</p>
+
+<p><em>« Mon inspiration vient de la vie quotidienne et c'est ce qui m'inspire le plus. Elle se nourrit de mes expériences, des histoires que j'ai lues ou que l'on m'a racontées, ainsi que des films que j'ai regardés »</em>, conclut l'étudiante en médecine.</p>
+
+<p>Elle pense aussi, comme Fernand Hibbert en a fait l'assomption de l'écriture comme une arme de défense pour son pays dans son livre <em>Les Simulacres</em>, que créer est un acte profondément engagé. D'où sa réponse à la question : que signifie écrire pour elle aujourd'hui en Haïti ?</p>
+
+<blockquote><p>Écrire et créer en Haïti aujourd'hui, en tant que femme, est un acte de courage. C'est affirmer son existence dans un contexte difficile. C'est aussi une manière de résister, de se libérer et de revendiquer sa place.</p></blockquote>
+
+<p>Si elle prend part à l'anthologie <strong>Femmes-mille-lieux</strong> des éditions Flèche Rose, ce n'est pas pour occuper une place, mais pour affirmer une voix. Celle d'une jeune femme de Carrefour qui porte en elle des histoires capables d'inspirer, de transcender et parfois même de guérir.</p>
+
+<blockquote><p>J'écris pour laisser mon imagination s'exprimer librement, pour donner une forme aux pensées qui m'habitent et transformer mes émotions en mots. L'écriture est pour moi un espace de liberté où chaque phrase devient un moyen de comprendre ce que je ressens. À travers les mots, je traduis mes silences, mes rêves et mes émotions les plus profondes.</p></blockquote>
+
+<p>S'adressant aux jeunes de sa génération, elle les invite à croire, à oser et à résister au vertige de l'abandon. Car, comme le suggérait déjà Jacques Stephen Alexis dans sa lettre à sa fille Florence, lorsqu'un être renonce à ses rêves au bord du chemin, faisant fi de son intelligence, il finit par devenir méchant sans même le savoir.</p>`
+  },
+
   // ➕  AJOUTER UN ARTICLE ICI
   //
   // Exemple :
@@ -124,6 +160,16 @@ const articles = [
   // },
 
 ];
+
+// Tri automatique : article le plus récent en premier
+articles.sort((a, b) => {
+  const parse = d => new Date(d.replace(/(\d+)\s+(\w+)\s+(\d{4})/, (_, j, m, y) => {
+    const mois = {janvier:0,février:1,mars:2,avril:3,mai:4,juin:5,
+                  juillet:6,août:7,septembre:8,octobre:9,novembre:10,décembre:11};
+    return new Date(y, mois[m.toLowerCase()], j);
+  }));
+  return parse(b.date) - parse(a.date);
+});
 
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -309,19 +355,25 @@ function renderPage() {
   // ── Grille ──
   if (gridEl) {
     const grille = pageArticles.slice(1);
-    gridEl.innerHTML = grille.map(a => {
+    gridEl.innerHTML = grille.map((a, gi) => {
       const idx        = articles.indexOf(a);
       const authorName = cleanAuthor(a.auteur);
       const lbl        = readLabel(a.categorie);
       const accentCSS  = `style="background:${a.coverAccent};"`;
+      const isNewest   = (gi === 0); // 1er de la grille = 2e plus récent global
+      const visualInner = a.image
+        ? `<img src="${a.image}" alt="${escapeHtml(a.titre)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0.85;">
+           <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,0.35) 100%);"></div>`
+        : `<div class="ac-cover">
+             <div class="ac-cover-line" ${accentCSS}></div>
+             <div class="ac-cover-title">${escapeHtml(a.coverTitle)}</div>
+             <div class="ac-cover-author">${escapeHtml(a.coverAuthor)}</div>
+           </div>`;
       return `
       <article class="article-card reveal" data-category="${a.categorie.toLowerCase()}" onclick="window.location.href='article.html?id=${idx}'">
-        <div class="ac-visual" style="background:${a.gradient};">
-          <div class="ac-cover">
-            <div class="ac-cover-line" ${accentCSS}></div>
-            <div class="ac-cover-title">${escapeHtml(a.coverTitle)}</div>
-            <div class="ac-cover-author">${escapeHtml(a.coverAuthor)}</div>
-          </div>
+        <div class="ac-visual" style="background:${a.gradient};position:relative;">
+          ${isNewest ? `<span style="position:absolute;top:0.75rem;left:0.75rem;z-index:2;font-size:0.46rem;letter-spacing:0.2em;text-transform:uppercase;background:var(--rose);color:#fff;padding:0.18rem 0.55rem;">Nouveau</span>` : ''}
+          ${visualInner}
         </div>
         <div class="ac-body">
           <div class="ac-meta">
