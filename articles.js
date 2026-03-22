@@ -106,9 +106,9 @@ const articles = [
   {
     titre:      "Alande Caelle Cacéus : Quand les mots traduisent le silence !",
     date:       "21 mars 2026",
-    auteur:     "Par Christophe Pierre",
+    auteur:     "Par Christopher Pierre",
     auteurRole: "Poète, journaliste-rédacteur",
-    auteurBio:  "Christophe Pierre est poète et journaliste-rédacteur. Sa plume s'attache à mettre en lumière les voix émergentes de la littérature haïtienne contemporaine.",
+    auteurBio:  "Christopher Pierre est poète et journaliste-rédacteur. Sa plume s'attache à mettre en lumière les voix émergentes de la littérature haïtienne contemporaine.",
     readTime:   "4 min",
     categorie:  "Entretien",
     tags:       ["Entretien", "Portrait", "Femme", "Poésie", "Haïti"],
@@ -137,6 +137,44 @@ const articles = [
 <blockquote><p>J'écris pour laisser mon imagination s'exprimer librement, pour donner une forme aux pensées qui m'habitent et transformer mes émotions en mots. L'écriture est pour moi un espace de liberté où chaque phrase devient un moyen de comprendre ce que je ressens. À travers les mots, je traduis mes silences, mes rêves et mes émotions les plus profondes.</p></blockquote>
 
 <p>S'adressant aux jeunes de sa génération, elle les invite à croire, à oser et à résister au vertige de l'abandon. Car, comme le suggérait déjà Jacques Stephen Alexis dans sa lettre à sa fille Florence, lorsqu'un être renonce à ses rêves au bord du chemin, faisant fi de son intelligence, il finit par devenir méchant sans même le savoir.</p>`
+  },
+
+  {
+    titre:      "Judicaëlle Israël : quand l'écriture devient un acte de transformation",
+    date:       "22 mars 2026",
+    auteur:     "Par Jean Michelot Polynice",
+    auteurRole: "Écrivain-Poète, Travailleur social",
+    auteurBio:  "Jean Michelot Polynice est écrivain-poète et travailleur social. Sa plume s'engage au croisement du social et du littéraire, mettant en lumière les voix qui transforment le réel par l'écriture.",
+    readTime:   "5 min",
+    categorie:  "Entretien",
+    tags:       ["Entretien", "Portrait", "Femme", "Poésie", "Haïti"],
+    gradient:   "linear-gradient(135deg, #1a0a12 0%, #5c1a38 60%, #8a1535 100%)",
+    coverAccent:"#b84d6e",
+    coverTitle: "Femme Mille Lieux",
+    coverAuthor:"Anthologie · 2026",
+    image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/3adab7db-a49c-4538-b0db-8f817bc5935c.jpg",
+    lead:       "Rien en ce monde n'est plus important que l'acte de se transformer sans se perdre. Avec une plume qui se veut transformatrice de la réalité sociale du quotidien, Judicaëlle Israël nous invite à devenir les principaux maîtres à penser de notre histoire.",
+    corps:      `<p>Judicaëlle Israël a vu le jour un 8 juin. Elle poursuit actuellement des études en sciences de l'éducation et est enseignante au 1<sup>er</sup> cycle fondamental. Elle a également étudié l'informatique de bureau et l'entrepreneuriat. Passionnée de littérature, elle a participé à l'anthologie de poésie <em>Zenglen Boutèy</em> en août 2022, sous la direction du club littéraire Flèche Rose.</p>
+
+<p>À la question de savoir s'il y a une urgence d'écrire pour les femmes, Judicaëlle répond :</p>
+
+<blockquote><p>L'urgence d'écrire aujourd'hui semble absolue, surtout au regard de la situation chaotique que nous traversons en Haïti. Dans un monde saturé de bruits mais souvent vide de sens, l'écriture est un acte de résistance. Pour les femmes, c'est le moyen de passer de l'état d'objet — celle dont on parle — à celui de sujet — celle qui parle. Écrire permet de nommer le réel et de transformer nos traumatismes ou nos aspirations en récits souverains.</p></blockquote>
+
+<p>S'il est vrai que l'inspiration est divine pour certains, le divin n'a jamais été extérieur à l'Homme. C'est bien pour cela que la vie demeure cet espace intemporel de création où la créature devient l'être qui crée à son tour, dans un processus de recréation. Ainsi, l'étudiante en sciences de l'éducation nous dit :</p>
+
+<blockquote><p>C'est ma vie qui m'inspire. J'aime dire que mon quotidien n'est pas chiant, mais il n'est pas non plus conforme à mes rêves. Il y a moi, le réel, ce à quoi la société a accès ; et il y a mon imagination, qui me retire de cette société pour m'envoyer au-delà. Je crée dans ma tête cette vie parfaite que d'autres cherchent, pour ensuite la coucher sur papier. Mon imaginaire se nourrit de la vibration du langage et de la manière dont un mot peut soudainement éclairer une idée complexe. Chaque point de douleur ou de beauté finit par résonner en moi comme un écho indispensable.</p></blockquote>
+
+<p>Pour certains, la douleur reste une source d'inspiration parmi tant d'autres. Pour d'autres, c'est également le cas, dans la mesure où l'on cherche à dépasser cette douleur pour mettre un peu d'ordre dans son intérieur désordonné.</p>
+
+<p><em>« J'écris pour ordonner le chaos de mes idées. L'écriture est une quête de clarté, mon refuge lorsque tout va mal. C'est un outil pour explorer les possibles et l'invisible […] »</em>, conclut l'institutrice.</p>
+
+<p>Puisque nos histoires individuelles sont traversées par l'altérité et ne sont pas extérieures à la réalité, visible et invisible, Judicaëlle poursuit en affirmant qu'elle écrit pour se sentir vivante, mais aussi pour tendre un miroir à l'autre. Ainsi, elle reste convaincue qu'elle n'est pas seule à vivre ces expériences. Car souvent, l'autre vit la même chose dans un profond silence.</p>
+
+<p>Il faut dire que l'acte d'écrire est également un acte de résistance et de résilience. L'espace joue un rôle important dans ce processus. En effet, Judicaëlle nous a confié :</p>
+
+<blockquote><p>Créer en Haïti aujourd'hui est un acte de foi. C'est choisir la lumière et la structure face à l'instabilité chronique. Pour une femme haïtienne, c'est écrire entre les lignes du quotidien pour y insuffler une dignité que les circonstances tentent d'effacer. C'est une manière de sauver sa propre dignité et de se frayer une issue pour être enfin entendue.</p></blockquote>
+
+<p>En dépit de sa passion pour la littérature, Judicaëlle n'a pas encore de projet d'édition immédiat. Elle se concentre principalement sur ses études afin de nourrir et de faire mûrir ses réflexions. Ainsi, elle invite chaque femme à faire valoir sa voix dans une société qui tente de les étouffer.</p>`
   },
 
   // ➕  AJOUTER UN ARTICLE ICI
