@@ -32,6 +32,7 @@
 const articles = [
 
   {
+    slug:       "melyneda-civil-vilton-ecrire-resister-effacement",
     titre:      "Melyneda Civil Vilton : « écrire aujourd'hui, c'est résister à l'effacement »",
     date:       "13 mars 2026",
     auteur:     "Par Mardochée Gay",
@@ -66,6 +67,7 @@ const articles = [
   },
 
   {
+    slug:       "dorothee-polynice-plume-graver-eternite",
     titre:      "Dorothée Polynice : Une plume pour graver l'éternité",
     date:       "19 mars 2026",
     auteur:     "Par Mardochée Gay",
@@ -104,6 +106,7 @@ const articles = [
   },
 
   {
+    slug:       "alande-caelle-caceus-mots-traduisent-silence",
     titre:      "Alande Caelle Cacéus : Quand les mots traduisent le silence !",
     date:       "21 mars 2026",
     auteur:     "Par Christopher Pierre",
@@ -140,6 +143,7 @@ const articles = [
   },
 
   {
+    slug:       "judicaelle-israel-ecriture-acte-transformation",
     titre:      "Judicaëlle Israël : quand l'écriture devient un acte de transformation",
     date:       "22 mars 2026",
     auteur:     "Par Jean Michelot Polynice",
@@ -242,11 +246,12 @@ function renderIndexArticles() {
   if (!container) return;
 
   const preview = articles.slice(0, 3);
-  container.innerHTML = preview.map((a, i) => {
+  container.innerHTML = preview.map((a) => {
     const authorName = cleanAuthor(a.auteur);
+    const link       = 'article.html?id=' + (a.slug || articles.indexOf(a));
     return `
     <article
-      onclick="openArticle(${i})"
+      onclick="window.location.href='${link}'"
       style="background:var(--white);border:1px solid var(--border);border-radius:2px;overflow:hidden;display:flex;flex-direction:column;height:100%;transition:box-shadow 0.2s,transform 0.2s;cursor:pointer;"
       onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.10)';this.style.transform='translateY(-3px)'"
       onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
@@ -273,7 +278,23 @@ function renderIndexArticles() {
 
 /* Depuis index.html, redirige vers la page de l'article */
 function openArticle(idx) {
-  window.location.href = 'article.html?id=' + idx;
+  const a = articles[idx];
+  window.location.href = 'article.html?id=' + (a.slug || idx);
+}
+
+/* Résoudre un slug ou un index numérique vers l'index réel dans le tableau */
+function resolveArticleIndex(param) {
+  const bySlug = articles.findIndex(a => a.slug === param);
+  if (bySlug !== -1) return bySlug;
+  // Fallback : index numérique (anciens liens)
+  const n = parseInt(param, 10);
+  return isNaN(n) ? 0 : Math.max(0, Math.min(n, articles.length - 1));
+}
+
+/* Initialise article.html : lit ?id= (slug ou index) et ouvre le bon article */
+function initArticlePage() {
+  const param = new URLSearchParams(window.location.search).get('id') || '0';
+  openModal(resolveArticleIndex(param));
 }
 
 
@@ -342,7 +363,7 @@ function renderPage() {
 
   if (featuredEl) {
     featuredEl.style.display = 'grid';
-    featuredEl.onclick = () => { window.location.href = 'article.html?id=' + vedetteGlobalIdx; };
+    featuredEl.onclick = () => { window.location.href = 'article.html?id=' + (vedette.slug || vedetteGlobalIdx); };
     featuredEl.dataset.category = vedette.categorie.toLowerCase();
 
     const afVisual = featuredEl.querySelector('.af-visual');
@@ -395,6 +416,7 @@ function renderPage() {
     const grille = pageArticles.slice(1);
     gridEl.innerHTML = grille.map((a, gi) => {
       const idx        = articles.indexOf(a);
+      const link       = 'article.html?id=' + (a.slug || idx);
       const authorName = cleanAuthor(a.auteur);
       const lbl        = readLabel(a.categorie);
       const accentCSS  = `style="background:${a.coverAccent};"`;
@@ -408,7 +430,7 @@ function renderPage() {
              <div class="ac-cover-author">${escapeHtml(a.coverAuthor)}</div>
            </div>`;
       return `
-      <article class="article-card reveal" data-category="${a.categorie.toLowerCase()}" onclick="window.location.href='article.html?id=${idx}'">
+      <article class="article-card reveal" data-category="${a.categorie.toLowerCase()}" onclick="window.location.href='${link}'">
         <div class="ac-visual" style="background:${a.gradient};position:relative;">
           ${isNewest ? `<span style="position:absolute;top:0.75rem;left:0.75rem;z-index:2;font-size:0.46rem;letter-spacing:0.2em;text-transform:uppercase;background:var(--rose);color:#fff;padding:0.18rem 0.55rem;">Nouveau</span>` : ''}
           ${visualInner}
@@ -492,8 +514,8 @@ function renderPagination(totalPages) {
   paginationEl.appendChild(makeBtn('→', currentPage + 1, false, currentPage === totalPages, true));
 }
 
-function openModal(idx) {
-  currentIndex = idx;
+function openModal(param) {
+  currentIndex = (typeof param === 'string') ? resolveArticleIndex(param) : param;
   renderModal();
   document.getElementById('articleModal')?.classList.add('open');
   document.body.style.overflow = 'hidden';

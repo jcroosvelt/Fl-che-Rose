@@ -741,9 +741,15 @@
   // ── INITIALISATION ──
   document.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
-    currentIdx = parseInt(params.get('id') || '0', 10);
-
+    const idParam = params.get('id') || '0';
     const articlesOk = typeof articles !== 'undefined' && Array.isArray(articles) && articles.length > 0;
+
+    // Résolution : slug d'abord, fallback index numérique (anciens liens)
+    if (articlesOk) {
+      const bySlug = articles.findIndex(a => a.slug === idParam);
+      currentIdx = bySlug !== -1 ? bySlug : Math.max(0, Math.min(parseInt(idParam, 10) || 0, articles.length - 1));
+    }
+
     const a = articlesOk ? articles[currentIdx] : null;
 
     if (!a) {
@@ -826,12 +832,14 @@
     const prevBtn = el('navPrev');
     const nextBtn = el('navNext');
     if (prevBtn && currentIdx > 0) {
+      const prevArticle = articles[currentIdx - 1];
       prevBtn.classList.remove('disabled');
-      prevBtn.href = 'article.html?id=' + (currentIdx - 1);
+      prevBtn.href = 'article.html?id=' + (prevArticle.slug || (currentIdx - 1));
     }
     if (nextBtn && currentIdx < articles.length - 1) {
+      const nextArticle = articles[currentIdx + 1];
       nextBtn.classList.remove('disabled');
-      nextBtn.href = 'article.html?id=' + (currentIdx + 1);
+      nextBtn.href = 'article.html?id=' + (nextArticle.slug || (currentIdx + 1));
     }
 
     renderComments(currentIdx);
