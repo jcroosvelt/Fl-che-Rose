@@ -608,7 +608,213 @@
       color: var(--muted);
     }
 
-    /* ─── FEATURED ─── */
+    /* ─── À PARAÎTRE ─── */
+    .aparaitre-section {
+      background: var(--text);
+      position: relative;
+      overflow: hidden;
+    }
+    .aparaitre-section::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: var(--rose);
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .aparaitre-section .sec-label-text { color: var(--rose); }
+    .aparaitre-section .sec-label-line { background: var(--rose); }
+    .aparaitre-section h2 { color: var(--white); }
+    .aparaitre-section .btn-line {
+      border-color: rgba(250,249,247,0.25);
+      color: rgba(250,249,247,0.6);
+    }
+    .aparaitre-section .btn-line:hover {
+      border-color: var(--rose);
+      color: var(--white);
+    }
+
+    /* Livre vedette */
+    .aparaitre-featured {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    .aparaitre-featured-img {
+      position: relative;
+    }
+    .aparaitre-featured-img img {
+      width: 100%;
+      aspect-ratio: 5/8;
+      object-fit: cover;
+      display: block;
+      box-shadow: 20px 32px 60px rgba(0,0,0,0.5);
+      transform: rotate(-1.5deg);
+      transition: transform 0.4s ease;
+    }
+    .aparaitre-featured-img:hover img { transform: rotate(0deg) translateY(-4px); }
+    .aparaitre-preorder-badge {
+      position: absolute;
+      top: -0.9rem; left: 0.6rem;
+      font-size: 0.44rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      background: var(--rose);
+      color: #fff;
+      padding: 0.28rem 0.8rem;
+      z-index: 2;
+    }
+    .aparaitre-genre-tag {
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--rose);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .aparaitre-featured-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .aparaitre-featured-author {
+      font-size: 0.78rem;
+      color: rgba(250,249,247,0.45);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .aparaitre-featured-desc {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(250,249,247,0.5);
+      margin-bottom: 1.75rem;
+    }
+    .aparaitre-featured-date {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .aparaitre-date-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.3);
+    }
+    .aparaitre-date-val {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--rose);
+    }
+    .aparaitre-prices {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .aparaitre-price-tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: 'Epilogue', sans-serif;
+      color: var(--rose);
+      background: rgba(138,21,53,0.2);
+      border: 1px solid rgba(138,21,53,0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+    }
+
+    /* Autres titres à venir */
+    .aparaitre-coming {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .aparaitre-coming-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.3);
+      margin-bottom: 2rem;
+    }
+    .aparaitre-coming-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .aparaitre-coming-item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: border-color 0.25s, background 0.25s;
+      cursor: default;
+    }
+    .aparaitre-coming-item:hover {
+      border-color: rgba(138,21,53,0.4);
+      background: rgba(138,21,53,0.05);
+    }
+    .aparaitre-coming-cover {
+      width: 52px;
+      flex-shrink: 0;
+      aspect-ratio: 5/8;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0.5rem;
+    }
+    .aparaitre-coming-cover .bc-line { width: 16px; margin-bottom: 0.4rem; }
+    .aparaitre-coming-cover .bc-title { font-size: 0.42rem; margin-bottom: 0.25rem; }
+    .aparaitre-coming-cover .bc-author { font-size: 0.3rem; }
+    .aparaitre-coming-info { display: flex; flex-direction: column; gap: 0.2rem; }
+    .aparaitre-coming-genre {
+      font-size: 0.48rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+    .aparaitre-coming-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .aparaitre-coming-author {
+      font-size: 0.62rem;
+      color: rgba(250,249,247,0.35);
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .aparaitre-featured {
+        grid-template-columns: 180px 1fr;
+        gap: 2rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .aparaitre-featured {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .aparaitre-featured-img { max-width: 200px; }
+      .aparaitre-coming-list { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FIN À PARAÎTRE ─── */
     .featured-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1586,7 +1792,7 @@
     </div>
     <div class="hero-right">
       <div class="cover-float cf1">
-        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/3dae2ea2-bd43-4d05-a6a7-6c8c9385aae3.jpg" alt="Vergetures" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/56c04683-4245-48fd-a13c-703720e8e165.jpg" alt="Vergetures" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
       <div class="cover-feature">
         <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b7f7ebaf-a422-4826-9258-0b615554fcb8.jpg" alt="Doigt d'honneur" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;">
@@ -1597,7 +1803,7 @@
         </div>
       </div>
       <div class="cover-float cf2">
-        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/f5e10475-4a76-4539-a06d-660d27b668ec.png" alt="Lapèsòn" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/d5d71ee4-421c-44a4-b84b-5a8ddd457eab.jpg" alt="Lapèsòn" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
     </div>
   </div>
@@ -1677,7 +1883,7 @@
     <!-- 2024 · Lapèsòn -->
     <div class="book-card reveal">
       <div class="book-cover-wrap">
-        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/f5e10475-4a76-4539-a06d-660d27b668ec.png" alt="Lapèsòn" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/d5d71ee4-421c-44a4-b84b-5a8ddd457eab.jpg" alt="Lapèsòn" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;">
       </div>
       <div class="book-meta-title">Lapèsòn</div>
       <div class="book-meta-author">Christopher Pierre</div>
@@ -1686,7 +1892,7 @@
     <!-- 2024 · Eroticone -->
     <div class="book-card reveal">
       <div class="book-cover-wrap">
-        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/6c5e6dc9-5d12-411e-837e-f1978a7f46e3.jpg" alt="Eroticone" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/afe8acc2-5686-47e9-ba3c-11e7739c9eb4.jpg" alt="Eroticone" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;">
       </div>
       <div class="book-meta-title">Eroticone</div>
       <div class="book-meta-author">Salvatorré</div>
@@ -1695,7 +1901,7 @@
     <!-- 2023 · Vergetures -->
     <div class="book-card reveal">
       <div class="book-cover-wrap">
-        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/3dae2ea2-bd43-4d05-a6a7-6c8c9385aae3.jpg" alt="Vergetures" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;">
+        <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/56c04683-4245-48fd-a13c-703720e8e165.jpg" alt="Vergetures" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;">
       </div>
       <div class="book-meta-title">Vergetures</div>
       <div class="book-meta-author">Mardochée Gay</div>
@@ -1705,7 +1911,7 @@
 </section>
 
 <!-- À PARAÎTRE -->
-<section id="aparaitre" class="section section-alt">
+<section id="aparaitre" class="section aparaitre-section">
   <div class="catalogue-header reveal">
     <div>
       <div class="sec-label"><span class="sec-label-text">Bientôt</span><div class="sec-label-line"></div></div>
@@ -1713,68 +1919,70 @@
     </div>
     <a href="aparaitre.html" class="btn btn-line">Tout voir →</a>
   </div>
-  <div class="books-grid">
 
-    <div class="book-card reveal">
-      <div class="book-cover-wrap">
-        <div class="book-cover-art" style="background: linear-gradient(135deg, #2c1a2e 0%, #8a1535 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.5rem; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:1rem;right:1rem;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);font-family:'DM Sans',sans-serif;">2026</div>
-          <div class="bc-line"></div>
-          <div class="bc-genre">Nouvelles</div>
-          <div class="bc-title">Femme Mille Lieux</div>
-          <div class="bc-author">Anthologie</div>
+  <!-- LIVRE VEDETTE : Femme Mille Lieux -->
+  <div class="aparaitre-featured reveal">
+    <div class="aparaitre-featured-img">
+      <div class="aparaitre-preorder-badge">Pré-commande ouverte</div>
+      <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg" alt="Femme Mille Lieux">
+    </div>
+    <div class="aparaitre-featured-text">
+      <span class="aparaitre-genre-tag">Anthologie</span>
+      <h3 class="aparaitre-featured-title"><em>Femme Mille Lieux</em></h3>
+      <div class="aparaitre-featured-author">Anthologie collective</div>
+      <p class="aparaitre-featured-desc">Un livre où les femmes prennent la parole, racontent leurs chemins, leurs forces et leurs rêves. Chaque page est une voix, chaque texte est un voyage. Soyez parmi les premiers à tenir ce livre entre vos mains.</p>
+      <div class="aparaitre-featured-date">
+        <span class="aparaitre-date-label">Parution prévue</span>
+        <span class="aparaitre-date-val">Avril 2026</span>
+      </div>
+      <div class="aparaitre-prices">
+        <span class="aparaitre-price-tag">1 500 HTG</span>
+        <span class="aparaitre-price-tag">20 €</span>
+        <span class="aparaitre-price-tag">20 $</span>
+      </div>
+      <a href="catalogue.html#precommande" class="btn btn-fill">Pré-commander →</a>
+    </div>
+  </div>
+
+  <!-- AUTRES TITRES À VENIR -->
+  <div class="aparaitre-coming reveal">
+    <div class="aparaitre-coming-label">Également attendus en 2026</div>
+    <div class="aparaitre-coming-list">
+
+      <div class="aparaitre-coming-item">
+        <div class="aparaitre-coming-cover" style="overflow:hidden;">
+          <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/a32aeb0e-53a4-4342-a4e0-c8f3bd00801f.jpg" alt="Le chemin d'Ange-Heureux" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="aparaitre-coming-info">
+          <span class="aparaitre-coming-genre">Roman</span>
+          <div class="aparaitre-coming-title">Le chemin d'Ange-Heureux</div>
+          <div class="aparaitre-coming-author">Brice Bernard</div>
         </div>
       </div>
-      <div class="book-meta-badge">Nouvelles</div>
-      <div class="book-meta-title">Femme Mille Lieux</div>
-      <div class="book-meta-author" style="font-style:italic;color:var(--muted);">Anthologie · 2026</div>
-    </div>
 
-    <div class="book-card reveal">
-      <div class="book-cover-wrap">
-        <div class="book-cover-art" style="background: linear-gradient(135deg, #1a2c1e 0%, #2e6b3a 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.5rem; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:1rem;right:1rem;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);font-family:'DM Sans',sans-serif;">2026</div>
-          <div class="bc-line"></div>
-          <div class="bc-genre">Roman</div>
-          <div class="bc-title">Le chemin d'Ange-Heureux</div>
-          <div class="bc-author">Brice Bernard</div>
+      <div class="aparaitre-coming-item">
+        <div class="aparaitre-coming-cover" style="overflow:hidden;">
+          <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b8e030f7-f4fb-4708-adf5-9ff069ba3397.jpg" alt="Lune et miel" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="aparaitre-coming-info">
+          <span class="aparaitre-coming-genre">Roman</span>
+          <div class="aparaitre-coming-title">Lune et miel</div>
+          <div class="aparaitre-coming-author">Mardochée Gay</div>
         </div>
       </div>
-      <div class="book-meta-badge">Roman</div>
-      <div class="book-meta-title">Le chemin d'Ange-Heureux</div>
-      <div class="book-meta-author" style="font-style:italic;color:var(--muted);">Brice Bernard · 2026</div>
-    </div>
 
-    <div class="book-card reveal">
-      <div class="book-cover-wrap">
-        <div class="book-cover-art" style="background: linear-gradient(135deg, #2a1a2e 0%, #7a3a8a 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.5rem; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:1rem;right:1rem;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);font-family:'DM Sans',sans-serif;">2026</div>
-          <div class="bc-line"></div>
-          <div class="bc-genre">Roman</div>
-          <div class="bc-title">Lune et miel</div>
-          <div class="bc-author">Mardochée Gay</div>
+      <div class="aparaitre-coming-item">
+        <div class="aparaitre-coming-cover" style="overflow:hidden;">
+          <img src="https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/f376b995-d968-49b5-bcba-486de9f1eb1f.jpg" alt="Granma" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="aparaitre-coming-info">
+          <span class="aparaitre-coming-genre">Roman</span>
+          <div class="aparaitre-coming-title">Granma</div>
+          <div class="aparaitre-coming-author">Jean Michelot Polynice</div>
         </div>
       </div>
-      <div class="book-meta-badge">Roman</div>
-      <div class="book-meta-title">Lune et miel</div>
-      <div class="book-meta-author" style="font-style:italic;color:var(--muted);">Mardochée Gay · 2026</div>
-    </div>
 
-    <div class="book-card reveal">
-      <div class="book-cover-wrap">
-        <div class="book-cover-art" style="background: linear-gradient(135deg, #1a2c2e 0%, #155a8a 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.5rem; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:1rem;right:1rem;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);font-family:'DM Sans',sans-serif;">2026</div>
-          <div class="bc-line"></div>
-          <div class="bc-genre">Roman</div>
-          <div class="bc-title">Granma</div>
-          <div class="bc-author">Jean Michelot Polynice</div>
-        </div>
-      </div>
-      <div class="book-meta-badge">Roman</div>
-      <div class="book-meta-title">Granma</div>
-      <div class="book-meta-author" style="font-style:italic;color:var(--muted);">Jean Michelot Polynice · 2026</div>
     </div>
-
   </div>
 </section>
 
