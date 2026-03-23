@@ -542,8 +542,11 @@
     #bookModal.open { display:block; }
     .am-inner { max-width:860px; margin:3rem auto; background:#faf7f2; border:1px solid #ddd5c5; box-shadow:0 40px 100px rgba(26,21,16,0.28); position:relative; overflow:hidden; }
     .am-hero { width:100%; height:280px; overflow:hidden; position:relative; }
-    .am-hero-bg { width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
-    .am-hero-book { width:84px; aspect-ratio:5/8; background:rgba(255,255,255,0.09); border:1px solid rgba(255,255,255,0.2); display:flex; flex-direction:column; justify-content:flex-end; padding:0.8rem; box-shadow:0 10px 36px rgba(0,0,0,0.3); }
+    .am-hero-bg { width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative; }
+    .am-hero-bg-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.35); }
+    .am-hero-book { width:110px; aspect-ratio:5/8; box-shadow:0 16px 48px rgba(0,0,0,0.55); position:relative; z-index:1; overflow:hidden; flex-shrink:0; }
+    .am-hero-book img { width:100%; height:100%; object-fit:cover; display:block; }
+    .am-hero-book-fallback { width:100%; height:100%; display:flex; flex-direction:column; justify-content:flex-end; padding:0.8rem; background:rgba(255,255,255,0.09); }
     .am-hero-bar { width:15px; height:2px; margin-bottom:0.4rem; }
     .am-hero-title { font-family:'DM Serif Display',serif; font-size:0.52rem; font-style:italic; color:#fff; line-height:1.3; }
     .am-hero-author { font-size:0.34rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.38); margin-top:3px; }
@@ -895,10 +898,14 @@
     <!-- Hero -->
     <div class="am-hero">
       <div class="am-hero-bg" id="bmHeroBg">
-        <div class="am-hero-book">
-          <div class="am-hero-bar" id="bmHeroBar"></div>
-          <div class="am-hero-title" id="bmHeroTitle"></div>
-          <div class="am-hero-author" id="bmHeroAuthor"></div>
+        <div class="am-hero-bg-overlay"></div>
+        <div class="am-hero-book" id="bmHeroBook">
+          <img id="bmHeroCoverImg" src="" alt="" style="display:none;">
+          <div class="am-hero-book-fallback" id="bmHeroFallback">
+            <div class="am-hero-bar" id="bmHeroBar"></div>
+            <div class="am-hero-title" id="bmHeroTitle"></div>
+            <div class="am-hero-author" id="bmHeroAuthor"></div>
+          </div>
         </div>
       </div>
       <div class="am-controls">
@@ -1084,6 +1091,7 @@
       date: "Avril 2026",
       preorder: true,
       prix: ["1 500 G", "20 €", "20 $"],
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
       gradient: "linear-gradient(160deg, #2c1a2e 0%, #8a1535 100%)",
       barColor: "#d45f7a",
       lead: "Flèche Rose Éditions vous invite à découvrir un livre où les femmes prennent la parole, racontent leurs chemins, leurs forces et leurs rêves.",
@@ -1101,6 +1109,7 @@
       date: "2026",
       preorder: false,
       prix: null,
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/a32aeb0e-53a4-4342-a4e0-c8f3bd00801f.jpg",
       gradient: "linear-gradient(135deg, #1a2c1e 0%, #2e6b3a 100%)",
       barColor: "#6bc67e",
       lead: "Un roman attendu de Brice Bernard, bientôt aux Éditions Flèche Rose.",
@@ -1118,6 +1127,7 @@
       date: "2026",
       preorder: false,
       prix: null,
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b8e030f7-f4fb-4708-adf5-9ff069ba3397.jpg",
       gradient: "linear-gradient(135deg, #2a1a2e 0%, #7a3a8a 100%)",
       barColor: "#c67eb0",
       lead: "Le nouveau roman de Mardochée Gay, auteur de Vergetures — à paraître en 2026 chez Flèche Rose Éditions.",
@@ -1135,6 +1145,7 @@
       date: "2026",
       preorder: false,
       prix: null,
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/f376b995-d968-49b5-bcba-486de9f1eb1f.jpg",
       gradient: "linear-gradient(135deg, #1a2c2e 0%, #155a8a 100%)",
       barColor: "#7eb0c6",
       lead: "Le prochain roman de Jean Michelot Polynice, dit Le Cupidon — à paraître en 2026.",
@@ -1152,6 +1163,7 @@
       date: "2026",
       preorder: false,
       prix: null,
+      img: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/bb5e15dc-b7a3-453f-9d1b-534958229d0e.jpg",
       gradient: "linear-gradient(135deg, #2a1e10 0%, #8a5c1a 100%)",
       barColor: "#d4a055",
       lead: "Un guide pratique et gourmand sur les essentiels de la cuisine et de la pâtisserie — à paraître en 2026 chez Flèche Rose Éditions.",
@@ -1173,6 +1185,19 @@
     document.getElementById('bmHeroBar').style.background = b.barColor;
     document.getElementById('bmHeroTitle').textContent = b.titre;
     document.getElementById('bmHeroAuthor').textContent = b.auteur;
+
+    // Hero cover image
+    const heroImg = document.getElementById('bmHeroCoverImg');
+    const heroFallback = document.getElementById('bmHeroFallback');
+    if (b.img) {
+      heroImg.src = b.img;
+      heroImg.alt = b.titre;
+      heroImg.style.display = 'block';
+      heroFallback.style.display = 'none';
+    } else {
+      heroImg.style.display = 'none';
+      heroFallback.style.display = 'flex';
+    }
 
     // Méta band
     document.getElementById('bmMetaGenre').textContent = b.genre;
