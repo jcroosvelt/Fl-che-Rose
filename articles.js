@@ -45,6 +45,7 @@ const articles = [
     coverAccent:"#d4607a",
     coverTitle: "Femme Mille Lieux",
     coverAuthor:"Anthologie · 2026",
+    coverImage: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
     image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/143a2469-e946-49d4-9096-357f9521c00b.jpg",
     lead:       "Sous les décombres d'un monde qui saigne, certaines voix cherchent leurs voies dans les ruelles de l'alphabet du quotidien. D'autres ont su frayer un chemin même dans les fractures de l'existence. Melyneda Civil Vilton, connue sous le nom de <em>Manman Simbi</em>, est de celles-là.",
     corps:      `<p>Même au-delà des frontières, l'acte d'écrire demeure ce cordon ombilical qui nous rattache à la sainte patrie. En effet, Melyneda vit actuellement en France pour continuer ses études universitaires. À travers des textes poétiques, narratifs et des chansons, son écriture est traversée par des questions de mémoire, de filiation et de condition féminine, en lien étroit avec des réalités sociales haïtiennes.</p>
@@ -80,6 +81,7 @@ const articles = [
     coverAccent:"#5b8fc2",
     coverTitle: "Femme Mille Lieux",
     coverAuthor:"Anthologie · 2026",
+    coverImage: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
     image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/09ac30d3-2269-4236-813e-fbda18c1e71c.jpg",
     lead:       "L'écriture permet à l'homme d'habiter l'infini tout en étant conscient de sa finitude. Dorothée Polynice, plume discrète et déterminée, a fait de ce geste une voie de reconstruction — et une main tendue vers l'éternité.",
     corps:      `<p><em>L'écriture permet à l'homme d'habiter l'infini tout en étant conscient de sa finitude. La part de divin qui sommeille en lui le conduit à la création, et cette création devient une main tendue vers l'intemporalité. L'écrivain, plus que tout autre être, est celui qui s'approche le plus de l'intelligence infinie : il sait manier le verbe. Or, le Verbe était, est et sera. D'ailleurs, Dorothée Polynice le déclare elle-même : « Tout ce que l'on couche sur le papier a plus de chances de perdurer que nous-mêmes. » Cette révélation accroche au mur de l'existence l'un des rôles les plus cruciaux de l'écrivain : inscrire, dans la durée, ce qui nous rend vivants.</em></p>
@@ -119,6 +121,7 @@ const articles = [
     coverAccent:"#c0506a",
     coverTitle: "Femme Mille Lieux",
     coverAuthor:"Anthologie · 2026",
+    coverImage: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
     image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/65227904-08cd-41ad-8d46-5e7fa7089f19.jpg",
     lead:       "Dans les fêlures d'un quotidien qui saigne, il est des voix qui refusent de s'éteindre. Alande Caelle Cacéus appartient à cette génération de jeunes femmes pour qui l'écriture n'est pas un simple exercice de style, mais une nécessité intérieure : celle de dire, de témoigner et de transformer les silences en mots.",
     corps:      `<p>Née le 16 octobre dans une famille chrétienne, Caëlle est originaire de Carrefour et y habite toujours. Actuellement, elle est en première année de médecine à la Faculté de médecine de Port-au-Prince de l'Université d'État d'Haïti (UEH). Au carrefour d'une ville qui pleure, comme l'a écrit Lefranc Dorélus dans son recueil de poésie <em>« Encre Rose »</em>, écrire devient pour les femmes une urgence pour conjurer la menace du silence et se donner la peine de briser le cycle de la vie pasticheuse.</p>
@@ -156,6 +159,7 @@ const articles = [
     coverAccent:"#b84d6e",
     coverTitle: "Femme Mille Lieux",
     coverAuthor:"Anthologie · 2026",
+    coverImage: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
     image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/3adab7db-a49c-4538-b0db-8f817bc5935c.jpg",
     lead:       "Rien en ce monde n'est plus important que l'acte de se transformer sans se perdre. Avec une plume qui se veut transformatrice de la réalité sociale du quotidien, Judicaëlle Israël nous invite à devenir les principaux maîtres à penser de notre histoire.",
     corps:      `<p>Judicaëlle Israël a vu le jour un 8 juin. Elle poursuit actuellement des études en sciences de l'éducation et est enseignante au 1<sup>er</sup> cycle fondamental. Elle a également étudié l'informatique de bureau et l'entrepreneuriat. Passionnée de littérature, elle a participé à l'anthologie de poésie <em>Zenglen Boutèy</em> en août 2022, sous la direction du club littéraire Flèche Rose.</p>
@@ -195,6 +199,7 @@ const articles = [
     coverAccent:"#c050a0",
     coverTitle: "Femme Mille Lieux",
     coverAuthor:"Anthologie · 2026",
+    coverImage: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
     image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/2ef95621-ca6c-4545-b363-0e99c752b177.jpg",
     lead:       "Dans un quotidien marqué par une lutte constante, où de nombreux jeunes vivent comme sur une roulette russe, Dano-love Victor a choisi l'écriture — pas n'importe laquelle, mais une écriture qui reconnecte, qui fait vibrer, qui redonne sensation et pulsation. En un mot, une écriture pour renouer avec la résonance.",
     corps:      `<p>Dans un quotidien marqué par une lutte constante, où de nombreux jeunes vivent comme sur une roulette russe, chacun tente de préserver le goût de l'existence. Certains dansent, chantent, font de la musique ou poursuivent leurs études. D'autres s'abandonnent à des habitudes qui apaisent, un temps, l'ennui, la peur et la désolation. Parmi ces jeunes se distingue Dano-love Victor, une jeune femme qui a choisi l'écriture — pas n'importe laquelle, mais une écriture qui reconnecte, qui fait vibrer, qui redonne sensation et pulsation. En un mot, une écriture pour renouer avec la résonance.</p>
@@ -644,10 +649,20 @@ function renderModal() {
   set('modalSbAuthorRole', a.auteurRole || a.categorie);
   set('modalSbBio',        a.auteurBio  || '');
   const spineEl = document.getElementById('modalSbSpine');
-  if (spineEl) spineEl.style.background = a.gradient;
-  set('modalSbSpineBar',   a.coverAccent, 'bg');
-  set('modalSbSpineTitle', a.coverTitle);
-  set('modalSbSpineAuth',  a.coverAuthor);
+  if (spineEl) {
+    if (a.coverImage) {
+      spineEl.style.background = 'none';
+      spineEl.style.padding = '0';
+      spineEl.style.overflow = 'hidden';
+      spineEl.innerHTML = '<img src="' + a.coverImage + '" alt="' + escapeHtml(a.coverTitle) + '" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:2px;">';
+    } else {
+      spineEl.style.background = a.gradient;
+      spineEl.innerHTML = '';
+      set('modalSbSpineBar',   a.coverAccent, 'bg');
+      set('modalSbSpineTitle', a.coverTitle);
+      set('modalSbSpineAuth',  a.coverAuthor);
+    }
+  }
   set('modalSbBookTitle',  a.coverTitle);
   set('modalSbBookAuth',   a.coverAuthor);
 
