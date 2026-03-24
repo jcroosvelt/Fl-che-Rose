@@ -181,6 +181,47 @@ const articles = [
 <p>En dépit de sa passion pour la littérature, Judicaëlle n'a pas encore de projet d'édition immédiat. Elle se concentre principalement sur ses études afin de nourrir et de faire mûrir ses réflexions. Ainsi, elle invite chaque femme à faire valoir sa voix dans une société qui tente de les étouffer.</p>`
   },
 
+  {
+    slug:       "dano-love-victor-ecriture-renouer-resonance",
+    titre:      "Dano-love Victor : une écriture pour renouer avec la résonance",
+    date:       "24 mars 2026",
+    auteur:     "Par Christopher Pierre",
+    auteurRole: "Poète, journaliste-rédacteur",
+    auteurBio:  "Christopher Pierre est poète et journaliste-rédacteur. Sa plume s'attache à mettre en lumière les voix émergentes de la littérature haïtienne contemporaine.",
+    readTime:   "5 min",
+    categorie:  "Entretien",
+    tags:       ["Entretien", "Portrait", "Femme", "Écriture", "Haïti"],
+    gradient:   "linear-gradient(135deg, #1a0a18 0%, #5c1a50 60%, #8a1570 100%)",
+    coverAccent:"#c050a0",
+    coverTitle: "Femme Mille Lieux",
+    coverAuthor:"Anthologie · 2026",
+    image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/2ef95621-ca6c-4545-b363-0e99c752b177.jpg",
+    lead:       "Dans un quotidien marqué par une lutte constante, où de nombreux jeunes vivent comme sur une roulette russe, Dano-love Victor a choisi l'écriture — pas n'importe laquelle, mais une écriture qui reconnecte, qui fait vibrer, qui redonne sensation et pulsation. En un mot, une écriture pour renouer avec la résonance.",
+    corps:      `<p>Dans un quotidien marqué par une lutte constante, où de nombreux jeunes vivent comme sur une roulette russe, chacun tente de préserver le goût de l'existence. Certains dansent, chantent, font de la musique ou poursuivent leurs études. D'autres s'abandonnent à des habitudes qui apaisent, un temps, l'ennui, la peur et la désolation. Parmi ces jeunes se distingue Dano-love Victor, une jeune femme qui a choisi l'écriture — pas n'importe laquelle, mais une écriture qui reconnecte, qui fait vibrer, qui redonne sensation et pulsation. En un mot, une écriture pour renouer avec la résonance.</p>
+
+<p>Jeune étudiante en sciences de l'éducation et originaire de Carrefour, Dano-love a toujours rêvé d'embrasser l'écriture comme échappatoire. Pourtant, elle ne savait pas comment s'y prendre jusqu'à sa première rencontre avec le club littéraire Flèche Rose, en 2021. Cette rencontre marquera un tournant décisif : elle participe à des ateliers d'écriture et figure dans une anthologie poétique intitulée <em>Zenglen Boutèy</em>, publiée en 2022 par le club.</p>
+
+<p>Cette expérience a donné des ailes à sa passion et lui a fait percevoir l'écriture comme une nécessité. « Je crois qu'il y a une véritable urgence d'écrire », déclare-t-elle. « Trop de réalités restent trop longtemps dans le silence. » Pour elle, écrire, c'est aussi pointer du doigt, dénoncer et faire preuve de courage.</p>
+
+<p>Sensible à tout ce qui se trame dans son environnement, sa plume s'est faite empathique. Elle y puise son inspiration comme dans une source jaillissante et intarissable. « J'écris pour comprendre les autres et me comprendre moi-même. J'essaie de mettre des mots sur ce que je ressens et sur ce qui se passe autour de moi », confie-t-elle. Mais cela ne s'arrête pas là.</p>
+
+<p>Porte-voix de celles qui ne peuvent s'exprimer, Dano-love porte en elle des blessures et des fractures que seule l'écriture semble pouvoir apaiser.</p>
+
+<blockquote><p>J'écris pour me libérer.</p></blockquote>
+
+<p>Déterminée à ne pas se séparer de l'écriture, elle avance avec patience, passion et constance. « Pour l'instant, l'écriture fait surtout partie de mon cheminement personnel. J'avance à mon rythme, en explorant les formes, les thèmes et les voix qui me ressemblent », explique-t-elle. Avant d'ajouter : « Ce qui compte pour moi aujourd'hui, c'est de continuer à écrire, à affirmer ma voix et, peut-être, à me préparer à des projets plus aboutis à l'avenir. »</p>
+
+<p><strong>Femme-mille-lieux</strong> est un projet qui rassemble des femmes issues de divers horizons autour de la création d'histoires célébrant leur émancipation et affirmant leurs talents. Pour Dano-love Victor, y participer revêt une importance particulière.</p>
+
+<blockquote><p>C'est une expérience enrichissante et encourageante. Elle me permet de me sentir écoutée, reconnue et légitime dans mon désir d'écrire. J'y ai trouvé un espace de partage et de réflexion qui m'a donné encore plus envie de continuer à écrire et à m'affirmer.</p></blockquote>
+
+<p>Quant à son histoire, elle en défend la portée avec conviction :</p>
+
+<blockquote><p>Je pense qu'elle mérite d'être lue parce qu'elle n'est pas isolée. Elle ressemble à celle de nombreuses jeunes femmes en quête de leur place, de leur voix et de leur liberté. Écrire mon histoire, c'est affirmer que nos vies ordinaires portent aussi une force, une vérité et une mémoire qui méritent d'être partagées.</p></blockquote>
+
+<p><strong>Femme-mille-lieux</strong> est un projet qui donne vie à des histoires inspirantes. Ses participantes sont de véritables artisanes d'espoir, dont les plumes éclairent la littérature féminine haïtienne. Dano-love Victor sera sans doute l'une des voix appelées à porter ce flambeau.</p>`
+  },
+
   // ➕  AJOUTER UN ARTICLE ICI
   //
   // Exemple :
