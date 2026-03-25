@@ -263,42 +263,44 @@ const articles = [
     coverAuthor:"Anthologie · 2026",
     coverImage: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
     image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/417ca3d0-7045-42c5-8cba-3c92f9939a73.jpg",
-    lead:       "En Haïti, le silence des femmes n'est pas une absence. C'est une blessure organisée, entretenue, parfois même célébrée. Médj'N Laïka Manacé est de ces femmes qui choisissent malgré tout de prendre leur plume — par une nécessité profonde de nommer ce qui blesse et de laisser une trace là où l'on voudrait qu'il n'en reste aucune.",
-    corps:      `<p>Dans un pays où la parole des femmes se heurte encore à des murs dressés par la tradition et l'indifférence, certaines choisissent malgré tout d'écrire comme on respire : parce qu'il n'est tout simplement pas possible de faire autrement. Jeune, déterminée, déjà prolifique, Médj'N Laïka Manacé est de celles-là.</p>
+    lead:       "En Haïti, le silence des femmes n'est pas une absence. C'est une blessure organisée, entretenue, parfois même célébrée. Dans un pays où la parole des femmes se heurte encore à des murs dressés par la tradition et l'indifférence, certaines choisissent malgré tout de prendre leurs plumes par une nécessité profonde de nommer ce qui blesse et de laisser une trace là où l'on voudrait qu'il n'en reste aucune. Médj'N Laïka Manacé est de ces femmes. Jeune, déterminée, déjà prolifique, elle écrit comme on respire : parce qu'il n'est tout simplement pas possible de faire autrement.",
+    corps:      `<p>En Haïti, le silence des femmes n'est pas une absence. C'est une blessure organisée, entretenue, parfois même célébrée. Dans un pays où la parole des femmes se heurte encore à des murs dressés par la tradition et l'indifférence, certaines choisissent malgré tout de prendre leurs plumes par une nécessité profonde de nommer ce qui blesse et de laisser une trace là où l'on voudrait qu'il n'en reste aucune. Médj'N Laïka Manacé est de ces femmes. Jeune, déterminée, déjà prolifique, elle écrit comme on respire : parce qu'il n'est tout simplement pas possible de faire autrement.</p>
 
 <p>Née le 27 mars 2002 dans une famille chrétienne de six enfants dont elle est l'aînée, Médj'N Laïka Manacé grandit à Santo, commune de Croix-des-Bouquets. Mémorante en Administration publique à l'INAGHEI, elle occupe parallèlement le poste d'Assistante des Ressources Humaines à la Klean-X S.A, jonglant avec aisance entre exigences académiques et responsabilités professionnelles.</p>
 
-<p>Mais elle ne se limite pas à ces seuls rôles. Secrétaire Générale et Relationniste publique de la JEBHACS (Association des Jeunes de l'Église Baptiste du Calvaire d'Haïti de Santo), Secrétaire Générale de l'EBCHS, et membre de l'Association des Cadres du Monde (ACM) — au sein de laquelle elle avait assuré en 2023 la Responsabilité de Communication pour un concours de Génie Interscolaire —, Médj'N incarne cette génération de femmes haïtiennes qui refusent de n'occuper qu'un seul espace à la fois.</p>
+<p>Mais elle ne se limite pas à ces seuls rôles. Secrétaire Générale et Relationniste publique de la JEBHACS (Association des Jeunes de l'Église Baptiste du Calvaire d'Haïti de Santo), Secrétaire Générale de l'EBCHS, et membre de l'Association des Cadres du Monde (ACM), au sein de laquelle elle avait assuré en 2023 la Responsabilité de Communication pour un concours de Génie Interscolaire, Médj'N incarne cette génération de femmes haïtiennes qui refusent de n'occuper qu'un seul espace à la fois.</p>
 
 <p>Mais c'est dans l'écriture que se révèle peut-être le mieux la profondeur de son caractère. « Déterminée, disciplinée, intelligente et dynamique », dit-elle d'elle-même avec une franchise désarmante, avant d'ajouter avec humour qu'elle est aussi « impulsive et trop sage ». Une dualité qui, loin de la freiner, nourrit une créativité débordante.</p>
 
-<p>C'est dès l'âge de douze ans que Médj'N Laïka Manacé commence à écrire, bravant le découragement de ses parents. Elle ne baisse pas la garde. Elle poursuit. De ce premier élan obstiné naissent plusieurs romans : <em>Fleur de l'amitié</em>, <em>Try Again</em>, <em>Encore toi</em>, <em>Tout est fini</em>, écrits dans sa prime jeunesse, auxquels s'ajoutent <em>Tohu Bohu</em>, un recueil de poèmes, et <em>L'inévitable</em>, un recueil de nouvelles. Deux projets sont en cours de préparation : <em>Le Chacal</em> et <em>À distance</em>, qui témoignent d'une plume en constante maturation. Ce sont les <strong>Éditions Flèche Rose</strong> qui lui ouvrent leurs bras en première, reconnaissant en elle une autrice juvénile de talent.</p>
+<p>C'est dès l'âge de douze ans que Médj'N Laïka Manacé commence à écrire, bravant le découragement de ses parents. Elle ne baisse pas la garde. Elle poursuit. De ce premier élan obstiné naissent plusieurs romans : Fleur de l'amitié, Try Again, Encore toi, Tout est fini, écrits dans sa prime jeunesse, auxquels s'ajoutent Tohu Bohu, un recueil de poèmes, et L'inévitable, un recueil de nouvelles. Deux projets sont en cours de préparation : Le Chacal et À distance, qui témoignent d'une plume en constante maturation. Ce sont les Éditions Flèche Rose qui lui ouvrent leurs bras en première, reconnaissant en elle une autrice juvénile de talent.</p>
 
 <p>Son engagement à travers l'écriture est clair et assumé :</p>
 
-<blockquote><p>Je m'engage à travers l'écriture afin de parler à la place de ceux et celles qui n'osent pas.</p></blockquote>
+<blockquote><p>« Je m'engage à travers l'écriture afin de parler à la place de ceux et celles qui n'osent pas. »</p></blockquote>
 
-<p>Une mission qu'elle s'est donnée très tôt et qu'elle poursuit avec la même ardeur aujourd'hui. Aujourd'hui, beaucoup de femmes prennent la plume pour conjurer la menace du silence. Laïka en est pleinement convaincue. « L'urgence est claire pour les femmes de se prononcer en leur faveur », affirme-t-elle. Elle observe avec une lucidité douloureuse que, malgré de nombreux efforts pour améliorer la place des femmes dans la société, beaucoup d'hommes continuent de mépriser ces efforts et, plus grave encore, que certaines femmes elles-mêmes encouragent cette injustice avec joie.</p>
+<p>Une mission qu'elle s'est donnée très tôt et qu'elle poursuit avec la même ardeur aujourd'hui.</p>
 
-<blockquote><p>Il faut dire non à ce silence qui nous est forcé. Il faut oser faire l'interdit.</p></blockquote>
+<p>Aujourd'hui, beaucoup de femmes prennent la plume pour conjurer la menace du silence. Laïka en est pleinement convaincue. « L'urgence est claire pour les femmes de se prononcer en leur faveur », affirme-t-elle. Elle observe avec une lucidité douloureuse que, malgré de nombreux efforts pour améliorer la place des femmes dans la société, beaucoup d'hommes continuent de mépriser ces efforts et, plus grave encore, que certaines femmes elles-mêmes encouragent cette injustice avec joie. Face à ce paradoxe, sa réponse est sans ambiguïté :</p>
+
+<blockquote><p>« Il faut dire non à ce silence qui nous est forcé. Il faut oser faire l'interdit. »</p></blockquote>
 
 <p>Ce n'est pas un slogan. C'est une posture existentielle que Laïka porte chaque jour, dans ses écrits comme dans ses engagements communautaires.</p>
 
 <p>Interrogée sur ce qui inspire son processus de création, Médj'N Laïka Manacé répond avec une simplicité qui touche juste : ce sont ses vécus quotidiens et ses objectifs à court et long termes. Son imaginaire se construit dans le concret, dans le frottement de la vie ordinaire contre les aspirations les plus profondes. C'est peut-être là que réside la force particulière de son écriture : elle ne plane pas au-dessus du monde, elle en est profondément pétrie.</p>
 
-<p>Quant à la question du pourquoi écrire, Médj'N offre une réponse à la fois intime et universelle :</p>
+<p>Quant à la question du pourquoi écrire, cette question que Yanick Lahens formule ainsi : les écrivain·es peuvent « amplifier, élargir, donner la saveur du monde », Médj'N offre une réponse à la fois intime et universelle :</p>
 
-<blockquote><p>J'écris pour briser la glace en moi et pour aider les autres à briser les leurs.</p></blockquote>
+<blockquote><p>« J'écris pour briser la glace en moi et pour aider les autres à briser les leurs. »</p></blockquote>
 
 <p>Écrire, pour elle, est un acte de libération doublement orienté : vers soi et vers l'autre.</p>
 
 <p>Ce que signifie créer en Haïti aujourd'hui, en tant que femme, Médj'N Laïka le dit avec franchise :</p>
 
-<blockquote><p>Écrire et créer en Haïti, surtout dans les situations quotidiennes, signifie pour une femme comme moi oser défier le Diable. Parler au nom des femmes, évoquer les abus dans le contexte actuel, c'est causer avec le Diable et ses Démons. Créer en sortant des sentiers battus fait des femmes comme moi des héroïnes, car beaucoup préfèrent se taire pour ne pas subir d'injustice sous ses multiples formes.</p></blockquote>
+<blockquote><p>« Écrire et créer en Haïti, surtout dans les situations quotidiennes, signifie pour une femme comme moi oser défier le Diable. »</p></blockquote>
 
-<p>Dans un pays où le silence est parfois la condition de survie, choisir la parole devient un acte de bravoure extraordinaire.</p>
+<p>Parler au nom des femmes, évoquer les abus dans le contexte actuel, c'est, selon ses propres mots, « causer avec le Diable et ses Démons ». Créer en sortant des sentiers battus fait des femmes comme elle des héroïnes, car beaucoup préfèrent se taire pour ne pas subir d'injustice sous ses multiples formes. Dans un pays où le silence est parfois la condition de survie, choisir la parole devient un acte de bravoure extraordinaire.</p>
 
-<p>Les projets ne manquent pas pour cette jeune autrice qui refuse de se cantonner à un seul espace. Au-delà de sa participation au projet <strong>Femmes Mille Lieux</strong>, Laïka souhaite faire éditer et publier ses nombreux ouvrages, et être connue bien au-delà des frontières haïtiennes — « mondialement connue », dit-elle, sans fausse modestie. Une ambition qui n'a rien d'arrogant : elle est le prolongement naturel d'une vocation assumée depuis l'enfance, portée par une discipline de fer et une foi profonde en la puissance des mots. Car Médj'N Laïka Manacé ne doute pas. Elle écrit. Et elle fonce.</p>`
+<p>Les projets ne manquent pas pour cette jeune autrice qui refuse de se cantonner à un seul espace. Au-delà de sa participation au projet Femmes Mille Lieux, Laïka souhaite faire éditer et publier ses nombreux ouvrages, et être connue bien au-delà des frontières haïtiennes, « mondialement connue », dit-elle, sans fausse modestie. Une ambition qui n'a rien d'arrogant : elle est le prolongement naturel d'une vocation assumée depuis l'enfance, portée par une discipline de fer et une foi profonde en la puissance des mots. Car Médj'N Laïka Manacé ne doute pas. Elle écrit. Et elle fonce.</p>`
   },
 
 ];
