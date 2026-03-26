@@ -302,17 +302,17 @@ const articles = [
   },
 
   {
-    slug:       "christelle-fabie-joseph-ecrire-forme-rebellion",
+    slug:       "christelle-fabie-joseph-ecriture-forme-rebellion",
     titre:      "Christelle Fabie Joseph : écrire devient alors une forme de rébellion",
     date:       "26 mars 2026",
-    auteur:     "Par Mardochée Gay",
-    auteurRole: "Écrivain-poète — Flèche Rose Éditions",
-    auteurBio:  "Cofondateur de Flèche Rose Éditions, Mardochée Gay est écrivain-poète, étudiant finissant en psychologie à l'Université d'État d'Haïti. Il consacre sa plume aux voix et aux récits qui façonnent la littérature haïtienne contemporaine.",
+    auteur:     "Par Jean Michelot Polynice",
+    auteurRole: "Écrivain-Poète, Travailleur social",
+    auteurBio:  "Jean Michelot Polynice est écrivain-poète et travailleur social. Sa plume s'engage au croisement du social et du littéraire, mettant en lumière les voix qui transforment le réel par l'écriture.",
     readTime:   "5 min",
     categorie:  "Entretien",
-    tags:       ["Entretien", "Portrait", "Femme", "Littérature", "Haïti"],
-    gradient:   "linear-gradient(135deg, #1a0f0a 0%, #5c2a10 60%, #8a3515 100%)",
-    coverAccent:"#d4804a",
+    tags:       ["Entretien", "Portrait", "Femme", "Écriture", "Haïti"],
+    gradient:   "linear-gradient(135deg, #1a0a0a 0%, #5c1010 60%, #8a2020 100%)",
+    coverAccent:"#c04040",
     coverTitle: "Femme Mille Lieux",
     coverAuthor:"Anthologie · 2026",
     coverImage: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
@@ -320,7 +320,7 @@ const articles = [
     lead:       "L'écriture est l'acte qui nous pousse à trouver notre vraie place dans le monde. C'est l'acte qui fait de nous des ouvriers de demain. C'est cette force qui nous anime et nous pousse à remettre en question le statu quo pour mettre le monde au diapason. C'est dans cette perspective que Christelle Fabie Joseph choisit d'orienter sa plume pour se rebeller contre l'injustice que l'on veut vendre comme naturelle.",
     corps:      `<p>Née un 11 octobre, elle a un parcours scolaire varié, qui a forgé sa personnalité et sa vision du monde. Ainsi, elle a enseigné les sciences naturelles et la chimie pendant deux ans. Après une pause, elle a entamé des études en haute couture. Elle a également suivi des études en informatique dans une université américaine en ligne. Cerise sur le gâteau, elle a publié son premier livre sur le succès à l'âge de 19 ans. La jeune autrice réside actuellement au Cap-Haïtien.</p>
 
-<p>Sa participation à l'ouvrage <strong>Femme-mille-lieux</strong> vient surtout du fait qu'elle estime qu'il y a une urgence d'écrire.</p>
+<p>Sa participation à l'ouvrage Femme-mille-lieux vient surtout du fait qu'elle estime qu'il y a une urgence d'écrire.</p>
 
 <blockquote><p>J'estime que l'écriture est une manière d'organiser sa pensée. Dans le contexte haïtien, on manque de femmes qui pensent librement, car la pensée féminine est souvent perçue comme un luxe que l'on n'a pas encouragé. Écrire devient alors une forme de rébellion contre un système qui a minimisé notre intellect tout en utilisant notre travail. Les femmes sont un pilier du fonctionnement social, mais elles sont aussi celles que l'on critique, contrôle et limite.</p></blockquote>
 
@@ -330,9 +330,7 @@ const articles = [
 
 <p>Il faut souligner que la jeune autrice s'inspire aussi de ses lectures. <em>« Mon écriture est également influencée par mes lectures de C. S. Lewis, dont la conversion de l'athéisme au christianisme a résonné avec mon propre cheminement vers une vie animée par le sens et la foi »</em>, nous explique-t-elle.</p>
 
-<p>De ce point de vue, on peut dire que Christelle s'intéresse à ce qui est le plus profond dans l'être humain. D'ailleurs, c'est ce qu'elle exprime en disant :</p>
-
-<blockquote><p>J'écris pour pousser les gens à se poser des questions profondes […]. Je refuse une écriture superficielle qui se contente de divertir. Je veux que mes textes fassent ressentir quelque chose, qu'ils touchent une zone sensible, qu'ils ouvrent une réflexion. En ressentant, on devient honnête face à soi-même, et l'honnêteté mène à la recherche de vérité.</p></blockquote>
+<p>De ce point de vue, on peut dire que Christelle s'intéresse à ce qui est le plus profond dans l'être humain. D'ailleurs, c'est ce qu'elle exprime en disant : <em>« J'écris pour pousser les gens à se poser des questions profondes […]. Je refuse une écriture superficielle qui se contente de divertir. Je veux que mes textes fassent ressentir quelque chose, qu'ils touchent une zone sensible, qu'ils ouvrent une réflexion. En ressentant, on devient honnête face à soi-même, et l'honnêteté mène à la recherche de vérité. »</em></p>
 
 <p>En dépit des difficultés qu'il y a à écrire en Haïti, la jeune prodige estime que continuer malgré cela est déjà une forme de défi et de construction de soi. En ce qui concerne ses projets d'écriture, Christelle aimerait écrire une autobiographie centrée sur sa vie amoureuse. <em>« […] je souhaite entreprendre ce projet au moment où je rencontrerai la bonne personne et au moment de nos fiançailles, afin que le récit soit authentique, mûr et complet. »</em> Pour l'instant, elle a un ouvrage sur le narcissisme dans la culture parentale haïtienne qui n'est pas encore publié.</p>
 
