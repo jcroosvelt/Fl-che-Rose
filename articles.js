@@ -337,6 +337,142 @@ const articles = [
 <p>Christelle Fabie Joseph est l'auteure de trois ouvrages puissants. Dans <strong>« Tu es plus »</strong>, elle transforme la douleur et la souffrance en force et en espoir, offrant un réveil spirituel pour se reconstruire, guérir et retrouver la joie. Avec <strong>« Lakou et ses secrets : Volume 1 – Ressuscite moi »</strong>, elle plonge le lecteur dans une Haïti divisée entre partage et danger, où un amour fragile et passionné naît au milieu des tensions et des secrets. Enfin, <strong>« Cher Dieu je veux un boo »</strong> guide la quête de l'amour véritable à travers prières, méditations et réflexions spirituelles, alliant foi, espoir et découverte de soi.</p>`
   },
 
+  {
+    slug:       "mischma-fils-aime-ecriture-arme-emancipatrice",
+    titre:      "Mischma Fils-Aimé : l'écriture comme arme émancipatrice",
+    date:       "2 avril 2026",
+    auteur:     "Par la rédaction",
+    auteurRole: "Flèche Rose Éditions",
+    auteurBio:  "Flèche Rose Éditions met en lumière les voix de la littérature haïtienne contemporaine, avec une attention particulière aux plumes féminines engagées.",
+    readTime:   "4 min",
+    categorie:  "Entretien",
+    tags:       ["Entretien", "Portrait", "Femme", "Écriture", "Haïti"],
+    gradient:   "linear-gradient(135deg, #1a0a18 0%, #5c1a40 60%, #8a1560 100%)",
+    coverAccent:"#c05080",
+    coverTitle: "Femme Mille Lieux",
+    coverAuthor:"Anthologie · 2026",
+    coverImage: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
+    image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/6474590b-e436-4b98-9fbb-8869a8b5712f.jpg",
+    lead:       "Écrire a toujours été un exercice de confirmation de soi et d'émancipation. Dans les moments les plus obscurs de l'existence, l'écriture devient un outil de résistance et de résilience pour ceux qui y voient une véritable arme de combat, comme ce fut le cas pour certains écrivains du XVIIe siècle.",
+    corps:      `<p>Si certains écrivent pour transmettre, simplement par foi en le partage — comme le pense Grand Corps Malade — d'autres le font pour survivre, résister, se retrouver, se confirmer. Fils-Aimé Mischma en est une preuve vivante. Bien plus qu'une simple écrivaine, elle écrit pour se frayer une voie, construire son identité et se faire entendre.</p>
+
+<p>Née en novembre, Fils-Aimé a achevé ses études classiques à l'Institution mixte Hirondelle. Elle a ensuite intégré l'Université d'État d'Haïti, où elle étudie actuellement la médecine et la psychologie, respectivement à la Faculté de Médecine et de Pharmacie (FMP) et à la Faculté d'Ethnologie (FE).</p>
+
+<p>Membre du club littéraire Flèche Rose, elle a participé à une anthologie intitulée <em>Zenglen Boutèy</em>, une expérience qui lui a permis de voir ses textes publiés pour la première fois.</p>
+
+<p>Depuis lors, elle considère l'écriture non plus comme un simple divertissement, mais comme une urgence : celle de voler au secours du chaos.</p>
+
+<blockquote><p>Oui, écrire devient une urgence, puisque les femmes ont des vérités à dire et des silences à briser.</p></blockquote>
+
+<p>Mais qu'est-ce qui inspire le plus son processus de création ?</p>
+
+<blockquote><p>Ce qui m'inspire le plus, ce sont les tristesses cachées et les douleurs enfouies, celles qui, invisibles, altèrent nos liens avec les autres.</p></blockquote>
+
+<p>En tant qu'écrivaine engagée, la plume de Mischma Fils-Aimé reste attachée à une cause précise. Elle n'écrit pas pour écrire, mais avec une conscience aiguë : traduire les non-dits et éclairer les zones d'ombre.</p>
+
+<blockquote><p>J'écris pour la quête de liberté, pour mettre des mots sur les silences et contribuer à ouvrir des chemins de solution.</p></blockquote>
+
+<p>À propos de son expérience dans le projet <strong>Femmes mille-lieux</strong>, elle confie :</p>
+
+<blockquote><p>En participant à ce projet, j'ai compris que c'était le meilleur moyen de parler de ce qui me tient à cœur. J'ai pu transmettre mes idées à travers les mots.</p></blockquote>
+
+<p>S'adressant aux jeunes de sa génération, Mischma les invite à exprimer leurs émotions et leurs idées entremêlées : une véritable quête de liberté.</p>
+
+<p>Placée sous l'égide de la maison d'édition Flèche Rose, l'anthologie <strong>Femmes mille-lieux</strong> regroupe dix jeunes femmes, chacune portant une histoire poignante destinée à inspirer et à faire voyager les lecteurs. Cette œuvre pourrait marquer un tournant significatif pour la littérature haïtienne.</p>
+
+<p><em>Tout par et pour la littérature.</em></p>`
+  },
+
+  {
+    slug:       "mischma-dimanche-urgence-evidence-ecriture",
+    titre:      "Mischma Dimanche : De l'urgence à l'évidence de l'écriture",
+    date:       "2 avril 2026",
+    auteur:     "Par Christopher Pierre",
+    auteurRole: "Poète, journaliste-rédacteur",
+    auteurBio:  "Christopher Pierre est poète et journaliste-rédacteur. Sa plume s'attache à mettre en lumière les voix émergentes de la littérature haïtienne contemporaine.",
+    readTime:   "5 min",
+    categorie:  "Entretien",
+    tags:       ["Entretien", "Portrait", "Femme", "Écriture", "Haïti"],
+    gradient:   "linear-gradient(135deg, #0a1a0f 0%, #1a4a2a 60%, #2a6a3a 100%)",
+    coverAccent:"#4a9a5a",
+    coverTitle: "Femme Mille Lieux",
+    coverAuthor:"Anthologie · 2026",
+    coverImage: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
+    image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/6dc4ee8a-3fcd-4053-a0f4-c8a922092db8.jpg",
+    lead:       "« Écrire, c'est vivre deux fois », dit-on souvent. Mais une question persiste : entre vivre et écrire, lequel précède l'autre ? C'est dans cette quête de sens que nous rencontrons Mischma Dimanche. Pour elle, l'écriture peut cesser d'être une urgence pour devenir une évidence.",
+    corps:      `<p>Une évidence intime, presque vitale, capable de pénétrer l'indicible et de soutenir une existence en quête de repères. Entrons alors dans cet univers où écrire ne relève plus de la nécessité pressante, mais d'une vérité profonde.</p>
+
+<p>C'est à l'horizon du 28 février 2001 que le soleil de Dimanche a pointé. Depuis lors, elle ne cesse de faire montre d'un parcours académique, artistique et associatif riche et engagé. Animée par une quête acharnée de réalisation de ses rêves, elle entame des études en sciences informatiques en octobre 2022 en Haïti. Toutefois, en février 2024, elle est contrainte de fermer son dossier universitaire en raison de l'insécurité grandissante dans le pays. Cette situation marque un tournant décisif dans son parcours.</p>
+
+<p>Mais Mischma ne se laisse pas abattre. En juin 2024, elle quitte Haïti pour la France afin de s'engager dans un service civique au sein de la Francophonie des écritures à la scène, où elle occupe le poste d'assistante en médiation des archives et communication pendant un an. Cette mission, inscrite dans le cadre du projet TANBOU réalisé par l'Institut français, lui permet de développer des compétences solides en médiation culturelle, communication et valorisation du patrimoine.</p>
+
+<p>Aujourd'hui, Mischma poursuit son cheminement intellectuel et artistique du côté de la France, en Lettres à l'Université de Limoges, une aventure qui confirme son intérêt pour les humanités, l'écriture et la création littéraire.</p>
+
+<p>Nonobstant tout cela, Dimanche ne pense pas que l'écriture soit une urgence, mais plutôt une manière de faire vivre, voyager et rêver.</p>
+
+<blockquote><p>Je ne dirais pas qu'il existe, en ce moment, une urgence personnelle d'écrire. Cependant, écrire représente pour moi bien plus qu'un simple acte : c'est une manière de donner vie à mon imaginaire caché, de partager le bonheur, les images et le monde qui habitent mon esprit.</p></blockquote>
+
+<blockquote><p>À travers l'écriture, je construis un univers imaginaire que je relie pourtant étroitement aux réalités du monde.</p></blockquote>
+
+<p>La jeune étudiante croit aussi que cet espace lui permet de poser un regard critique sur la société, de dénoncer certaines injustices, les abus subis par des individus, ainsi que les dérives du système dans lequel nous évoluons. Son écriture devient alors un lieu de rencontre entre l'imaginaire et le réel.</p>
+
+<p>Si, pour beaucoup, écrire aujourd'hui doit répondre à une cause immédiate, à un but bien spécifique — d'où l'idée d'une urgence d'écriture — Mischma ne semble pas partager cette vision.</p>
+
+<blockquote><p>Il n'y a pas, pour moi, une urgence immédiate d'écrire. J'écris par nécessité intérieure, celle de canaliser une imagination débordante, tout en donnant une voix, à travers la fiction ou la poésie, à des réalités bien concrètes. L'écriture n'est donc pas une urgence, mais une évidence.</p></blockquote>
+
+<p>Et pourquoi écrit-elle vraiment ?</p>
+
+<blockquote><p>J'écris, justement, pour donner du goût à mon existence. J'écris pour ouvrir aux lecteurs les portes de mon monde imaginaire, pour partager ce qui m'habite et ce qui me traverse. J'écris aussi pour dénoncer, pour interroger le réel, mais parfois simplement pour le plaisir, pour le jeu des mots et la liberté qu'ils offrent. J'écris afin de donner une saveur nouvelle à l'existence, la mienne comme celle des autres.</p></blockquote>
+
+<p>Au cœur de son espace de création, la nature s'impose comme une source intarissable d'inspiration.</p>
+
+<blockquote><p>Ce qui m'inspire le plus dans mon processus de création, c'est avant tout la nature. Mon imaginaire se nourrit de son calme, de sa beauté et de l'harmonie qu'elle dégage. La nature m'offre un espace de respiration, un lieu où mon esprit peut librement se déployer et créer. En revanche, mon imaginaire ne se nourrit ni de douleur ni d'expériences douloureuses.</p></blockquote>
+
+<p>En participant au projet d'écriture <strong>Femme-mille-lieux</strong>, mené par Flèche Rose Éditions, avec sa nouvelle intitulée <em>Makadi</em>, Mischma Dimanche ne fait que confirmer que créer aujourd'hui, en tant que femme, représente un pas supplémentaire vers l'émancipation féminine. Elle estime aussi que créer, c'est ouvrir des portes aux jeunes filles, leur offrir des modèles et rendre plus accessible l'espace culturel et intellectuel, afin que davantage de femmes puissent s'intégrer, prendre la parole et s'exprimer librement, sans crainte ni contrainte.</p>
+
+<p>Des projets d'avenir ? Avec conviction et fermeté, elle annonce : « Oui, j'ai des projets d'écriture à venir, notamment une nouvelle de 1500 mots autour du thème de la spirale. »</p>
+
+<p>Heureuse de participer à un projet qui renforce sa capacité à écrire et lui donne une véritable place dans le monde des écrivains, elle laisse un message inspirant à la jeunesse :</p>
+
+<blockquote><p>Trouvez le bonheur dans ce qui vous passionne, créez et faites grandir un entourage qui contribue aussi au bonheur des autres. Vos œuvres, nourries de sincérité et d'engagement, seront immortelles.</p></blockquote>`
+  },
+
+  {
+    slug:       "ruth-bernie-pierre-louis-ecriture-arme-sens-langage-presence",
+    titre:      "Ruth Bernie Pierre Louis : Quand l'écriture devient une arme de sens, de langage et de présence",
+    date:       "2 avril 2026",
+    auteur:     "Par Mardochée Gay",
+    auteurRole: "Écrivain-poète — Flèche Rose Éditions",
+    auteurBio:  "Cofondateur de Flèche Rose Éditions, Mardochée Gay est écrivain-poète, étudiant finissant en psychologie à l'Université d'État d'Haïti. Il consacre sa plume aux voix et aux récits qui façonnent la littérature haïtienne contemporaine.",
+    readTime:   "4 min",
+    categorie:  "Entretien",
+    tags:       ["Entretien", "Portrait", "Femme", "Poésie", "Haïti"],
+    gradient:   "linear-gradient(135deg, #1a0a0a 0%, #5c1010 60%, #8a2010 100%)",
+    coverAccent:"#c06040",
+    coverTitle: "Femme Mille Lieux",
+    coverAuthor:"Anthologie · 2026",
+    coverImage: "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/b17d6f13-7a31-4746-b1d9-981282873763.jpg",
+    image:      "https://i.supaimg.com/d6681b17-ef16-4c99-b257-024f332fa013/c22670d7-204f-481a-8291-75d1075a38f7.jpg",
+    lead:       "L'écriture reste ce moyen d'aller vers le monde tout en demeurant soi-même. Elle permet d'y tailler une place avec des mots en résonance avec le for intérieur. Pourtant, même lorsque nos fissures nous rappellent que nous sommes des poussières d'étoiles, l'écriture offre la possibilité de redonner du sens à ce qui nous traverse.",
+    corps:      `<p>Un 17 octobre, à Carrefour, la vie a offert au monde Ruth Bernie Pierre Louis. Aujourd'hui, elle est enseignante et poursuit des études en psychopédagogie. Très tôt, elle a choisi de lire, de vivre et d'écrire. Comme quoi, la littérature s'est imposée à elle comme une mission. Derrière cette passion pour l'écriture, Ruth Bernie croit qu'il y a indubitablement une responsabilité spirituelle. En ce sens, elle s'exprime :</p>
+
+<blockquote><p>Je me considère comme une messagère chargée de transmettre et d'éveiller, par les mots, des messages des divins.</p></blockquote>
+
+<p>Écrire est une manière de rester présente dans le monde. De suicider le silence. Pour la poétesse, il n'existe pas d'urgence d'écrire, car écrire revient à vivre. Parler d'une urgence d'écrire serait, selon ses mots, comme parler d'une urgence de respirer. Par ailleurs, elle déclare :</p>
+
+<blockquote><p>Ce qui est urgent aujourd'hui, c'est la reconnaissance des droits, la possibilité de se dire, de se retrouver et de s'épanouir.</p></blockquote>
+
+<p>Interrogée sur son processus créatif, la participante à l'anthologie de nouvelles <strong>« Femme-mille-lieux »</strong> des éditions Flèche Rose répond qu'elle écrit par appel, dans des moments imprévisibles où les mots semblent naître d'eux-mêmes.</p>
+
+<blockquote><p>Ma vie est ma principale source d'inspiration : mes joies, mes blessures, mes rencontres et mes silences nourrissent mon imaginaire.</p></blockquote>
+
+<p>Loin d'une plume qui se veut fantaisiste, la native de Carrefour souhaite doter son écriture d'une portée sociale. Pour toutes les femmes qui ont fait le choix d'écrire comme elle, Ruth Bernie pense que l'acte d'écrire en Haïti, c'est choisir la vie et affirmer sa force. Si d'autres femmes, avant elle, ont fait un bon usage de leur présence au monde en portant la cause des leurs, l'enseignante se voit investie de cette même obligation : poursuivre des luttes anciennes par d'autres moyens, revendiquer sa place et refuser d'être effacée. Ainsi, elle précise :</p>
+
+<blockquote><p>Écrire est une arme : une arme de sens, de langage et de présence.</p></blockquote>
+
+<p>Pour accomplir cette mission, Ruth Bernie participe à l'anthologie de nouvelles <strong>« Femme-mille-lieux »</strong> des éditions Flèche Rose. Son écriture est nourrie par les expériences intimes et les réalités sociales. Elle poursuit son chemin avec détermination : deux romans sont en cours de rédaction et un recueil de poésie s'apprête à voir le jour.</p>`
+  },
+
 ];
 
 // Tri automatique : article le plus récent en premier
