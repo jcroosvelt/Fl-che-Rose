@@ -1,0 +1,55 @@
+.adm { --a-bg: #f4f2ee; --a-card: #fff; --a-line: #e3ded6; font-family: var(--sans); font-size: .95rem; line-height: 1.5; background: var(--a-bg); min-height: 100vh; color: var(--ink); }
+.adm h1, .adm h2, .adm h3 { font-family: var(--sans); font-weight: 650; letter-spacing: -.01em; }
+.adm h1 { font-size: 1.6rem; } .adm h2 { font-size: 1.1rem; }
+.adm p { max-width: none; }
+.adm-shell { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+.adm-side { background: var(--ink); color: #d8d1c7; padding: 1.4rem 1rem; position: sticky; top: 0; height: 100vh; overflow: auto; display: flex; flex-direction: column; gap: 1.4rem; }
+.adm-side .logo { font-family: var(--serif); color: #fff; font-size: 1.15rem; padding: 0 .6rem; text-decoration: none; }
+.adm-side .logo b { color: #e8788f; }
+.adm-side h4 { margin: 0 0 .4rem; padding: 0 .6rem; font-size: .72rem; font-weight: 600; text-transform: none; letter-spacing: .02em; color: #8f877c; }
+.adm-side nav { display: grid; gap: 2px; }
+.adm-side a, .adm-side button.lnk { color: inherit; text-decoration: none; padding: .5rem .6rem; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; background: none; border: 0; font: inherit; cursor: pointer; text-align: left; width: 100%; }
+.adm-side a:hover, .adm-side button.lnk:hover { background: #2d2823; color: #fff; }
+.adm-side a[aria-current='page'] { background: var(--rose); color: #fff; }
+.adm-side .count { background: #e8788f; color: #2a0a12; border-radius: 99px; font-size: .75rem; font-weight: 700; padding: 0 .5rem; }
+.adm-main { padding: 2rem clamp(1rem, 3vw, 2.5rem) 4rem; max-width: 1100px; width: 100%; }
+.adm-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.adm .btn { font-family: var(--sans); border-radius: 6px; padding: .6rem 1.1rem; font-size: .9rem; }
+.adm .btn.sm { padding: .35rem .7rem; font-size: .82rem; }
+.adm .btn.danger { background: #fff; color: #b3261e; box-shadow: inset 0 0 0 1px #e5b8b4; } .adm .btn.danger:hover { background: #b3261e; color: #fff; }
+.adm-card { background: var(--a-card); border: 1px solid var(--a-line); border-radius: 10px; }
+.adm-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.adm-stats a { padding: 1.1rem 1.2rem; text-decoration: none; display: block; }
+.adm-stats a:hover { border-color: var(--rose); }
+.adm-stats strong { display: block; font-size: 1.9rem; font-family: var(--serif); font-weight: 400; line-height: 1.1; }
+.adm-stats span { color: var(--muted); font-size: .85rem; }
+.adm-list { list-style: none; margin: 0; padding: 0; }
+.adm-list li { display: flex; align-items: center; gap: 1rem; padding: .8rem 1.1rem; border-bottom: 1px solid var(--a-line); }
+.adm-list li:last-child { border: 0; }
+.adm-list img { width: 38px; height: 52px; object-fit: cover; border-radius: 3px; background: var(--parch); flex: none; }
+.adm-list .ph { width: 38px; height: 52px; background: var(--parch); border-radius: 3px; flex: none; }
+.adm-list .grow { flex: 1; min-width: 0; } .adm-list .grow a { font-weight: 600; text-decoration: none; } .adm-list .grow a:hover { color: var(--rose); }
+.adm-list .sub { color: var(--muted); font-size: .85rem; }
+.empty { padding: 2.5rem; text-align: center; color: var(--muted); }
+.adm .flash { background: #e6f2e8; border: 1px solid #b9d9bf; color: #1d5b2b; padding: .7rem 1rem; border-radius: 8px; margin-bottom: 1.2rem; }
+.adm .errmsg { background: #fbe9e7; border: 1px solid #efc3be; color: #8c1d14; padding: .7rem 1rem; border-radius: 8px; margin-bottom: 1.2rem; }
+.adm-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.4rem; padding: 1.5rem; }
+.adm-form .wide { grid-column: 1 / -1; }
+.adm-form label { display: grid; gap: .35rem; font-weight: 600; font-size: .88rem; align-content: start; }
+.adm-form input:not([type=checkbox]), .adm-form select, .adm-form textarea { font: inherit; font-weight: 400; padding: .6rem .75rem; border: 1px solid #cfc8bd; border-radius: 6px; background: #fff; width: 100%; }
+.adm-form textarea { min-height: 120px; resize: vertical; } .adm-form textarea.html { min-height: 320px; font-family: ui-monospace, monospace; font-size: .85rem; }
+.adm-form .help { font-weight: 400; color: var(--muted); font-size: .8rem; }
+.adm-form .check { display: flex; align-items: center; gap: .6rem; padding-top: 1.5rem; }
+.adm-form .actions { grid-column: 1 / -1; display: flex; gap: .8rem; align-items: center; border-top: 1px solid var(--a-line); padding-top: 1.2rem; margin-top: .3rem; }
+.adm-form .preview { max-height: 140px; border-radius: 6px; margin-top: .4rem; width: auto; background: var(--parch); }
+.pill { display: inline-block; border-radius: 99px; padding: .1rem .65rem; font-size: .78rem; font-weight: 600; background: #ece7df; }
+.pill.nouveau, .pill.en_attente { background: #fde9c8; color: #7a4b00; } .pill.accepte, .pill.approuve { background: #d9efdd; color: #1d5b2b; } .pill.refuse, .pill.spam { background: #f6d8d5; color: #8c1d14; }
+.adm-item { padding: 1.1rem 1.2rem; border-bottom: 1px solid var(--a-line); display: grid; gap: .5rem; } .adm-item:last-child { border: 0; }
+.adm-item .row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+.adm-item .body { white-space: pre-wrap; background: #faf8f5; padding: .8rem; border-radius: 6px; }
+.adm-item select, .adm-item textarea { font: inherit; padding: .4rem .5rem; border: 1px solid #cfc8bd; border-radius: 6px; }
+.login { min-height: 100vh; display: grid; place-items: center; padding: 1.5rem; background: var(--rose-deep); }
+.login form { background: #fff; padding: 2.2rem; width: 100%; max-width: 400px; display: grid; gap: 1.1rem; border-radius: 12px; }
+.login h1 { font-family: var(--serif) !important; font-weight: 400 !important; font-size: 1.7rem !important; }
+.login label { display: grid; gap: .35rem; font-weight: 600; font-size: .88rem; } .login input { font: inherit; padding: .7rem .8rem; border: 1px solid #cfc8bd; border-radius: 6px; }
+@media (max-width: 860px) { .adm-shell { grid-template-columns: 1fr; } .adm-side { position: static; height: auto; } .adm-form { grid-template-columns: 1fr; } }
