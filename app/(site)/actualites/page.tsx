@@ -1,3 +1,4 @@
+import { getSettings } from '@/lib/settings';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getArticles, fmtDate } from '@/lib/db';
@@ -6,10 +7,10 @@ export const revalidate = 60;
 export const metadata: Metadata = { title: 'Actualités', description: 'Chroniques, entretiens et annonces de Flèche Rose Éditions.' };
 
 export default async function News() {
-  const articles = await getArticles();
+  const [articles, t] = await Promise.all([getArticles(), getSettings()]);
   return (
     <>
-      <div className="page-head"><div className="wrap"><h1>Actualités</h1><p>Chroniques, entretiens et annonces de la maison.</p></div></div>
+      <div className="page-head"><div className="wrap"><h1>Actualités</h1><p>{t['actualites.intro']}</p></div></div>
       <section className="section" style={{ paddingTop: '2.5rem' }}>
         <div className="wrap posts">
           {articles.map((a) => (

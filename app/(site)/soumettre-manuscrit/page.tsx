@@ -1,11 +1,13 @@
+import { getSettings } from '@/lib/settings';
 import type { Metadata } from 'next';
 import Form from '@/components/Form';
 export const metadata: Metadata = { title: 'Soumettre un manuscrit', description: 'Envoyez votre manuscrit de poésie, roman, essai ou nouvelles à Flèche Rose Éditions.' };
 
-export default function Submit() {
+export default async function Submit() {
+  const t = await getSettings();
   return (
     <>
-      <div className="page-head"><div className="wrap"><h1>Soumettre un manuscrit</h1><p>Nous lisons chaque proposition. Décrivez votre projet et ajoutez un lien vers votre texte complet (Google Drive, Dropbox…). Réponse sous quelques semaines.</p></div></div>
+      <div className="page-head"><div className="wrap"><h1>Soumettre un manuscrit</h1><p>{t['manuscrit.intro']}</p></div></div>
       <section className="section" style={{ paddingTop: '2.5rem' }}>
         <div className="wrap">
           <Form action="/api/manuscrits" submit="Envoyer ma proposition" done="Proposition reçue. Merci, notre comité de lecture vous répondra par e-mail.">

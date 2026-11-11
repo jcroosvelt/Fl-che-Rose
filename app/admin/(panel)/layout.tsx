@@ -15,6 +15,7 @@ export default async function Panel({ children }: { children: React.ReactNode })
     (SELECT count(*) FROM contact_messages WHERE NOT handled)::int AS msg`;
   const groups: [string, { href: string; label: string; n?: number }[]][] = [
     ['Contenu', ['livres', 'auteurs', 'articles', 'presse'].map((k) => ({ href: `/admin/${k}`, label: RESOURCES[k].label }))],
+    ['Site', [{ href: '/admin/textes', label: 'Textes du site' }]],
     ['Galerie', ['evenements', 'photos'].map((k) => ({ href: `/admin/${k}`, label: RESOURCES[k].label }))],
     ['Boîte de réception', [
       { href: '/admin/inbox/manuscrits', label: 'Manuscrits', n: c.manus },

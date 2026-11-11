@@ -102,3 +102,17 @@ export async function changePassword(_: unknown, fd: FormData) {
   await sql`UPDATE admin_users SET password_hash = ${await bcrypt.hash(next, 12)} WHERE id = ${admin.id}`;
   return { ok: 'Mot de passe modifié.' };
 }
+
+export async function saveSettings(_: unknown, fd: FormData) {
+  const admin = await requireAdmin();
+  const { SETTINGS } = await import('@/lib/settings');
+  for (const g of SETTINGS) for (const f of g.fields) {
+    const v = String(fd.get(f.key) ?? '').trim().slice(0, 5000);
+    // Valeur vide = retour au texte par défaut
+    if (!v) await sql`DELETE FROM site_settings WHERE key = ${f.key}`;
+    else await sql`INSERT INTO site_settings (key, value, updated_at) VALUES (${f.key}, ${JSON.stringify(v)}::jsonb, now()) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_at = now()`;
+  }
+  await sql`INSERT INTO audit_log (admin_id, action, entity) VALUES (${admin.id}, 'update', 'site_settings')`;
+  refresh();
+  return { ok: 'Textes enregistrés. Ils apparaissent sur le site dans la minute.' };
+}

@@ -1,3 +1,4 @@
+import { getSettings } from '@/lib/settings';
 import Link from 'next/link';
 import { getBooks, getArticles, getAuthors, fmtDate } from '@/lib/db';
 import { SITE } from '@/lib/site';
@@ -5,7 +6,7 @@ import { SITE } from '@/lib/site';
 export const revalidate = 60;
 
 export default async function Home() {
-  const [books, upcoming, articles, authors] = await Promise.all([getBooks('catalogue'), getBooks('a_paraitre'), getArticles(3), getAuthors()]);
+  const [books, upcoming, articles, authors, t] = await Promise.all([getBooks('catalogue'), getBooks('a_paraitre'), getArticles(3), getAuthors(), getSettings()]);
   const shelf = [...upcoming.slice(0, 1), ...books.filter((b) => b.cover_url)].slice(0, 4);
   const next = upcoming[0];
   return (
@@ -13,8 +14,8 @@ export default async function Home() {
       <section className="hero">
         <div className="wrap">
           <div>
-            <h1>Des livres haïtiens, écrits et édités ici.</h1>
-            <p>{SITE.name} publie de la poésie, des romans, des essais et des récits d’auteurs d’Haïti et de la diaspora, depuis 2023.</p>
+            <h1>{t['home.hero_title']}</h1>
+            <p>{t['home.hero_text']}</p>
             <div className="actions">
               <Link className="btn onrose" href="/catalogue">Parcourir le catalogue</Link>
               <Link className="btn ghost" href="/soumettre-manuscrit">Soumettre un manuscrit</Link>
@@ -66,9 +67,9 @@ export default async function Home() {
 
       <section className="section deep">
         <div className="wrap split">
-          <h2>Une maison née d’une communauté de lecteurs.</h2>
+          <h2>{t['home.about_title']}</h2>
           <div>
-            <p>Flèche Rose est d’abord un club littéraire, fondé en 2021 par Mardochée Gay et ses amis. En 2023, il devient une maison d’édition indépendante pour donner des livres à celles et ceux qui écrivent Haïti aujourd’hui.</p>
+            {t['home.about_text'].split(/\n\n+/).map((p, i) => <p key={i}>{p}</p>)}
             <p>{authors.length} auteurs et {books.length} titres publiés à ce jour, en français et en créole.</p>
             <Link className="btn onrose" href="/auteurs">Rencontrer les auteurs</Link>
           </div>

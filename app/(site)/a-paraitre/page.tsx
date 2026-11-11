@@ -1,3 +1,4 @@
+import { getSettings } from '@/lib/settings';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getBooks } from '@/lib/db';
@@ -7,10 +8,10 @@ export const revalidate = 60;
 export const metadata: Metadata = { title: 'À paraître', description: 'Les prochains livres de Flèche Rose Éditions, avec précommande.' };
 
 export default async function Upcoming() {
-  const books = await getBooks('a_paraitre');
+  const [books, t] = await Promise.all([getBooks('a_paraitre'), getSettings()]);
   return (
     <>
-      <div className="page-head"><div className="wrap"><h1>À paraître</h1><p>Les prochains livres de la maison. Certains sont déjà en précommande.</p></div></div>
+      <div className="page-head"><div className="wrap"><h1>À paraître</h1><p>{t['paraitre.intro']}</p></div></div>
       <section className="section" style={{ paddingTop: '2.5rem' }}>
         <div className="wrap" style={{ display: 'grid', gap: '4rem' }}>
           {books.length === 0 && <p className="notice">Aucune parution annoncée pour le moment. Revenez bientôt.</p>}
